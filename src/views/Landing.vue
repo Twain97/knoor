@@ -3,7 +3,7 @@
     <div class="w-full h-full bg-slate-800 opacity-40 border-red-600">
       
     </div>
-    <Toast/>
+    <Toast position="top-left" group="tl"/>
     <div class="w-full h-full absolute flex top-0">
       <div class="h-5/6 m-auto flex flex-col-reverse rounded-lg md:flex-row w-4/5  bg-slate-50">
         <!-- <div class="hidden md:block">
@@ -86,7 +86,7 @@
           
             <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" >
               <slide class=" w-fit " v-for="slide in images" :key="slide">
-                <img class="w-full h-full ml-5 -mt-16"  
+                <img class="w-full h-full ml-5 -mt-24"  
                 :src="slide" alt="">
               </slide>
 
