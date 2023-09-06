@@ -3,33 +3,28 @@
     <div class="w-full h-full bg-slate-800 opacity-40 border-red-600">
       
     </div>
-    <Toast position="top-left" group="tl"/>
+    <Toast/>
     <div class="w-full h-full absolute flex top-0">
       <div class="h-5/6 m-auto flex flex-col-reverse rounded-lg md:flex-row w-4/5  bg-slate-50">
         <!-- <div class="hidden md:block">
           <img :src="platter" alt="platter">
         </div> -->
-        <carousel class="hidden md:rounded-lg md:mx-2 md:my-auto md:block md:h-5/6 md:overflow-hidden md:w-3/6" :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :navigation-enabled="false" :pagination-enabled="false" >
+        <carousel class="hidden md:rounded-lg md:mx-2 md:my-auto md:block md:h-5/6 md:overflow-hidden md:w-3/6" :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false" >
           <slide class=" w-fit h-full " v-for="slide in images" :key="slide">
             <img class="w-full h-full  md:-mt-0"  
             :src="slide" alt="">
           </slide>
-
-          <template  #addons>
-            <navigation class="hidden md:hidden" />
-            <pagination class="hidden md:hidden" />
-          </template>
         </carousel>
 
 
         <div class="h-full  md:w-2/4 ">
                                 <!-- Log in -->
 
-          <div v-if="showLogin" class="z-50 flex py-4 md:flex w-full h-full md:p-0">
+          <div v-if="showLogin" class="z-50 flex py-6 md:flex w-full h-full md:p-0">
           <div class="w-full h-4/5 mt-24 flex flex-col px-2 md:w-full md:h-4/5 m-auto md:mt-auto  md:justify-between">
             <img :src="logo" alt="logo" class="w-16 -mt-24 md:w-28 md:m-auto  mx-auto">
           
-            <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :navigation-enabled="false" :pagination-enabled="false">
+            <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false">
               <slide class=" w-fit " v-for="slide in images" :key="slide">
                 <img class="w-full h-full ml-5 -mt-12"  
                 :src="slide" alt="">
@@ -54,7 +49,7 @@
                 </div>
                 
                 
-                <Button id="Button" type="submit" label="Login" icon="pi pi-sign-in" :loading="loading" @click="load(), login()" size="small" class="w-fit text-sm m-auto h-7 md:mt-20" />
+                <Button id="Button" type="submit" label="Login" icon="pi pi-sign-in" :loading="loading" @click="login()" size="small" class="w-fit text-sm m-auto h-7 md:mt-20" />
                 
                
               </form>
@@ -80,15 +75,11 @@
           <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
           
-            <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :navigation-enabled="false" :pagination-enabled="false" >
+            <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false" >
               <slide class=" w-fit " v-for="slide in images" :key="slide">
                 <img class="w-full h-full ml-5 -mt-20"  
                 :src="slide" alt="">
               </slide>
-              <template  #addons>
-            <navigation class="hidden md:hidden" />
-            <pagination class="hidden md:hidden" />
-          </template>
             </carousel>
             <div class="w-full h-full space-y-4 flex flex-col  md:space-y-8 ">
               <h2 class="text-slate-800 font-bold text-lg">Sign up</h2>
@@ -110,7 +101,7 @@
               
               <input id="password2" type="password"  placeholder="Confirm password" class="bg-inherit w-11/12 indent-1 font-semibold border-b-2 border-slate-400 md:w-2/4"/>
 
-                <Button id="Button" type="submit" label="Signup" icon="pi pi-user-plus" :loading="loading" @click="load(), register()" size="small" class="w-fit text-sm m-auto h-7" />
+                <Button id="Button" type="submit" label="Signup" icon="pi pi-user-plus" :loading="loading" @click="register()" size="small" class="w-fit text-sm m-auto h-7" />
                 
                 
               </form>
@@ -197,22 +188,23 @@ export default {
     
 
     const login = ()=>{
-      if(password.value != ""){
-
+      
       function load(){
         loading.value = true;
         setTimeout(() => {
             loading.value = false;
+            if(password.value != ""){
             store.dispatch('login', registerForm.value)
-          },1500);
-      };
-
-      load()
+            }
+            else{
+              toast.add({ severity: 'error', summary: 'Error!', detail: 'Please enter password', life: 3000 })
+            }
+          },1200);
+      
+      
     }
-    else{
-      toast.add({ severity: 'error', summary: 'Error!', detail: 'Please enter password', life: 3000 });
-    }
-
+    
+    load()
       
     }
 
@@ -237,7 +229,7 @@ export default {
               toast.add({ severity: 'error', summary: 'Error!', detail: 'Please enter password', life: 3000 });
             }
             
-        },1500);
+        },1200);
       };
       
 
