@@ -14,11 +14,6 @@
             <img class="w-full h-full  md:-mt-0"  
             :src="slide" alt="">
           </slide>
-
-          <template #addons>
-            <navigation />
-            <pagination />
-          </template>
         </carousel>
 
 
@@ -35,10 +30,6 @@
                 :src="slide" alt="">
               </slide>
 
-              <template #addons>
-                <navigation />
-                <pagination />
-              </template>
             </carousel>
 
             <div class="w-full h-full flex flex-col space-y-4 md:space-y-8">
@@ -90,10 +81,6 @@
                 :src="slide" alt="">
               </slide>
 
-              <template #addons>
-                <navigation />
-                <pagination />
-              </template>
             </carousel>
             <div class="w-full h-full space-y-4 flex flex-col  md:space-y-8 ">
               <h2 class="text-slate-800 font-bold text-lg">Sign up</h2>
