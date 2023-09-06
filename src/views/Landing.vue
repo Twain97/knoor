@@ -11,7 +11,7 @@
         </div> -->
         <carousel class="hidden md:rounded-lg md:mx-2 md:my-auto md:block md:h-5/6 md:overflow-hidden md:w-3/6" :items-to-show="0.7" :autoplay="2500" :wrap-around="true" >
           <slide class=" w-fit h-full " v-for="slide in images" :key="slide">
-            <img class="w-full h-full md:-mt-0"  
+            <img class="w-full h-full  md:-mt-0"  
             :src="slide" alt="">
           </slide>
 
@@ -25,21 +25,21 @@
         <div class="h-full  md:w-2/4 ">
                                 <!-- Log in -->
 
-          <div v-if="showLogin" class="z-50 flex md:flex w-full h-full md:p-0">
+          <div v-if="showLogin" class="z-50 flex py-2 md:flex w-full h-full md:p-0">
           <div class="w-full h-4/5 mt-24 flex flex-col px-2 md:w-full md:h-4/5 m-auto md:mt-auto  md:justify-between">
             <img :src="logo" alt="logo" class="w-16 -mt-24 md:w-28 md:m-auto  mx-auto">
           
             <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" >
-          <slide class=" w-fit " v-for="slide in images" :key="slide">
-            <img class="w-full h-full ml-14 -mt-20 md:-mt-8"  
-            :src="slide" alt="">
-          </slide>
+              <slide class=" w-fit " v-for="slide in images" :key="slide">
+                <img class="w-full h-full ml-5 -mt-12"  
+                :src="slide" alt="">
+              </slide>
 
-          <template #addons>
-            <navigation />
-            <pagination />
-          </template>
-        </carousel>
+              <template #addons>
+                <navigation />
+                <pagination />
+              </template>
+            </carousel>
 
             <div class="w-full h-full flex flex-col space-y-4 md:space-y-8">
               <h2 class="text-slate-800 font-bold text-lg">Login</h2>
@@ -80,13 +80,13 @@
                     <!-- End of log in -->
 
                     <!-- Siging up -->
-        <div v-else class="flex z-50 w-full h-full ">
+        <div v-else class="flex z-50 md:pt-10 w-full h-full ">
           <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
           
             <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" >
               <slide class=" w-fit " v-for="slide in images" :key="slide">
-                <img class="w-full h-full ml-5 -mt-20"  
+                <img class="w-full h-full ml-5 -mt-16"  
                 :src="slide" alt="">
               </slide>
 
@@ -202,6 +202,8 @@ export default {
     
 
     const login = ()=>{
+      if(password.value != ""){
+
       function load(){
         loading.value = true;
         setTimeout(() => {
@@ -209,9 +211,14 @@ export default {
             store.dispatch('login', registerForm.value)
           },1500);
       };
-      
 
       load()
+    }
+    else{
+      toast.add({ severity: 'error', summary: 'Error!', detail: 'Please enter password', life: 3000 });
+    }
+
+      
     }
 
     const register = () => {
@@ -223,13 +230,18 @@ export default {
             var password = document.getElementById("password")
             var password2 = document.getElementById("password2")
             
-            if(password.value === password2.value){
+            if(password.value != "" && password2.value != ""){
+              if(password.value === password2.value){
               store.dispatch('register', registerForm.value)
+              }
+              else{
+                toast.add({ severity: 'error', summary: 'Error!', detail: 'Passwords not matched', life: 3000 });
+              }
             }
             else{
-              toast.add({ severity: 'error', summary: 'Error!', detail: 'Passwords not matched', life: 3000 });
-              
+              toast.add({ severity: 'error', summary: 'Error!', detail: 'Please enter password', life: 3000 });
             }
+            
         },1500);
       };
       
@@ -243,10 +255,7 @@ export default {
       if(toggle.type === "password" ){
         toggle.type = "text"
         toggle2.type = "text"
-        setTimeout(()=>{
-          toggle.type = "password"
-          toggle2.type = "password"
-        }, 1000)
+        
       }else{
         toggle.type = "password"
         toggle2.type = "password"
