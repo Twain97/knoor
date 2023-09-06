@@ -9,27 +9,32 @@
         <!-- <div class="hidden md:block">
           <img :src="platter" alt="platter">
         </div> -->
-        <carousel class="hidden md:rounded-lg md:mx-2 md:my-auto md:block md:h-5/6 md:overflow-hidden md:w-3/6" :items-to-show="0.7" :autoplay="2500" :wrap-around="true" >
+        <carousel class="hidden md:rounded-lg md:mx-2 md:my-auto md:block md:h-5/6 md:overflow-hidden md:w-3/6" :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :navigation-enabled="false" :pagination-enabled="false" >
           <slide class=" w-fit h-full " v-for="slide in images" :key="slide">
             <img class="w-full h-full  md:-mt-0"  
             :src="slide" alt="">
           </slide>
+
+          <template  #addons>
+            <navigation class="hidden md:hidden" />
+            <pagination class="hidden md:hidden" />
+          </template>
         </carousel>
 
 
         <div class="h-full  md:w-2/4 ">
                                 <!-- Log in -->
 
-          <div v-if="showLogin" class="z-50 flex py-2 md:flex w-full h-full md:p-0">
+          <div v-if="showLogin" class="z-50 flex py-4 md:flex w-full h-full md:p-0">
           <div class="w-full h-4/5 mt-24 flex flex-col px-2 md:w-full md:h-4/5 m-auto md:mt-auto  md:justify-between">
             <img :src="logo" alt="logo" class="w-16 -mt-24 md:w-28 md:m-auto  mx-auto">
           
-            <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" >
+            <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :navigation-enabled="false" :pagination-enabled="false">
               <slide class=" w-fit " v-for="slide in images" :key="slide">
                 <img class="w-full h-full ml-5 -mt-12"  
                 :src="slide" alt="">
               </slide>
-
+              
             </carousel>
 
             <div class="w-full h-full flex flex-col space-y-4 md:space-y-8">
@@ -75,12 +80,15 @@
           <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
           
-            <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" >
+            <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :navigation-enabled="false" :pagination-enabled="false" >
               <slide class=" w-fit " v-for="slide in images" :key="slide">
                 <img class="w-full h-full ml-5 -mt-20"  
                 :src="slide" alt="">
               </slide>
-
+              <template  #addons>
+            <navigation class="hidden md:hidden" />
+            <pagination class="hidden md:hidden" />
+          </template>
             </carousel>
             <div class="w-full h-full space-y-4 flex flex-col  md:space-y-8 ">
               <h2 class="text-slate-800 font-bold text-lg">Sign up</h2>
