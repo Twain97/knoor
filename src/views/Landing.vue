@@ -86,7 +86,7 @@
           
             <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" >
               <slide class=" w-fit " v-for="slide in images" :key="slide">
-                <img class="w-full h-full ml-5 -mt-24"  
+                <img class="w-full h-full ml-5 -mt-20"  
                 :src="slide" alt="">
               </slide>
 
