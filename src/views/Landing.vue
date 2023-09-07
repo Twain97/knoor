@@ -20,7 +20,7 @@
         <div class="h-full  md:w-2/4 ">
                                 <!-- Log in -->
 
-        <div v-if="showLogin" class="flex z-50 md:pt-10 w-full h-full ">
+        <div v-if="showLogin" class="flex z-50 md:py-10 w-full h-full ">
           <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16 -mt-2 md:w-28 md:m-auto  mx-auto">
           
@@ -71,7 +71,7 @@
                     <!-- End of log in -->
 
                     <!-- Siging up -->
-        <div v-else class="flex z-50 md:pt-10 w-full h-full ">
+        <div v-else class="flex z-50 md:py-10 w-full h-full ">
           <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
           
