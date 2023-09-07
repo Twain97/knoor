@@ -20,8 +20,8 @@
         <div class="h-f md:w-2/4 ">
                                 <!-- Log in -->
 
-          <div v-if="showLogin" class="z-50 flex py-6 md:flex w-full md:border-4 md:border-red-600 h-full md:p-0">
-          <div class="w-full h-4/5 mt-24 flex flex-col px-2 md:w-full md:h-4/5 m-auto md:my-auto  md:justify-between">
+          <div v-if="showLogin" class="z-50 flex py-6 md:flex w-full md:my-auto md:border-4  md:border-red-600 h-full md:p-0">
+          <div class="w-full h-4/5 mt-24 flex flex-col px-2 md:w-full md:h-4/5 m-auto md:my-auto md:border-4 md:border-blue-600 md:justify-between">
             <img :src="logo" alt="logo" class="w-16 -mt-24 md:w-28 md:m-auto  mx-auto">
           
             <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false">
