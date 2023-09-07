@@ -81,7 +81,7 @@
                 :src="slide" alt="">
               </slide>
             </carousel>
-            <div class="w-full h-full space-y-4 flex flex-col  md:space-y-8 ">
+            <div class="w-full h-full space-y-4 flex flex-col  md:space-y-5 ">
               <h2 class="text-slate-800 font-bold text-lg">Sign up</h2>
               <h4 class="text-slate-800 font-bold text-xs">Enter your email and password to signup.</h4>
               
