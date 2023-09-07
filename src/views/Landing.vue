@@ -197,6 +197,10 @@ export default {
             store.dispatch('login', registerForm.value)
             }
             else{
+              function vib( ){
+                navigator.vibrate([100, 50,]);
+              };
+              vib( )
               toast.add({ severity: 'error', summary: 'Error!', detail: 'Please enter password', life: 3000 })
             }
           },1200);
@@ -222,10 +226,18 @@ export default {
               store.dispatch('register', registerForm.value)
               }
               else{
+                function vib( ){
+                navigator.vibrate([100, 50,]);
+                };
+                vib( )
                 toast.add({ severity: 'error', summary: 'Error!', detail: 'Passwords not matched', life: 3000 });
               }
             }
             else{
+              function vib( ){
+                navigator.vibrate([100, 50,]);
+              };
+              vib( )
               toast.add({ severity: 'error', summary: 'Error!', detail: 'Please enter password', life: 3000 });
             }
             
