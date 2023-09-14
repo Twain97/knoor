@@ -3,11 +3,12 @@ import Home from '../pages/Home.vue'
 import Faq from '../pages/Faq.vue'
 import Load from '../views/Load.vue'
 
+
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/Landing',
       name: 'Landing',
       component: () => import('../views/Landing.vue')
     },
@@ -22,7 +23,7 @@ const router = createRouter({
       component: Load
     },
     {
-      path: '/Home',
+      path: '/',
       name: 'Home',
       component: Home
     },
