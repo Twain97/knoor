@@ -1,7 +1,8 @@
 import './assets/style.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCartShopping, faEye, faHeart, faSearch, faShuffle, faUser, faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faEye, faHeadset, faHeart, faHouse, faLock, faRotate,
+     faSearch, faShuffle, faTruckFast, faUser, faUserSecret, faX,  } from '@fortawesome/free-solid-svg-icons'
 import PrimeVue from 'primevue/config';
 import "primevue/resources/themes/lara-light-indigo/theme.css";
 import Button from "primevue/button"
@@ -15,7 +16,8 @@ import router from './router'
 import store from './store'
 
 library.add(faUserSecret, faEye, faUser, faSearch,
-    faHeart, faShuffle, faCartShopping)
+    faHeart, faShuffle, faCartShopping, faX, faTruckFast,
+    faRotate, faLock, faHeadset, faHouse )
 const app = createApp(App)
 
 app.use(router)

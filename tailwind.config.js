@@ -10,7 +10,22 @@ module.exports = {
       lg:'976px',
       xl:'1440px'
     },
-    extend: {},
+    extend: {
+      width:{
+        wd05:"5vw",
+        wd1:"10vw",
+        wd2:"20vw",
+        wd3:"30vw",
+        wd4:"40vw",
+        wd5:"50vw",
+        wd6:"60vw",
+        wd7:"70vw",
+        wd8:"80vw",
+        wd9:"90vw",
+        98:"98vw",
+        wdFull:"100vw"
+      }
+    },
   },
   plugins: [],
 }
