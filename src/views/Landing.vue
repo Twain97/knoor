@@ -1,20 +1,27 @@
 <template>
   <div class="main">
-    <div class="w-full h-full bg-slate-800 opacity-40 border-red-600">
+    <div class="w-full h-full bg-slate-800 opacity-40">
       
     </div>
-    <Toast/>
+    <div class="">
+      <Toast style="width: 40%; " class="hidden md:block"/>
+      <Toast style="width: 75%; " class="block md:hidden"/>
+    </div>
+    
     <div class="w-full h-full absolute flex top-0">
-      <div class="h-5/6 m-auto flex flex-col-reverse rounded-lg md:flex-row w-4/5  bg-slate-50">
+      <div class="h-5/6 m-auto px-4 flex flex-col-reverse rounded-lg md:flex-row w-4/5  bg-slate-50">
         <!-- <div class="hidden md:block">
           <img :src="platter" alt="platter">
         </div> -->
-        <carousel class="hidden md:rounded-lg md:mx-2 md:my-auto md:block md:h-5/6 md:overflow-hidden md:w-3/6" :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false" >
-          <slide class=" w-fit h-full " v-for="slide in images" :key="slide">
-            <img class="w-full h-full  md:-mt-0"  
-            :src="slide" alt="">
-          </slide>
+        <div class=" w-2/4 flex ">
+          <carousel class="hidden shadow-lg md:rounded-lg m-auto md:block md:h-2/5 xl:h-2/3 md:overflow-hidden md:w-full" :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false" >
+            <slide class=" w-full h-full " v-for="slide in images" :key="slide">
+              <img class="w-full h-full md:ml-15 lg:ml-20 lg:-mt-12 xl:-mt-8"  
+              :src="slide" alt="">
+            </slide>
         </carousel>
+        </div>
+        
 
 
         <div class="h-full  md:w-2/4 ">
@@ -24,21 +31,21 @@
           <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16 -mt-2 md:w-28 md:m-auto  mx-auto">
           
-            <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false">
+            <carousel class="md:hidden shadow-md rounded-lg mx-auto h-2/5 md:h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false">
               <slide class=" w-fit " v-for="slide in images" :key="slide">
-                <img class="w-full h-full ml-5 -mt-16"  
+                <img class="w-full h-full ml-5 -mt-4"  
                 :src="slide" alt="">
               </slide>
               
             </carousel>
 
-            <div class="w-full h-full flex flex-col space-y-4 md:space-y-8">
+            <div class="w-full h-full flex flex-col space-y-2 md:space-y-8">
               <h2 class="text-slate-800 font-bold text-lg">Login</h2>
               <h4 class="text-slate-800 font-bold text-xs">Enter your email and password to login.</h4>
               
               <form name="emailAndPassword" @submit.prevent="login()"
               class="flex flex-col space-y-3 ">
-                <div class="flex flex-col space-y-3 md:flex-row md:space-x-3" >
+                <div class="flex flex-col space-y-3 md:flex-row md:space-x-3 text-xs md:text-sm" >
                   <input name="Email" type="email" v-model.trim.lazy="registerForm.email" placeholder="Email"
                    class="bg-inherit w-11/12 indent-1 font-semibold border-b-2 border-slate-400"/>
                   <div class="bg-inherit w-11/12 border-b-2 flex justify-between  border-slate-400">
@@ -75,20 +82,20 @@
           <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
           
-            <carousel class="md:hidden shadow-md rounded-lg mx-auto h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false" >
+            <carousel class="md:hidden shadow-md rounded-lg mx-auto h-2/5 md:h-5/6 overflow-hidden " :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false" >
               <slide class=" w-fit " v-for="slide in images" :key="slide">
-                <img class="w-full h-full ml-5 -mt-20"  
+                <img class="w-full h-full ml-5 -mt-4"  
                 :src="slide" alt="">
               </slide>
             </carousel>
-            <div class="w-full h-full space-y-4 flex flex-col  md:space-y-5 ">
+            <div class="w-full h-full  space-y-2 flex flex-col  md:space-y-5 ">
               <h2 class="text-slate-800 font-bold text-lg">Sign up</h2>
               <h4 class="text-slate-800 font-bold text-xs">Enter your email and password to signup.</h4>
               
               <form name="emailAndPassword" @submit.prevent="register()"
               class="flex flex-col space-y-3 ">
               
-              <div class="flex flex-col space-y-3 md:flex-row md:space-x-3" >
+              <div class="flex flex-col space-y-3 md:flex-row md:space-x-3 text-xs md:text-sm" >
                 <input name="Email" type="email" v-model.trim.lazy="registerForm.email" placeholder="Email"
                 class="bg-inherit w-11/12 indent-1 font-semibold border-b-2 border-slate-400"/>
                 <div class="bg-inherit w-11/12 border-b-2 flex justify-between  border-slate-400">
@@ -99,7 +106,7 @@
                 
               </div>
               
-              <input id="password2" type="password"  placeholder="Confirm password" class="bg-inherit w-11/12 indent-1 font-semibold border-b-2 border-slate-400 md:w-2/4"/>
+              <input id="password2" type="password"  placeholder="Confirm password" class="bg-inherit w-11/12 indent-1 font-semibold border-b-2 border-slate-400 md:w-2/4 text-xs md:text-sm"/>
 
                 <Button id="Button" type="submit" label="Signup" icon="pi pi-user-plus" :loading="loading" @click="register()" size="small" class="w-fit text-sm m-auto h-7" />
                 
@@ -201,7 +208,7 @@ export default {
                 navigator.vibrate([100, 50,]);
               };
               vib( )
-              toast.add({ severity: 'error', summary: 'Error!', detail: 'Please enter password', life: 3000 })
+              toast.add({ severity: 'error', summary: 'Error!', group: 'br', detail: 'Please enter password', life: 3000 })
             }
           },1200);
       
