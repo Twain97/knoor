@@ -1,19 +1,14 @@
 <template>
-  <div >
-    <looping-rhombuses-spinner
-  :animation-duration="2500"
-  :rhombus-size="150"
-  color="#ff1d5e"/>
-  </div>
+  <PulseLoader/>
 </template>
 
 <script>
-import { LoopingRhombusesSpinner } from 'epic-spinners'
-export default {
-    components: {
-        LoopingRhombusesSpinner
-    }
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
+export default {
+  components: {
+    PulseLoader
+  }
 }
 </script>
 

@@ -9,7 +9,7 @@
               <font-awesome-icon icon="fa-solid fa-user" size="lg" style="color: #333366;" class="my-auto" />
               <p class="my-auto text-slate-900  text-sm font-bold">User</p>
             </div>
-            <img :src="logo" alt="Logo" class="mt-0 w-24 h-14">
+            <img :src="logo" alt="Logo" class="mt-0 w-24 h-12 md:w-36 md:h-20 drop-shadow-xl">
 
             <div v-if="showSearchToggle" @click="searchToggle()" class="my-auto transition-all cursor-pointer rounded-full bg-gray-100 hover:bg-slate-800 hover:text-slate-100 flex">
               <font-awesome-icon icon="fa-solid fa-search" size="xs"  class="rounded-full m-auto p-2 " />
@@ -34,7 +34,7 @@
             
 
       <!-- for medium screen -->
-      <div class="hidden lg:flex lg:flex-row lg:w-full ">
+      <div class="hidden lg:flex lg:flex-col lg:w-full ">
         <div class="w-11/12  m-auto flex flex-row justify-between space-x-2">
           <div class="lg:flex  lg:-mt-1 lg:space-x-8">
             <img :src="logo" alt="Logo" class=" mt-1 lg:w-48 lg:h-24 ">
@@ -43,7 +43,7 @@
               <p class="my-auto text-slate-900 pl-1 text-md font-bold">User</p>
             </div>
           </div>
-          <div class="lg:my-auto w-80 px-2 rounded-md bg-gray-100 lg:outline-none">
+          <div class="lg:my-auto w-80 px-2 rounded-md bg-gray-100 lg:outline-none hover:border-4 hover:border-slate-800">
             <form class="flex flex-row h-12 text-sm font-bold text-slate-800 ">
               <input type="text" placeholder="Search Anything.. " class=" w-11/12 focus:outline-none bg-inherit indent-5">
               <font-awesome-icon icon="fa-solid fa-search" size="lg" style="color: #333366;" class="my-auto cursor-pointer p-2"/>
@@ -74,6 +74,54 @@
             <p class="lg:text-sm lg:font-semibold mr-2 ">Total price:</p>
             <p class="font-bold text-sm my-auto "> totalPrice</p>
           </div>
+        </div>
+        <div id="line" class=" hidden border-4 border-blue-600 m-auto">
+          <hr/>
+        </div>
+        <div class="flex flex-row mt-4 mb-2 mx-auto w-11/12 space-x-10">
+          <div class="flex flex-row my-auto border-r-2 border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg ">
+            <p class="my-auto">Home</p>
+            <router-link to="#" class="my-auto">
+              <font-awesome-icon icon="fa-solid fa-solid fa-house"  size="lg" style="color: #333366;" class="my-auto" />
+            </router-link>
+          </div>
+          <div id="pages" class="flex flex-row my-auto relative border-r-2 border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">
+            <p class="my-auto">Pages</p>
+            <font-awesome-icon id="icon" icon="fa-solid fa-circle-chevron-down" size="lg" style="color: #333366;" class="my-auto -rotate-90"/>
+            <div class="bg-slate-100 hidden flex-col w-44 rounded-r-lg rounded-l-lg shadow-2xl
+              transition-all absolute mt-9 ml-10 p-2">
+              <router-link to="#" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
+                <p class="py-1 mx-auto">My Profile</p>
+              </router-link>
+              <router-link to="#" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
+                <p class="py-1 mx-auto">Cart List</p>
+              </router-link>
+              <router-link to="#" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
+                <p class="py-1 mx-auto">Wish List</p>
+              </router-link>
+              <router-link to="#" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
+                <p class="py-1 mx-auto">My Wallet</p>
+              </router-link>
+              <router-link to="#" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
+                <p class="py-1 mx-auto">About Us</p>
+              </router-link>
+              <router-link to="#" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
+                <p class="py-1 mx-auto ">Contact Us</p>
+              </router-link>
+            </div>
+          </div>
+          <div class="flex flex-row my-auto border-r-2 border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">
+            <p class="my-auto">About us</p>
+            <router-link to="#" class="my-auto">
+              <font-awesome-icon icon="fa-solid fa-address-card" size="lg" style="color: #333366;" class=""/>
+            </router-link>
+          </div>
+          <div class="flex flex-row my-auto border-r-2 border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">
+            <p class="my-auto">Contact us</p>
+            <font-awesome-icon icon="fa-solid fa-headset" size="lg" style="color: #333366;" class="my-auto transition-all"/>
+          </div>          
+          
+          
         </div>
       </div>
      
@@ -116,5 +164,16 @@ export default {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+#line{
+  width: 91%;
+}
+
+#pages:hover #icon{
+  rotate: 90deg;
+  transition: all 200ms ease-in-out;
+}
+#pages:hover div{
+  display: flex;
 }
 </style>

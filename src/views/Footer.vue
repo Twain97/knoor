@@ -7,10 +7,10 @@
                 <h5 class="w-11/12 m-auto font-bold text-sm md:text-base">By subscribing you get a discount of 20% on all your purchase</h5>
             </div>
             <div class="m-auto w-full lg:w-1/2 cursor-pointer focus:outline-none pr-2 md:pr-4 rounded-lg bg-gray-100 outline-none flex">
-                <form class="w-full flex flex-row h-16 sm:text-xs md:text-sm font-bold text-slate-800 m-auto ">
+                <form class="w-full flex flex-row h-14 text-xs md:text-sm font-bold text-slate-800 m-auto ">
                     <input type="text" placeholder="Email Address... " class=" w-11/12 focus:outline-none bg-inherit indent-3 lg:indent-10">
-                    <div class="w-32 md:w-40 bg-orange-600 my-2 flex  rounded-lg">
-                        <h2 class="m-auto text-sm md:text-base">@Subscribe</h2>
+                    <div class="w-32 md:w-40 bg-orange-600 hover:bg-orange-400 my-2 flex  rounded-lg">
+                        <h2 class="m-auto text-xs font-bold md:text-base">@Subscribe</h2>
                     </div>
                 </form>
             </div>
@@ -25,8 +25,8 @@
                     </div>
                 </div>
                 <div>
-                    <h1 class="font-bold text-lg text-slate-800">Free Home Delivery</h1>
-                    <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                    <h1 class="font-bold text-sm md:text-lg text-slate-800">Free Home Delivery</h1>
+                     <p class="text-xs md:text-base">Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
                 </div>
             </div>
             <div class=" w-60 my-5 flex space-x-2">
@@ -36,8 +36,8 @@
                     </div>
                 </div>
                 <div>
-                    <h1 class="font-bold text-lg text-slate-800">Instant Return Policy</h1>
-                    <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                    <h1 class="font-bold text-sm md:text-lg text-slate-800">Instant Return Policy</h1>
+                     <p class="text-xs md:text-base">Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
                 </div>
             </div>
             <div class=" w-60 my-5 flex space-x-2">
@@ -47,8 +47,8 @@
                     </div>
                 </div>
                 <div >
-                    <h1 class="font-bold text-lg text-slate-800">Quick Support System</h1>
-                    <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                    <h1 class="font-bold text-sm md:text-lg text-slate-800">Quick Support System</h1>
+                    <p class="text-xs md:text-base">Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
                 </div>
             </div>
             <div class=" w-60 my-5 flex space-x-2">
@@ -58,8 +58,8 @@
                     </div>
                 </div>
                 <div>
-                    <h1 class="font-bold text-lg text-slate-800">Secure Payment Way</h1>
-                    <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                    <h1 class="font-bold text-sm md:text-lg text-slate-800">Secure Payment Way</h1>
+                     <p class="text-xs md:text-base">Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
                 </div>
             </div>
         </div>
@@ -124,36 +124,7 @@
             </div>
         </div>
     </section>
-    <section id="bottomNav" class="lg:hidden sticky -bottom-3">
-        <div class="flex flex-row mx-auto shadow-lg  bg-gray-100 h-8 rounded-t-lg w-98">
-            <div class="flex flex-row justify-evenly relative -mt-8 w-full">
-                <router-link to="#" class="my-auto shadow-lg cursor-pointer relative p-2 hover:p-3 hover:mt-1 transition-all rounded-full flex bg-gray-100">
-                    <font-awesome-icon icon="fa-solid fa-solid fa-house"  size="sm" style="color: #333366;" class="p-1 rounded-full" />
-                </router-link>
-                <router-link to="#" class="my-auto shadow-lg cursor-pointer relative p-2 hover:p-3 hover:mt-1 transition-all rounded-full flex bg-gray-100">
-                    <font-awesome-icon icon="fa-solid fa-heart"  size="sm" style="color: #333366;" class="p-1 rounded-full" />
-                    <div class="w-5 h-5 right-1 -top-3 absolute rounded-full flex bg-slate-800">
-                        <p class="text-stone-200 text-xs font-bold m-auto rounded-full">0</p>
-                    </div>
-                </router-link>
-                <router-link to="#" class="my-auto shadow-lg cursor-pointer relative p-2 hover:p-3 hover:mt-1 transition-all rounded-full flex bg-gray-100">
-                    <font-awesome-icon icon="fa-solid fa-cart-shopping"  size="sm" style="color: #333366;" class="p-1 rounded-full" />
-                    <div class="w-5 h-5 right-1 -top-3 absolute rounded-full flex bg-slate-800">
-                        <p class="text-stone-200 text-xs font-bold m-auto rounded-full">0</p>
-                    </div>
-                </router-link>
-                
-                <router-link to="#" class="my-auto shadow-lg cursor-pointer relative p-2 hover:p-3 hover:mt-1 transition-all rounded-full flex bg-gray-100">
-                    <font-awesome-icon icon="fa-solid fa-solid fa-shuffle"  size="sm" style="color: #333366;" class="p-1 rounded-full" />
-                    <div class="w-5 h-5 right-1 -top-3  absolute rounded-full flex bg-slate-800">
-                        <p class="text-stone-200 text-xs m-auto rounded-full">0</p>
-                    </div>
-                </router-link>
-                
-            </div>
-            
-        </div>
-    </section>
+    
   </div>
 </template>
 
