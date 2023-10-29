@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header/>
+    <Header class="shadow-lg mb-5"/>
 
     <RouterView class=""/>
 
@@ -11,7 +11,7 @@
     <Transition name="slide-fade" class="lg:hidden z-50 pb-5">
       <div v-show="nav2" class="fixed top-0 pt-2 h-full w-44 bg-white flex flex-col">
         <div class="relative ">
-          <div @click="ShowNav()" class="absolute -right-4 mt-1 bg-white rounded-full w-8 h-8 flex text-slate-800 hover:bg-slate-800 hover:text-white ">
+          <div @click="ShowNav()" class="absolute shadow-md -right-4 mt-1 bg-white rounded-full w-8 h-8 flex text-slate-800 hover:bg-slate-800 hover:text-white ">
             <font-awesome-icon icon="fa-solid fa-solid fa-x"  size="sm"  class="m-auto p-1 rounded-full" /> 
           </div>
         </div>  
@@ -51,29 +51,29 @@
       </Transition>
 
     <nav id="bottomNav" class="lg:hidden fixed bottom-0 w-full">
-          <div class="flex flex-row mx-auto shadow-lg  bg-gray-100 h-8 rounded-t-lg w-98">
+          <div class="flex flex-row mx-auto shadow-md  bg-gray-100 h-8 rounded-t-lg w-98">
               <div class="flex flex-row justify-evenly relative -mt-3 w-full">
-                  <router-link to="#" class="my-auto shadow-lg cursor-pointer relative p-2 hover:p-3 hover:-mt-1 transition-all rounded-full flex bg-gray-100">
+                  <router-link to="#" class="my-auto shadow-md cursor-pointer relative p-2 hover:p-3 hover:-mt-1 transition-all rounded-full flex bg-gray-100">
                       <font-awesome-icon icon="fa-solid fa-solid fa-house"  size="sm" style="color: #333366;" class="p-1 rounded-full" />
                   </router-link>
                  
-                  <router-link to="#" class=" shadow-lg cursor-pointer relative w-10 h-10 hover:w-12 hover:h-12 flex hover:p-2 -mt-1 hover:-mt-4 transition-all rounded-full bg-gray-100">
+                  <router-link to="#" class=" shadow-md cursor-pointer relative w-10 h-10 hover:w-12 hover:h-12 flex hover:p-2 -mt-1 hover:-mt-4 transition-all rounded-full bg-gray-100">
                       <font-awesome-icon icon="fa-solid fa-heart"  size="sm" style="color: #333366;" class="m-auto p-1 rounded-full" />
                       <div class="w-4 h-4 right-1 -top-1  absolute rounded-full flex bg-slate-800">
                           <p class="text-stone-200 text-xs m-auto rounded-full">0</p>
                       </div>
                   </router-link>
-                  <router-link @click="ShowNav()" to="#" class=" shadow-lg cursor-pointer relative w-12 h-12 hover:w-14 hover:h-14 flex hover:p-4 -mt-3 hover:-mt-7 transition-all rounded-full bg-gray-100">
+                  <router-link @click="ShowNav()" to="#" class=" shadow-md cursor-pointer relative w-12 h-12 hover:w-14 hover:h-14 flex hover:p-4 -mt-3 hover:-mt-7 transition-all rounded-full bg-gray-100">
                       <font-awesome-icon icon="fa-solid fa-solid fa-bars"  size="lg" style="color: #333366;" class=" m-auto p-1 rounded-full" />
                   </router-link>
-                  <router-link to="#" class=" shadow-lg cursor-pointer relative w-10 h-10 hover:w-12 hover:h-12 flex hover:p-2 -mt-1 hover:-mt-4 transition-all rounded-full bg-gray-100">
+                  <router-link to="#" class=" shadow-md cursor-pointer relative w-10 h-10 hover:w-12 hover:h-12 flex hover:p-2 -mt-1 hover:-mt-4 transition-all rounded-full bg-gray-100">
                       <font-awesome-icon icon="fa-solid fa-cart-shopping"  size="sm" style="color: #333366;" class="m-auto p-1 rounded-full" />
                       <div class="w-4 h-4 right-1 -top-1  absolute rounded-full flex bg-slate-800">
                           <p class="text-stone-200 text-xs m-auto rounded-full">0</p>
                       </div>
                   </router-link>
                   
-                  <router-link to="#" class="my-auto shadow-lg cursor-pointer relative p-2 hover:p-3 hover:-mt-1 transition-all rounded-full flex bg-gray-100">
+                  <router-link to="#" class="my-auto shadow-md cursor-pointer relative p-2 hover:p-3 hover:-mt-1 transition-all rounded-full flex bg-gray-100">
                       <font-awesome-icon icon="fa-solid fa-solid fa-shuffle"  size="sm" style="color: #333366;" class="p-1 rounded-full" />
                       <div class="w-4 h-4 right-1 -top-1 absolute rounded-full flex bg-slate-800">
                           <p class="text-stone-200 text-xs m-auto rounded-full">0</p>
@@ -108,8 +108,8 @@ export default {
   },
   data () {
     return {
-      nav:true,
-      nav2:true
+      nav:false,
+      nav2:false
     }
   }
 }

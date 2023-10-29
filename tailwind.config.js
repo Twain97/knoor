@@ -17,6 +17,7 @@ module.exports = {
         wd2:"20vw",
         wd3:"30vw",
         wd4:"40vw",
+        wd45:"45vw",
         wd5:"50vw",
         wd6:"60vw",
         wd7:"70vw",
