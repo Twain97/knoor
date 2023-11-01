@@ -1,6 +1,8 @@
 <template>
   <div class="w-full bg-slate-100 flex flex-col">
-
+    <div v-show="ShowProd">
+      <products/> 
+    </div>
       <carousel class=" rounded-lg mx-auto mt-5 w-full md:h-5/6 overflow-hidden " :items-to-show="2.2" :autoplay="2500" :wrap-around="true" :show-arrows="false">
         <slide class="h-44 " v-for="slide in dishes" :key="slide">
           <img class="w-64 h-32 ml-5 -mt-4 rounded-lg shadow-xl"  
@@ -8,17 +10,7 @@
         </slide>
        
       </carousel>
-      <small>
-        cart Comp:
-        <cart/>
-      </small>
-      <b>Fav Comp:
-        <Favourite/>
-      </b>      
-      <i>
-        Prod comp:
-        <products/>
-      </i>
+    
         
 
     <h1 class="text-xl font-bold text-slate-800 mx-auto mt-3">Available</h1>
@@ -30,14 +22,11 @@
             -80%
           </div>
 
-            <div class="bg-red-400" @click="viewProduct(item)">
-              xx
-            </div>
           <div class="flex items-center"  @click="addFavorite(item, index)">
             <font-awesome-icon icon="fa-solid fa-heart" class="text-slate-700 drop-shadow-sm hover:text-xl transition-all" />
           </div>
         </div>
-        <div id="pic">
+        <div id="pic" @click="(viewProduct(item), toggleShowProductPage())">
           <img :src="item.pic" alt="" class="h-32 w-full">
         </div>
       </div>
@@ -62,10 +51,10 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex';
-  import products from '../views/product.vue'
-  import Favourite from '../pages/Favourite.vue'
-  import cart from '../pages/Cart.vue'
+import { mapState } from 'vuex';
+import Products from '../views/product.vue'
+import Favourite from '../pages/Favourite.vue'
+import cart from '../pages/Cart.vue'
 import dish1 from '../images/dishes/dish1.jpg'
 import dish2 from '../images/dishes/dish2.jpg'
 import dish3 from '../images/dishes/dish3.jpg'
@@ -78,7 +67,7 @@ export default{
   components: {
     cart,
     Favourite,
-    products,
+    Products,
     Carousel,
     Pagination,
     Slide,
@@ -91,8 +80,11 @@ export default{
     },
     ...mapState({
       fav:"fav",
+      cart:"cart"
     }),
-   
+    cartTotal(){
+      return this.cart.length
+    }, 
     favTotal(){
       return this.fav.length
 
@@ -102,7 +94,9 @@ export default{
   methods: {
     viewProduct(item){
       this.$store.dispatch('addProducts', item)
-
+    },
+    toggleShowProductPage(){
+      this.$store.state.showProductPage = !this.$store.state.showProductPage
     },
     addFavorite(item){
     
@@ -118,7 +112,7 @@ export default{
     addToCart(item){
       this.sltdItem = item.task
 
-      if(this.fav.includes(item)){
+      if(this.cart.includes(item)){
         item.inCart++
       }
       else{
@@ -130,6 +124,7 @@ export default{
   data () {
     return {
       isAdded : false,
+      ShowProd:true,
       sltdItem:'',
       dishes:{
         dish1:dish1,

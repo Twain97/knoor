@@ -50,7 +50,7 @@
         </div>
       </Transition>
 
-    <nav id="bottomNav" class="lg:hidden fixed bottom-0 w-full">
+    <nav id="bottomNav" class="lg:hidden fixed z-50 bottom-0 w-full">
           <div class="flex flex-row mx-auto shadow-md  bg-gray-100 h-8 rounded-t-lg w-98">
               <div class="flex flex-row justify-evenly relative -mt-3 w-full">
                   <router-link to="#" class="my-auto shadow-md cursor-pointer relative p-2 hover:p-3 hover:-mt-1 transition-all rounded-full flex bg-gray-100">
@@ -60,7 +60,7 @@
                   <router-link to="#" class=" shadow-md cursor-pointer relative w-10 h-10 hover:w-12 hover:h-12 flex hover:p-2 -mt-1 hover:-mt-4 transition-all rounded-full bg-gray-100">
                       <font-awesome-icon icon="fa-solid fa-heart"  size="sm" style="color: #333366;" class="m-auto p-1 rounded-full" />
                       <div class="w-4 h-4 right-1 -top-1  absolute rounded-full flex bg-slate-800">
-                          <p class="text-stone-200 text-xs m-auto rounded-full">0</p>
+                          <p class="text-stone-200 text-xs m-auto rounded-full">{{ favTotal }}</p>
                       </div>
                   </router-link>
                   <router-link @click="ShowNav()" to="#" class=" shadow-md cursor-pointer relative w-12 h-12 hover:w-14 hover:h-14 flex hover:p-4 -mt-3 hover:-mt-7 transition-all rounded-full bg-gray-100">
@@ -69,7 +69,7 @@
                   <router-link to="#" class=" shadow-md cursor-pointer relative w-10 h-10 hover:w-12 hover:h-12 flex hover:p-2 -mt-1 hover:-mt-4 transition-all rounded-full bg-gray-100">
                       <font-awesome-icon icon="fa-solid fa-cart-shopping"  size="sm" style="color: #333366;" class="m-auto p-1 rounded-full" />
                       <div class="w-4 h-4 right-1 -top-1  absolute rounded-full flex bg-slate-800">
-                          <p class="text-stone-200 text-xs m-auto rounded-full">0</p>
+                          <p class="text-stone-200 text-xs m-auto rounded-full">{{ cartTotal }}</p>
                       </div>
                   </router-link>
                   
@@ -88,9 +88,22 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Header from '@/views/Header.vue'
 import Footer from '@/views/Footer.vue'
 export default {
+  computed: {
+    ...mapState({
+      cart:"cart",
+      fav:"fav"
+    }),
+    cartTotal(){
+      return this.cart.length
+    },
+    favTotal(){
+      return this.fav.length
+    }
+  },
   components: {
     Header,
     Footer,

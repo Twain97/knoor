@@ -14,7 +14,7 @@ import {mapState} from 'vuex'
 export default {
     computed: {
         ...mapState({
-            cart:'Cart'
+            cart:'cart'
         })
     }
 }

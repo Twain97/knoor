@@ -88,7 +88,7 @@
           <div id="pages" class="flex flex-row my-auto relative border-r-2 border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">
             <p class="my-auto">Pages</p>
             <font-awesome-icon id="icon" icon="fa-solid fa-circle-chevron-down" size="lg" style="color: #333366;" class="my-auto -rotate-90"/>
-            <div class="bg-slate-100 hidden flex-col w-44 rounded-r-lg rounded-l-lg shadow-2xl
+            <div class="bg-slate-100 hidden flex-col w-44 rounded-r-lg rounded-l-lg shadow-2xl z-50
               transition-all absolute mt-9 ml-10 p-2">
               <router-link to="#" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
                 <p class="py-1 mx-auto">My Profile</p>
