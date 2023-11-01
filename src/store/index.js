@@ -44,7 +44,7 @@ const store = createStore({
 
         cart:[],
         fav:[],
-        showProductPage:true
+        showProductPage:false
 
     },
     mutations: {
