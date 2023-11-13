@@ -6,8 +6,8 @@
         <div class=" flex flex-col overflow-hidden align-middle justify-between   ">
           <div class="justify-between mx-auto flex flex-row w-full">
             <div class="flex flex-row space-x-1 ">
-              <font-awesome-icon icon="fa-solid fa-user" size="lg" style="color: #333366;" class="my-auto" />
-              <p class="my-auto text-slate-900  text-sm font-bold">User</p>
+              <font-awesome-icon icon="fa-solid fa-user" size="sm" style="color: #333366;" class="my-auto" />
+              <p class="my-auto text-slate-900  text-xs font-semibold">User</p>
             </div>
             <img :src="logo" alt="Logo" class="mt-0 w-24 h-12 md:w-36 md:h-20 drop-shadow-xl">
 
@@ -59,13 +59,13 @@
             <router-link to="#" class="my-auto cursor-pointer relative p-1 hover:p-2 hover:mt-4 transition-all rounded-full flex bg-gray-100">
               <font-awesome-icon icon="fa-solid fa-heart"  size="lg" style="color: #333366;" class="p-1 rounded-full" />
               <div class="w-5 h-5 -right-1 -top-3 absolute rounded-full flex bg-slate-800">
-                <p class="text-stone-200 text-xs font-bold m-auto rounded-full">0</p>
+                <p class="text-stone-200 text-xs font-bold m-auto rounded-full">{{ favTotal }}</p>
               </div>
             </router-link>
-            <router-link to="#" class="my-auto cursor-pointer relative p-1 hover:p-2 hover:mt-4 transition-all rounded-full flex bg-gray-100">
+            <router-link to="/cart" class="my-auto cursor-pointer relative p-1 hover:p-2 hover:mt-4 transition-all rounded-full flex bg-gray-100">
               <font-awesome-icon icon="fa-solid fa-cart-shopping"  size="lg" style="color: #333366;" class="p-1 rounded-full" />
               <div class="w-5 h-5 -right-1 -top-3 absolute rounded-full flex bg-slate-800">
-                <p class="text-stone-200 text-xs font-bold m-auto rounded-full">106</p>
+                <p class="text-stone-200 text-xs font-bold m-auto rounded-full">{{ cartTotal }}</p>
               </div>
             </router-link>
             
@@ -79,12 +79,11 @@
           <hr/>
         </div>
         <div class="flex flex-row mt-4 mb-2 mx-auto w-11/12 space-x-10">
-          <div class="flex flex-row my-auto border-r-2 border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg ">
-            <p class="my-auto">Home</p>
-            <router-link to="#" class="my-auto">
+          
+            <router-link to="/" class="flex flex-row my-auto border-r-2 border-l-2 border-slate-800 h-8 w-36 justify-around text-base font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg ">
+              <p class="my-auto">Home</p>
               <font-awesome-icon icon="fa-solid fa-solid fa-house"  size="lg" style="color: #333366;" class="my-auto" />
             </router-link>
-          </div>
           <div id="pages" class="flex flex-row my-auto relative border-r-2 border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">
             <p class="my-auto">Pages</p>
             <font-awesome-icon id="icon" icon="fa-solid fa-circle-chevron-down" size="lg" style="color: #333366;" class="my-auto -rotate-90"/>
@@ -131,7 +130,20 @@
 
 <script>
 import logo from "../images/knoorLogo2.png"
+import { mapState } from "vuex"
 export default {
+  computed: {
+    ...mapState({
+      cart:"cart",
+      fav:"fav",
+    }),
+    cartTotal(){
+      return this.cart.length
+    },
+    favTotal(){
+      return this.fav.length
+    }
+  },
   methods: {
     searchToggle(){
       if(this.showSearch == false && this.showSearchToggle == true){

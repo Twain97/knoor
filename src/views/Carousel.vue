@@ -1,12 +1,22 @@
 <template>
   <div>
-    <carousel class=" rounded-lg mx-auto mt-5 w-full md:h-5/6 overflow-hidden " :items-to-show="2.2" :autoplay="2500" :wrap-around="true" :show-arrows="false">
+    <div class="hidden md:flex border-2 border-blue-600">
+      <carousel class=" rounded-lg mx-auto mt-5 w-full md:h-5/6 overflow-hidden " :items-to-show="2.2" :autoplay="2500" :wrap-around="true" :show-arrows="false">
         <slide class="h-44 " v-for="slide in dishes" :key="slide">
           <img class="w-64 h-32 ml-5 -mt-4 rounded-lg shadow-xl"  
           :src="slide" alt="">
         </slide>
-       
       </carousel>
+    </div>
+    
+    <div class="md:hidden">
+      <carousel class="h-fit rounded-lg mx-auto  w-full md:h-5/6 overflow-hidden transition-all" :items-to-show="1.5" :autoplay="3000" :wrap-around="true" :show-arrows="false">
+        <slide class="h-20 -mt-10" v-for="slide in dishes" :key="slide">
+          <img class="w-32 h-16 ml-5 rounded-lg shadow-md"  
+          :src="slide" alt="">
+        </slide>
+      </carousel>
+    </div>
     </div>
 </template>
 

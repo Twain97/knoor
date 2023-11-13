@@ -34,6 +34,22 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/product.vue')
+    },
+    {
+      path: '/wishList',
+      name: 'wishList',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../pages/Favourite.vue')
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../pages/Cart.vue')
     }
   ]
 })
