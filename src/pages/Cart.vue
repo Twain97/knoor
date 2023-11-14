@@ -138,8 +138,11 @@ export default {
       },
       remove(items, index){
         this.$toast.add({ severity: 'info', summary: 'Info Message', detail: 'Item removed!', life: 3000 });
-        setTimeout(()=>{
-          // this code removes the item from the cart array
+        if (this.$store.state.cart.length==0) {
+            this.$store.state.totalBigPrice = 0
+            this.$store.state.totalSmallPrice = 0
+          }  
+        // this code removes the item from the cart array
 
         this.$store.state.cart = this.$store.state.cart.filter((items, i) => i != index)
         
@@ -150,8 +153,40 @@ export default {
         // remove the item price from their respective size/*style*/`
           this.$store.state.totalSmallPrice = this.$store.state.totalSmallPrice - (items.smallNewPrice * items.totalSmallInOrder)
           this.$store.state.totalBigPrice = this.$store.state.totalBigPrice - (items.bigNewPrice * items.totalBigInOrder)
-        }, 500)
         
+          // update the localStorage with the details in the vuex store
+          localStorage.setItem("cart", JSON.stringify(this.$store.state.cart)) // create the cart in localStorage if it doesnt exist
+
+          if (this.$store.state.totalSmallPrice <=0) {
+            this.$store.state.totalSmallPrice = 0
+
+            localStorage.setItem("cartTotalSmall", JSON.stringify(this.$store.state.totalSmallPrice)) // update totalSmallPrice in localStorage
+
+          }else{
+            localStorage.setItem("cartTotalSmall", JSON.stringify(this.$store.state.totalSmallPrice)) // update totalSmallPrice in localStorage
+          }
+
+          if (this.$store.state.totalBigPrice <=0) {
+            this.$store.state.totalBigPrice = 0
+
+            localStorage.setItem("cartTotalBig", JSON.stringify(this.$store.state.totalBigPrice)) // update totalBigPrice in localStorage
+
+          }else{
+            localStorage.setItem("cartTotalBig", JSON.stringify(this.$store.state.totalBigPrice)) // update totalBigPrice in localStorage
+
+          }
+
+
+          if (this.$store.state.overAllTotal <=0) {
+            this.$store.state.overAllTotal = 0
+
+            localStorage.setItem("cartTotalPrice", JSON.stringify(this.$store.state.overAllTotal)) // create the totalBigPrice in localStorage if it doesnt exist
+
+          }else{
+            localStorage.setItem("cartTotalPrice", JSON.stringify(this.$store.state.overAllTotal)) // create the totalBigPrice in localStorage if it doesnt exist
+
+          }
+  
         
       
       }

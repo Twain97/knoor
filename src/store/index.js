@@ -67,19 +67,71 @@ const store = createStore({
         showProductPage:false, //value of product page toggle
     },
     mutations: {
+        setcart(state){
+            const storeCart =  JSON.parse(localStorage.getItem("cart")) // fetch and set the cart in localStorage as object
+            const storeCartTotalSmall =  JSON.parse(localStorage.getItem("cartTotalSmall")) // fetch and set the cart in localStorage as object
+            const storeCartTotalBig =  JSON.parse(localStorage.getItem("cartTotalBig")) // fetch and set the cart in localStorage as object
+            const storeCartTotalPrice =  JSON.parse(localStorage.getItem("cartTotalPrice")) // fetch and set the cart in localStorage as object
+
+            // check if cart exist in localStorage
+            if (!storeCart) {
+            //   alert("no cart")
+              localStorage.setItem("cart", JSON.stringify(state.cart)) // create the cart in localStorage if it doesnt exist
+            }
+            else{
+            //   alert("storeCart Exist")
+              state.cart=storeCart
+            }
+
+            // check if storeCartTotalBig exist in localStorage
+            if (!storeCartTotalSmall) {
+                // alert("False")
+                localStorage.setItem("cartTotalSmall", JSON.stringify(state.totalSmallPrice)) // create the totalBigPrice in localStorage if it doesnt exist
+              }
+              else{
+                // alert("true")
+                state.totalSmallPrice=storeCartTotalSmall
+              }
+
+            // check if storeCartTotalBig exist in localStorage
+              if (!storeCartTotalBig) {
+                // alert("false")
+                localStorage.setItem("cartTotalBig", JSON.stringify(state.totalBigPrice)) // create the totalBigPrice in localStorage if it doesnt exist
+              }
+              else{
+                // alert("true")
+                state.totalBigPrice=storeCartTotalBig
+              }
+
+            //   check if storeCartTotalPrice exist in localStorage
+              if (!storeCartTotalPrice) {
+                // alert("False")
+                localStorage.setItem("cartTotalPrice", JSON.stringify(state.overAllTotal)) // create the totalBigPrice in localStorage if it doesnt exist
+              }
+              else{
+                // alert("true")
+                state.overAllTotal=storeCartTotalPrice
+              }
+        },
         pushCart(state){
+            // localStorage.removeItem("cart")
+            // localStorage.removeItem("cartTotalSmall")
+            // localStorage.removeItem("cartTotalBig")
+            // localStorage.removeItem("cartTotalPrice")
+
             if(state.cart.includes(state.product)){
                 state.product.inCart++
             }
             else{
-                state.cart.unshift(state.product)
+               state.cart.unshift(state.product)
+               localStorage.setItem("cart", JSON.stringify(state.cart)) // update cart in localStorage
+            
             }
             
         },
         pushFav(state){
             if(state.fav.includes(state.product)){
                 state.product.inCart++
-
             }
             else{
             state.fav.unshift(state.product)
@@ -106,10 +158,17 @@ const store = createStore({
             )
 
             state.overAllTotal = state.totalBigPrice + state.totalSmallPrice
-        }
+                // update each price with clicks
+                localStorage.setItem("cartTotalBig", JSON.stringify(state.totalBigPrice)) // update totalBigPrice in localStorage
+                localStorage.setItem("cartTotalSmall", JSON.stringify(state.totalSmallPrice)) // update totalSmallPrice in localStorage
+                localStorage.setItem("cartTotalPrice", JSON.stringify(state.overAllTotal)) // create the totalBigPrice in localStorage if it doesnt exist
+            }
         
     },
     actions: {
+        createCart({commit}){
+            commit("setcart")
+        },
         addCart({commit}){
             commit('pushCart')
         },

@@ -103,7 +103,8 @@ export default {
   computed: {
     ...mapState({
       cart:"cart",
-      fav:"fav"
+      fav:"fav",
+      items:"items"
     }),
     cartTotal(){
       return this.cart.length
@@ -117,9 +118,22 @@ export default {
     Product,
     Footer,
   },
+  mounted(){
+    console.log(localStorage)
+    this.$store.dispatch("createCart")
+    // localStorage.setItem("name", JSON.stringify("Taiwo"))
+    // const name = localStorage.getItem("name")
+    // if(!name){
+    //   alert("Error")
+    // }else{
+    //   alert(name)
+    // }
+
+  },
   methods: {
     toggleShowProductPage(){
       this.$store.state.showProductPage = false
+      this.$store.state.product ={}
     },
     ShowNav(){
       this.nav = !this.nav

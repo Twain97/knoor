@@ -157,6 +157,7 @@ export default{
   methods:{
     toggleShowProductPage(){
       this.$store.state.showProductPage = !this.$store.state.showProductPage
+      
     },
     addToCart(){
       if(this.product.totalSmallInOrder != 0 && this.product.totalBigInOrder !=0){
@@ -165,7 +166,10 @@ export default{
         }
         else{
           this.$store.dispatch('addCart')
-        this.$store.dispatch('addTotalPrice')
+          if(this.$store.state.cart.length!=0){
+            this.$store.dispatch('addTotalPrice')
+          }
+            
         }
         
 
@@ -173,7 +177,6 @@ export default{
       else{
         this.$toast.add({ severity: 'error', summary: 'Empty', detail: 'Enter the Quantity!', life: 3000 });
       }
-      
     },
     addToFav(){
       if(this.$store.state.fav.includes(this.product)){
@@ -186,13 +189,22 @@ export default{
       
     },
     decrementSmall(){
-      this.product.totalSmallInOrder--
+      if (this.product.totalSmallInOrder <= 0) {
+        this.product.totalSmallInOrder = 0
+      }else{
+        this.product.totalSmallInOrder--
+      }
+      
     },
     incrementSmall(){
       this.product.totalSmallInOrder++
     },
     decrementBig(){
-      this.product.totalBigInOrder--
+      if (this.product.totalBigInOrder <=0) {
+        this.product.totalBigInOrder = 0
+      } else {
+        this.product.totalBigInOrder--
+      }
     },
     incrementBig(){
       this.product.totalBigInOrder++
