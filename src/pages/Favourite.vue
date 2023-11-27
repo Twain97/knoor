@@ -1,11 +1,11 @@
 <template>
-  <div v-if="this.$store.state.fav.length !=0" class="w-full text-slate-800 bg-slate-200 pb-5" >
-    <div  class="pt-2 text-slate-800" >
+  <div v-if="this.$store.state.wishList.length !=0" class="w-full text-slate-800 bg-slate-200 pb-5" >
+    <div class="pt-2 text-slate-800" >
       <div class="flex flex-col bg-white text-center py-1 mx-2 rounded-lg shadow-md">
-        <h2 class="text-sm font-bold">WishList</h2>
+        <h2 class="text-sm font-bold">wishList</h2>
       </div>
       <ul class="space-y-2 bg-slate-200 py-2 px-1">
-        <li v-for="(items, index) in fav" :key="index" 
+        <li v-for="(items, index) in wishList" :key="index" 
         class="px-2 py-0 bg-white rounded-lg shadow-md relative">
 
          <div class=" flex flex-row  h-fit">
@@ -18,7 +18,7 @@
               <img :src="items.pic" alt="item pic" class="w-44 h-22 rounded-md">
             </div>
 
-            <div class="flex flex-col text-xs p-2 w-wd8 space-y-1 -ml-1">
+            <div class="flex flex-col text-xs p-2 w-4/5 space-y-1 -ml-1">
               <h2 class="font-bold text-sm text-center m-auto">{{ items.title }}</h2>
 
               <div class="flex flex-col">
@@ -29,15 +29,7 @@
                 </div>
               </div>
               
-              <div class="space-y-1">
-                <p class="text-center">2.5: 
-                  <span id="smallNewPrice" class=" text-green-700 text-sm font-semibold">{{items.smallNewPrice }}</span> X {{ items.totalSmallInOrder }} 
-                  = #{{ items.totalSmallInOrder * items.smallNewPrice}} 
-                </p>
-                <p class="text-center">4.6: 
-                  <span id="bigNewPrice" class="text-green-700 font-semibold text-sm">{{ items.bigNewPrice }}</span> X {{ items.totalBigInOrder }} 
-                  = #{{ items.totalBigInOrder *  items.bigNewPrice }}</p>
-              </div>
+              
             </div>
           </div>
           
@@ -45,7 +37,9 @@
 
         </li>
       </ul>
+      
 
+     
     </div>
 
     
@@ -63,7 +57,7 @@ import {mapState} from 'vuex'
 export default {
     computed: {
         ...mapState({
-            fav:'fav',
+            wishList:'wishList',
             smallInCart:"smallInCart",
             bigInCart:"bigInCart",
             totalSmallPrice:"totalSmallPrice",
@@ -71,32 +65,28 @@ export default {
             overAllTotal:"overAllTotal"
         }),
         itemExist(){
-          if(this.fav.length==0){
-            return "Oops! fav is currently empty!"
+          if(this.wishList.length==0){
+            return "Oops! wishList is currently empty!"
           }
         }
     },
 
     methods: {
       remove(items, index){
-        // this code removes the item from the fav array
-        this.$store.state.fav = this.$store.state.fav.filter((items, i) => i != index)
-        
-        // this removes the price from the over all total price of the item in the array
-        this.$store.state.overAllTotal = this.$store.state.overAllTotal - (items.bigNewPrice * items.totalBigInOrder)
-        this.$store.state.overAllTotal = this.$store.state.overAllTotal - (items.smallNewPrice * items.totalSmallInOrder) 
-        
-        // remove the item price from their respective size/*style*/`
-          this.$store.state.totalSmallPrice = this.$store.state.totalSmallPrice - (items.smallNewPrice * items.totalSmallInOrder)
-          this.$store.state.totalBigPrice = this.$store.state.totalBigPrice - (items.bigNewPrice * items.totalBigInOrder)
-        
-      
+
+        this.$store.state.wishList = this.$store.state.wishList.filter((items, i) => i != index)
+        localStorage.setItem("wishList", JSON.stringify(this.$store.state.wishList)) 
       }
     }
 }
 </script>
 
-<style>
+<style >
+*{
+  /* border-block: 4px solid blue; */
+  padding: 0;
+  margin:0;
+}
 #button{
   background: rgba(96, 109, 129, 0.3);
   border: none;

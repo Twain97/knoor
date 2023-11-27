@@ -9,7 +9,7 @@ const store = createStore({
     state: {
         items:[
             {
-                pic:dish1, title:"Dish 1 picture", inFav:0, inCart:0,
+                pic:dish1, title:"Dish 1 picture", inCart:0,
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
                 totalSmallInOrder:0,
@@ -18,7 +18,7 @@ const store = createStore({
                 rating:2,
             },
             {
-                pic:dish2, title:"Dish 2 picture", inFav:0, inCart:0, 
+                pic:dish2, title:"Dish 2 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
                 totalSmallInOrder:0,
@@ -27,7 +27,7 @@ const store = createStore({
                 rating:4,
             },
             {   
-                pic:dish3, title:"Dish 3 picture", inFav:0, inCart:0, 
+                pic:dish3, title:"Dish 3 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
                 totalSmallInOrder:0,
@@ -36,7 +36,7 @@ const store = createStore({
                 rating:1,
             },
             {   
-                pic:dish4, title:"Dish 4 picture", inFav:0, inCart:0, 
+                pic:dish4, title:"Dish 4 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
                 totalSmallInOrder:0,
@@ -45,7 +45,97 @@ const store = createStore({
                 rating:3,
             },
             {   
-                pic:dish5, title:"Dish 5 picture", inFav:0, inCart:0, 
+                pic:dish5, title:"Dish 5 picture", inCart:0, 
+                smallOldPrice:"4000",smallNewPrice:"3000",
+                bigOldPrice:"8000", bigNewPrice:"6000",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:5,
+            },
+            {
+                pic:dish1, title:"Dish 1 picture", inCart:0,
+                smallOldPrice:"4000",smallNewPrice:"3000",
+                bigOldPrice:"8000", bigNewPrice:"6000",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:2,
+            },
+            {
+                pic:dish2, title:"Dish 2 picture", inCart:0, 
+                smallOldPrice:"4000",smallNewPrice:"3000",
+                bigOldPrice:"8000", bigNewPrice:"6000",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:4,
+            },
+            {   
+                pic:dish3, title:"Dish 3 picture", inCart:0, 
+                smallOldPrice:"4000",smallNewPrice:"3000",
+                bigOldPrice:"8000", bigNewPrice:"6000",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:1,
+            },
+            {   
+                pic:dish4, title:"Dish 4 picture", inCart:0, 
+                smallOldPrice:"4000",smallNewPrice:"3000",
+                bigOldPrice:"8000", bigNewPrice:"6000",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:3,
+            },
+            {   
+                pic:dish5, title:"Dish 5 picture", inCart:0, 
+                smallOldPrice:"4000",smallNewPrice:"3000",
+                bigOldPrice:"8000", bigNewPrice:"6000",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:5,
+            },
+            {
+                pic:dish1, title:"Dish 1 picture", inCart:0,
+                smallOldPrice:"4000",smallNewPrice:"3000",
+                bigOldPrice:"8000", bigNewPrice:"6000",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:2,
+            },
+            {
+                pic:dish2, title:"Dish 2 picture", inCart:0, 
+                smallOldPrice:"4000",smallNewPrice:"3000",
+                bigOldPrice:"8000", bigNewPrice:"6000",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:4,
+            },
+            {   
+                pic:dish3, title:"Dish 3 picture", inCart:0, 
+                smallOldPrice:"4000",smallNewPrice:"3000",
+                bigOldPrice:"8000", bigNewPrice:"6000",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:1,
+            },
+            {   
+                pic:dish4, title:"Dish 4 picture", inCart:0, 
+                smallOldPrice:"4000",smallNewPrice:"3000",
+                bigOldPrice:"8000", bigNewPrice:"6000",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:3,
+            },
+            {   
+                pic:dish5, title:"Dish 5 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
                 totalSmallInOrder:0,
@@ -56,15 +146,19 @@ const store = createStore({
         ],
 
         cart:[],
-        fav:[],
+        wishList:[],
         product:{},
         smallInCart:[],
         bigInCart:[],
         totalSmallPrice:0,
         totalBigPrice:0,
         overAllTotal:0,
+        smallReductionCounter:1,
+        smallIncrementCounter:1,
+        bigReductionCounter:1,
+        bigIncrementCounter:1,
 
-        showProductPage:false, //value of product page toggle
+        showProductPage:false, //  0n/off of product page toggle
     },
     mutations: {
         setcart(state){
@@ -72,6 +166,7 @@ const store = createStore({
             const storeCartTotalSmall =  JSON.parse(localStorage.getItem("cartTotalSmall")) // fetch and set the cart in localStorage as object
             const storeCartTotalBig =  JSON.parse(localStorage.getItem("cartTotalBig")) // fetch and set the cart in localStorage as object
             const storeCartTotalPrice =  JSON.parse(localStorage.getItem("cartTotalPrice")) // fetch and set the cart in localStorage as object
+            const storeWishList =  JSON.parse(localStorage.getItem("wishList")) // fetch and set the cart in localStorage as object
 
             // check if cart exist in localStorage
             if (!storeCart) {
@@ -112,30 +207,43 @@ const store = createStore({
                 // alert("true")
                 state.overAllTotal=storeCartTotalPrice
               }
+
+
+              // check if wishList exist in localStorage
+            if (!storeWishList) {
+                //   alert("no cart")
+                  localStorage.setItem("wishList", JSON.stringify(state.wishList)) // create the cart in localStorage if it doesnt exist
+                }
+                else{
+                //   alert("storeCart Exist")
+                  state.wishList=storeWishList
+                }
+
+
+                console.log(state.totalSmallPrice)
+                console.log(state.totalBigPrice)
         },
         pushCart(state){
-            // localStorage.removeItem("cart")
-            // localStorage.removeItem("cartTotalSmall")
-            // localStorage.removeItem("cartTotalBig")
-            // localStorage.removeItem("cartTotalPrice")
 
             if(state.cart.includes(state.product)){
                 state.product.inCart++
             }
             else{
-               state.cart.unshift(state.product)
-               localStorage.setItem("cart", JSON.stringify(state.cart)) // update cart in localStorage
+                // // add item in the product to cart
+                state.cart.unshift(state.product)
+                localStorage.setItem("cart", JSON.stringify(state.cart)) // update cart in localStorage
+              
+              
             
             }
             
         },
-        pushFav(state){
-            if(state.fav.includes(state.product)){
-                state.product.inCart++
-            }
-            else{
-            state.fav.unshift(state.product)
-            }
+        pushFav(state, payload){
+           
+
+            state.wishList.unshift(payload)
+            localStorage.setItem("wishList", JSON.stringify(state.wishList)) // create the wishList in localStorage if it doesnt exist
+            
         },
         pushProduct(state,payload){
             state.product=payload
@@ -145,15 +253,16 @@ const store = createStore({
             // store the quantity in array and at the sam time multiply it by price 
             // this is for individual item
             state.smallInCart.unshift(state.product.totalSmallInOrder * state.product.smallNewPrice)
+            console.log(state.smallInCart)
             state.bigInCart.unshift(state.product.totalBigInOrder * state.product.bigNewPrice)
 
             // Add all small price
-            
-            state.totalSmallPrice = state.smallInCart.reduce((accumulator, currentValue)=>
+            // add the initial price in vuex with the new
+            state.totalSmallPrice =  state.smallInCart.reduce((accumulator, currentValue)=>
                 accumulator + currentValue, 0
             )
             // Add all the big price
-            state.totalBigPrice = state.bigInCart.reduce((accumulator, currentValue)=>
+            state.totalBigPrice =  state.bigInCart.reduce((accumulator, currentValue)=>
                 accumulator + currentValue, 0
             )
 

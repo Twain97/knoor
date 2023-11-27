@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="hidden md:flex border-2 border-blue-600">
-      <carousel class=" rounded-lg mx-auto mt-5 w-full md:h-5/6 overflow-hidden " :items-to-show="2.2" :autoplay="2500" :wrap-around="true" :show-arrows="false">
-        <slide class="h-44 " v-for="slide in dishes" :key="slide">
-          <img class="w-64 h-32 ml-5 -mt-4 rounded-lg shadow-xl"  
+    <div class="hidden md:flex ">
+      <carousel class=" rounded-lg mx-auto w-full md:h-5/6 overflow-hidden " :items-to-show="2.5" :autoplay="2500" :wrap-around="true" :show-arrows="false">
+        <slide class="h-fit" v-for="slide in dishes" :key="slide">
+          <img class="w-36 h-16 ml-5 rounded-lg shadow-lg"  
           :src="slide" alt="">
         </slide>
       </carousel>

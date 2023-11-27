@@ -18,7 +18,7 @@
               <img :src="items.pic" alt="item pic" class="w-44 h-22 rounded-md">
             </div>
 
-            <div class="flex flex-col text-xs p-2 w-wd8 space-y-1 -ml-1">
+            <div class="flex flex-col text-xs p-2 w-4/5 space-y-1 -ml-1">
               <h2 class="font-bold text-sm text-center m-auto">{{ items.title }}</h2>
 
               <div class="flex flex-col">
@@ -67,7 +67,8 @@
 
 
         <div class="flex flex-row py-2">
-          <Button id="button"  label="Place order" size="small" class="w-wd4 h-5 text-sm font-semibold text-slate-800 m-auto shadow-sm shadow-black" />
+          <Button id="button"  label="Place order" size="small" @click="placeOrder()"
+          class="w-wd4 h-5 text-sm font-semibold text-slate-800 m-auto shadow-sm shadow-black" />
           <h3 class="text-right m-auto  text-sm font-bold">
           Total = 
           <span id="smallNewPrice" class=" text-green-700 text-sm font-semibold bg-slate-100 px-2 rounded-md">
@@ -129,6 +130,9 @@ export default {
     },
 
     methods: {
+      placeOrder(){
+        localStorage.clear()
+      },
       toggleShowProductPage(){
       this.$store.state.showProductPage = !this.$store.state.showProductPage
       },

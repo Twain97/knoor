@@ -160,54 +160,183 @@ export default{
       
     },
     addToCart(){
-      if(this.product.totalSmallInOrder != 0 && this.product.totalBigInOrder !=0){
-        if(this.$store.state.cart.includes(this.product)){
-          this.$toast.add({ severity: 'error', summary: 'Empty', detail: 'Already In Cart', life: 3000 });
-        }
-        else{
-          this.$store.dispatch('addCart')
-          if(this.$store.state.cart.length!=0){
-            this.$store.dispatch('addTotalPrice')
+      if(this.product.totalSmallInOrder >= 0 || this.product.totalBigInOrder >=0){
+        if(this.product.totalSmallInOrder != 0 || this.product.totalBigInOrder !=0 && localStorage.getItem("cart")){
+          // console.log("localStorage Exist!")
+          if(this.$store.state.cart.includes(this.product)){
+            this.$toast.add({ severity: 'error', summary: 'Empty', detail: 'Already In Cart', life: 3000 });
           }
+          else{
             
-        }
-        
+            if(this.$store.state.cart==[]){
+                // add item in the product to cart
+                // state.cart.unshift(state.product)
 
+                
+                this.$store.dispatch('addCart')
+                // alert("na this one")
+                if(this.$store.state.cart.length!=0){
+                  this.$store.dispatch('addTotalPrice')
+                }
+                localStorage.setItem("cart", JSON.stringify(this.$store.state.cart)) // update cart in localStorage
+                
+              }
+              else{
+                // the following code will add newly added product totalBigPrice to the vuex state totalBigPrice
+                // and as well ass the newly added Product totalSmallPrice to the vuex state totalSmallPrice
+                // and then update them in the localStorage
+                this.$store.dispatch('addCart')
+                // alert("its the second one")
+
+                // for the small size
+                const productSmall = this.$store.state.product.totalSmallInOrder * this.$store.state.product.smallNewPrice//multiply the Quantity by the price
+                this.$store.state.totalSmallPrice = this.$store.state.totalSmallPrice + productSmall  //add the price to the vuex state price
+                this.$store.state.overAllTotal = this.$store.state.totalBigPrice + this.$store.state.totalSmallPrice //calculate overall total of the cart
+                console.log(this.$store.state.totalSmallPrice)
+                localStorage.setItem("cart", JSON.stringify(this.$store.state.cart)) // update cart in localStorage
+                localStorage.setItem("cartTotalSmall", JSON.stringify(this.$store.state.totalSmallPrice)) // update cart in localStorage
+
+                 // for the big size
+                 const productBig = this.$store.state.product.totalBigInOrder * this.$store.state.product.bigNewPrice//multiply the Quantity by the price
+                this.$store.state.totalBigPrice = this.$store.state.totalBigPrice + productBig  //add the price to the vuex state price
+                this.$store.state.overAllTotal = this.$store.state.totalBigPrice + this.$store.state.totalSmallPrice //calculate overall total of the cart
+                console.log(this.$store.state.totalBigPrice)
+                localStorage.setItem("cart", JSON.stringify(this.$store.state.cart)) // update cart in localStorage
+                localStorage.setItem("cartTotalBig", JSON.stringify(this.$store.state.totalBigPrice)) // update cart in localStorage
+
+
+                localStorage.setItem("cartTotalPrice", JSON.stringify(this.$store.state.overAllTotal)) // update the totalBigPrice in localStorage if it doesnt exist
+
+              }
+            
+          }
+        }else{
+          this.$toast.add({ severity: 'error', summary: 'Empty', detail: 'Enter the Quantity!', life: 3000 });
+        }
       }
       else{
         this.$toast.add({ severity: 'error', summary: 'Empty', detail: 'Enter the Quantity!', life: 3000 });
       }
+
+      // console.log(this.$store.state.totalSmallPrice)
     },
     addToFav(){
-      if(this.$store.state.fav.includes(this.product)){
+      if(this.$store.state.wishList.includes(this.product)){
         this.$toast.add({ severity: 'warn', summary: 'Error', detail:'Already in wishlist!', life: 3000 });
 
       }
       else{
-        this.$store.dispatch("addFav")
+        var item = this.$store.state.product
+        this.$store.dispatch("addFav", item)
       }
       
     },
     decrementSmall(){
-      if (this.product.totalSmallInOrder <= 0) {
+      if (this.product.totalSmallInOrder <=0) {
         this.product.totalSmallInOrder = 0
       }else{
-        this.product.totalSmallInOrder--
+        
+        if (this.$store.state.cart.includes(this.product)) {
+          this.product.totalSmallInOrder--
+
+          console.log(this.$store.state.smallReductionCounter)
+          // create a counter in vuex state to reduce the totalSmallPrice 
+          // by 1 multiplied by the price with each click
+          const changeInSmallPrice = this.$store.state.smallReductionCounter * this.$store.state.product.smallNewPrice
+          // console.log(changeInSmallPrice)
+          
+          this.$store.state.totalSmallPrice = this.$store.state.totalSmallPrice - changeInSmallPrice
+          this.$store.state.overAllTotal = this.$store.state.totalBigPrice + this.$store.state.totalSmallPrice //calculate overall total of the cart
+
+          // console.log(this.$store.state.totalSmallPrice) 
+          localStorage.setItem("cartTotalSmall", JSON.stringify(this.$store.state.totalSmallPrice)) // update tot
+          localStorage.setItem("cart", JSON.stringify(this.$store.state.cart)) // update cart in localStorage
+          localStorage.setItem("cartTotalPrice", JSON.stringify(this.$store.state.overAllTotal)) // update the totalBigPrice in localStorage if it doesnt exist
+
+
+        }
+        else{
+          this.product.totalSmallInOrder--
+        }
+        
       }
       
     },
     incrementSmall(){
-      this.product.totalSmallInOrder++
+      if (this.$store.state.cart.includes(this.product)) {
+          this.product.totalSmallInOrder++
+
+          console.log(this.$store.state.smallIncrementCounter)
+          // create a counter in vuex state to increase the totalSmallPrice 
+          // by 1 multiplied by the price with each click
+          const changeInSmallPrice = this.$store.state.smallIncrementCounter * this.$store.state.product.smallNewPrice
+          // console.log(changeInSmallPrice)
+          
+          this.$store.state.totalSmallPrice = this.$store.state.totalSmallPrice + changeInSmallPrice
+          this.$store.state.overAllTotal = this.$store.state.totalBigPrice + this.$store.state.totalSmallPrice //calculate overall total of the cart
+
+          // console.log(this.$store.state.totalSmallPrice) 
+          localStorage.setItem("cartTotalSmall", JSON.stringify(this.$store.state.totalSmallPrice)) // update totalSmallPrice in localStorage
+          localStorage.setItem("cart", JSON.stringify(this.$store.state.cart)) // update cart in localStorage
+          localStorage.setItem("cartTotalPrice", JSON.stringify(this.$store.state.overAllTotal)) // update the totalBigPrice in localStorage if it doesnt exist
+
+
+        }
+        else{
+          this.product.totalSmallInOrder++
+        }
     },
     decrementBig(){
       if (this.product.totalBigInOrder <=0) {
         this.product.totalBigInOrder = 0
       } else {
-        this.product.totalBigInOrder--
+        if (this.$store.state.cart.includes(this.product)) {
+          this.product.totalBigInOrder--
+
+          console.log(this.$store.state.bigReductionCounter)
+          // create a counter in vuex state to reduce the totalBigPrice 
+          // by 1 multiplied by the price with each click
+          const changeInBigPrice = this.$store.state.bigReductionCounter * this.$store.state.product.bigNewPrice
+          // console.log(changeInBigPrice)
+          
+          this.$store.state.totalBigPrice = this.$store.state.totalBigPrice - changeInBigPrice
+          this.$store.state.overAllTotal = this.$store.state.totalBigPrice + this.$store.state.totalSmallPrice //calculate overall total of the cart
+
+          // console.log(this.$store.state.totalSmallPrice) 
+          localStorage.setItem("cartTotalBig", JSON.stringify(this.$store.state.totalBigPrice)) // update totalBigPrice in localStorage
+          localStorage.setItem("cart", JSON.stringify(this.$store.state.cart)) // update cart in localStorage
+          localStorage.setItem("cartTotalPrice", JSON.stringify(this.$store.state.overAllTotal)) // update the totalBigPrice in localStorage if it doesnt exist
+
+
+        }
+        else{
+          this.product.totalBigInOrder--
+        }
       }
     },
     incrementBig(){
-      this.product.totalBigInOrder++
+      if (this.$store.state.cart.includes(this.product)) {
+          this.product.totalBigInOrder++
+
+          console.log(this.$store.state.bigIncrementCounter)
+          // create a counter in vuex state to increase the totalBigPrice 
+          // by 1 multiplied by the price with each click
+          const changeInBigPrice = this.$store.state.bigIncrementCounter * this.$store.state.product.bigNewPrice
+          // console.log(changeInBigPrice)
+          
+          this.$store.state.totalBigPrice = this.$store.state.totalBigPrice + changeInBigPrice
+          this.$store.state.overAllTotal = this.$store.state.totalBigPrice + this.$store.state.totalSmallPrice //calculate overall total of the cart
+
+          // console.log(this.$store.state.totalSmallPrice) 
+          localStorage.setItem("cartTotalBig", JSON.stringify(this.$store.state.totalBigPrice)) // update totalBigPrice in localStorage
+          localStorage.setItem("cart", JSON.stringify(this.$store.state.cart)) // update cart in localStorage
+          localStorage.setItem("cartTotalPrice", JSON.stringify(this.$store.state.overAllTotal)) // update the totalBigPrice in localStorage if it doesnt exist
+
+
+        }
+        else{
+          this.product.totalBigInOrder++
+        }
     },
     showSpec(){
       this.showSpecification= true

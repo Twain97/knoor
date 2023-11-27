@@ -1,72 +1,101 @@
 <template>
-  <div class="w-full bg-slate-100 flex flex-col">
+  <div class="w-full bg-slate-100 flex flex-col py-5">
     <div class="">
       <Toast style="width: 40%; " class="hidden md:block"/>
       <Toast style="width: 75%; " class="text-xs font-thin md:hidden"/>
     </div>
       <!-- Carousel -->
-      <Carousel/>
+      <CarouselPage/>
         
+    <div class="w-full flex flex-row md:pr-4 mt-5">
+      <!-- Adverts -->
+      <Advert/>
 
-    <h1 class="text-lg font-bold text-slate-800 mx-auto mt-3">Available</h1>
-    <ul class="flex flex-row flex-wrap justify-between p-1 ">
-      <li v-for="(item, index) in foodItems" :key="index" class="m-auto w-wd45  flex flex-col p-2 justify-center  rounded-md shadow-md space-y-3 bg-white my-3 md:w-64">
-      <div class="flex flex-col ">
-        <div id="prodHead" class="mb-2 flex justify-between px-1">
-          <div class="w-fit font-semibold text-xs bg-orange-600 rounded-lg p-1 text-slate-800 md:font-bold">
-          <p>-80%</p>
+
+      <!-- main page -->
+
+
+      <div class=" flex flex-col md:w-2/3 border-2 rounded-lg shadow-lg">
+        <h1 class="text-lg font-bold text-slate-800 mx-auto mt-3">Available</h1>
+        <ul class="flex flex-row flex-wrap justify-between p-1 ">
+          <li v-for="item in paginatedData" :key="item.index" 
+          class="m-auto w-wd45  flex flex-col p-2 justify-center  rounded-md shadow-md space-y-3 bg-white my-3 
+          md:w-44  lg:w-52 xl:w-60">
+          <div class="flex flex-col ">
+            <div id="prodHead" class="mb-2 flex justify-between px-1">
+              <div class="w-fit font-semibold text-xs bg-orange-600 rounded-lg p-1 text-slate-800 md:font-bold">
+              <p>-80%</p>
+              </div>
+
+              <div class="flex items-center my-auto"  @click="addWishList(item)">
+                <font-awesome-icon icon="fa-solid fa-heart" class=" text-slate-700 drop-shadow-sm hover:text-xl transition-all" />
+              </div>
+            </div>
+            <div id="pic" @click="(toggleShowProductPage(), insertProduct(item))">
+              <img :src="item.pic" alt="" class="h-24 w-full md:h-36 xl:w-80 xl:h-40">
+            </div>
+          </div>
+          <hr class="w-11/12 mx-auto border-2">
+          <div id="rating" class="mx-auto flex">
+              <Rating v-model="item.rating" :cancel="false" :pt="{
+                onIcon: { class: 'h-3 text-orange-600'},
+                offIcon: { class: 'h-3 text-orange-600'},
+                item: {class:'-ml-3'},
+                root:{ class:'ml-4 w-full'}
+                }" />
+              <p class="m-auto pl-0 text-sm">({{item.rating }})</p>
+            
+          </div>
+          <h1 class="font-bold text-xs m-auto">{{ item.title }}</h1>
+          <h6 class=" font-bold text-xs md:text-sm text-green-700 m-auto">
+            
+            <span class="line-through text-red-500">#{{ item.smallOldPrice }}</span> 
+            #{{ item.smallNewPrice}}
+          </h6>
+          <div class=" flex justify-center ">
+          <Button id="button" type="submit"  label="Purchase" size="small" 
+          class="text-sm w-full" @click="(toggleShowProductPage(), insertProduct(item))"/>
           </div>
 
-          <div class="flex items-center my-auto"  @click="addFavorite(item)">
-            <font-awesome-icon icon="fa-solid fa-heart" class=" text-slate-700 drop-shadow-sm hover:text-xl transition-all" />
-          </div>
-        </div>
-        <div id="pic" @click="(toggleShowProductPage(), insertProduct(item))">
-          <img :src="item.pic" alt="" class="h-24 w-full md:h-32">
-        </div>
-      </div>
-      <hr class="w-11/12 mx-auto border-2">
-      <div id="rating" class="mx-auto flex">
-          <Rating v-model="item.rating" :cancel="false" :pt="{
-            onIcon: { class: 'h-3 text-orange-600'},
-            offIcon: { class: 'h-3 text-orange-600'},
-            item: {class:'-ml-3'},
-            root:{ class:'ml-4 w-full'}
-            }" />
-          <p class="m-auto pl-0 text-sm">({{item.rating }})</p>
-        
-      </div>
-      <h1 class="font-bold text-xs m-auto">{{ item.title }}</h1>
-      <h6 class=" font-bold text-xs md:text-sm text-green-700 m-auto">
-        
-        <span class="line-through text-red-500">#{{ item.smallOldPrice }}</span> 
-        #{{ item.smallNewPrice}}
-      </h6>
-      <div class=" flex justify-center ">
-      <Button id="button" type="submit"  label="Purchase" size="small" 
-      class="text-sm w-full" @click="(toggleShowProductPage(), insertProduct(item))"/>
-      </div>
+          
+        </li>
+        </ul>
+        <div class="mx-auto flex flex-row space-x-3 my-4">
+          <button @click="backPage">Prev</button>
+          <button v-for="item in Math.ceil(data.length / perPage)" :key="item"
+            @click="() => goToPage(item)">
+            {{ item }}
+          </button>
 
-      <!-- <h1 class="text-lg font-extrabold">{{ custRating(item) }}</h1> -->
-    </li>
-    </ul>
+          <button @click="nextPage">Next</button>
+        </div>
+          
+      </div>
+    </div>
+    
   </div>
  
 </template>
 
 <script>
+import showPagination from "../views/showPagination.vue";
+import Advert from "../views/Advert.vue"
 import { useToast } from "primevue/usetoast";
 import { useStore } from "vuex";
 import { mapState } from 'vuex';
 import Favourite from '../pages/Favourite.vue'
 import cart from '../pages/Cart.vue'
-import Carousel from '../views/Carousel.vue'
+import CarouselPage from '../views/Carousel.vue'
+import store from "../store";
+import handlePagination from "../paginnation/handlePagination";
+
 export default{
   components: {
     cart,
     Favourite,
-    Carousel,
-    // Product
+    CarouselPage,
+    Advert,
+    showPagination
   },
   computed: {
     foodItems(){
@@ -74,13 +103,13 @@ export default{
     },
     ...mapState({
       cart:"cart",
-      fav:"fav",
+      wishList:"wishList",
     }),
     cartItem(){
       return this.cart
     },
-    favItem(){
-      return this.fav
+    wishListItem(){
+      return this.wishList
     },
     
   },
@@ -103,9 +132,12 @@ export default{
     const toast = useToast()
     const store = useStore()
     
-    function addFavorite(item){
+    const { data, paginatedData, perPage, currentPage, nextPage, backPage, goToPage } = handlePagination(store);
 
-    if(store.state.fav.includes(item)){
+
+    function addWishList(item){
+
+    if(store.state.wishList.includes(item)){
       toast.add({ severity: 'warn', summary: 'Error!', detail: 'Already added to wishlist', life: 3000 })
     }
     else{
@@ -114,7 +146,14 @@ export default{
     }
 
     return{
-      addFavorite
+      addWishList,
+      data,
+      paginatedData,
+      perPage,
+      currentPage,
+      nextPage,
+      backPage,
+      goToPage,
     }
   },
   data () {

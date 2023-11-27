@@ -58,8 +58,8 @@
       </Transition>
 
     <nav id="bottomNav" class="lg:hidden fixed z-50 bottom-0 w-full">
-          <div class="flex flex-row mx-auto shadow-md  bg-gray-100 h-8 rounded-t-lg w-98">
-              <div class="flex flex-row justify-evenly relative -mt-3 w-full">
+          <div class="flex flex-row mx-auto shadow-md bg-gray-100 h-8 rounded-t-lg w-98">
+              <div class="flex flex-row justify-evenly border-brown-500 relative -mt-3 w-full">
                   <router-link to="/" @click="toggleShowProductPage()" class="my-auto shadow-md cursor-pointer relative p-1 hover:p-2 hover:-mt-1 transition-all rounded-full flex bg-gray-100">
                       <font-awesome-icon icon="fa-solid fa-solid fa-house"  size="xs" style="color: #333366;" class="p-1 rounded-full" />
                   </router-link>
@@ -67,7 +67,7 @@
                   <router-link to='/wishList' @click="toggleShowProductPage()" class=" shadow-md cursor-pointer relative w-8 h-8 hover:w-10 hover:h-10 flex hover:p-1  hover:-mt-2 transition-all rounded-full bg-gray-100">
                       <font-awesome-icon icon="fa-solid fa-heart"  size="xs" style="color: #333366;" class="m-auto p-1 rounded-full" />
                       <div class="w-4 h-4 -right-1 -top-2  absolute rounded-full flex bg-slate-800">
-                          <p class="text-stone-200 text-xs m-auto rounded-full">{{ favTotal }}</p>
+                          <p class="text-stone-200 text-xs m-auto rounded-full">{{ wishListTotal }}</p>
                       </div>
                   </router-link>
                   <router-link @click="(ShowNav(), toggleShowProductPage())" to="#" class=" shadow-md cursor-pointer relative w-10 h-10 hover:w-12 hover:h-12 flex  -mt-2 hover:-mt-4 transition-all rounded-full bg-gray-100">
@@ -103,14 +103,14 @@ export default {
   computed: {
     ...mapState({
       cart:"cart",
-      fav:"fav",
+      wishList:"wishList",
       items:"items"
     }),
     cartTotal(){
       return this.cart.length
     },
-    favTotal(){
-      return this.fav.length
+    wishListTotal(){
+      return this.wishList.length
     }
   },
   components: {

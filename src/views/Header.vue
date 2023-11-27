@@ -59,7 +59,7 @@
             <router-link to="#" class="my-auto cursor-pointer relative p-1 hover:p-2 hover:mt-4 transition-all rounded-full flex bg-gray-100">
               <font-awesome-icon icon="fa-solid fa-heart"  size="lg" style="color: #333366;" class="p-1 rounded-full" />
               <div class="w-5 h-5 -right-1 -top-3 absolute rounded-full flex bg-slate-800">
-                <p class="text-stone-200 text-xs font-bold m-auto rounded-full">{{ favTotal }}</p>
+                <p class="text-stone-200 text-xs font-bold m-auto rounded-full">{{ wishListTotal }}</p>
               </div>
             </router-link>
             <router-link to="/cart" class="my-auto cursor-pointer relative p-1 hover:p-2 hover:mt-4 transition-all rounded-full flex bg-gray-100">
@@ -78,7 +78,7 @@
         <div id="line" class=" hidden border-4 border-blue-600 m-auto">
           <hr/>
         </div>
-        <div class="flex flex-row mt-4 mb-2 mx-auto w-11/12 space-x-10">
+        <div class="flex flex-row mb-2 mx-auto w-11/12 space-x-10">
           
             <router-link to="/" class="flex flex-row my-auto border-r-2 border-l-2 border-slate-800 h-8 w-36 justify-around text-base font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg ">
               <p class="my-auto">Home</p>
@@ -135,13 +135,13 @@ export default {
   computed: {
     ...mapState({
       cart:"cart",
-      fav:"fav",
+      wishList:"wishList",
     }),
     cartTotal(){
       return this.cart.length
     },
-    favTotal(){
-      return this.fav.length
+    wishListTotal(){
+      return this.wishList.length
     }
   },
   methods: {
