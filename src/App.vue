@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header class="shadow-lg mb-5"/>
+    <Header/>
     
       <Product/>
     

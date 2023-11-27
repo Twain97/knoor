@@ -1,8 +1,15 @@
 <template>
   <div class="w-full bg-slate-100 flex flex-col py-5">
     <div class="">
-      <Toast style="width: 40%; " class="hidden md:block"/>
-      <Toast style="width: 75%; " class="text-xs font-thin md:hidden"/>
+      <Toast class="hidden md:block w-2/4"
+        :pt="{
+          icon:{class:'mx-5 w-8 mt-3'},
+        }"/>
+        <Toast class="w-3/4 text-xs font-extralight md:hidden"
+        :pt="{
+          icon:{class:'mx-2 w-5 '},
+        }"
+        />
     </div>
       <!-- Carousel -->
       <CarouselPage/>

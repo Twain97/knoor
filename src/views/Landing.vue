@@ -4,8 +4,15 @@
       
     </div>
     <div class="">
-      <Toast style="width: 40%; " class="hidden md:block"/>
-      <Toast style="width: 75%; " class="text-xs font-extralight md:hidden"/>
+      <Toast class="hidden md:block w-2/4"
+        :pt="{
+          icon:{class:'mx-5 w-8 mt-3'},
+        }"/>
+        <Toast class="w-3/4 text-xs font-extralight md:hidden"
+        :pt="{
+          icon:{class:'mx-2 w-5 '},
+        }"
+        />
     </div>
     
     <div class="w-full h-full absolute flex">
@@ -29,42 +36,45 @@
           <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16 -mt-2 md:w-28 md:m-auto  mx-auto">
 
-            <carousel class="h-fit rounded-lg mx-auto  w-fit md:h-5/6 overflow-hidden transition-all" :items-to-show="1" :autoplay="3000" :wrap-around="true" :show-arrows="false">
+            <carousel class="md:hidden h-fit rounded-lg mx-auto  w-full md:h-5/6 overflow-hidden transition-all" :items-to-show="1" :autoplay="3000" :wrap-around="true" :show-arrows="false">
               <slide class="h-20 -mt-10" v-for="slide in images" :key="slide">
                 <img class="w-32 h-16 rounded-lg shadow-md"  
                 :src="slide" alt="">
               </slide>
             </carousel>
-            <div class="w-full h-full flex flex-col space-y-2 md:space-y-8">
-              <h2 class="text-slate-800 font-bold text-lg">Login</h2>
+            <div class="w-full h-full flex flex-col space-y-2 md:space-y-3">
+              <h2 class="text-slate-800 font-bold text-lg lg:ml-12">Login</h2>
               <h4 class="text-slate-800 font-bold text-xs text-center ">Enter your email and password to login.</h4>
               
               <form name="emailAndPassword" @submit.prevent="login()"
-              class="flex flex-col space-y-3 pt-5">
-                <div class="flex flex-col space-y-3 md:flex-row md:space-x-3 text-xs md:text-sm" >
+           ass="flex flex-col   cl space-y-3 pt-3">
+                <div class="flex flex-col space-y-3 lg:space-y-5 text-xs md:text-sm" >
                   <input name="Email" type="email" v-model.trim.lazy="registerForm.email" placeholder="Email"
-                   class="bg-inherit w-11/12 indent-1 font-semibold border-b-2 border-slate-400"/>
-                  <div class="bg-inherit w-11/12 border-b-2 flex justify-between  border-slate-400">
+                  class="bg-inherit md:py-2 w-11/12 md:w-full lg:w-3/4 lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
+                  <div class="bg-inherit  w-11/12 md:m-auto md:w-full lg:w-3/4 lg:m-auto border-b-2 flex border-slate-400">
                     <input id="password" type="password" v-model.trim.lazy="registerForm.password" placeholder="Enter Password"
-                      class="bg-inherit w-11/12 indent-1 font-semibold "/>
-                    <font-awesome-icon icon="fa-solid fa-eye" @click="showPassword()" class="p-1 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
+                      class="bg-inherit md:py-2 w-11/12 indent-1 font-semibold "/>
+                    <font-awesome-icon icon="fa-solid fa-eye" @click="showPassword()" class="-mr-0 p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
                   </div>
                 </div>
                 
+                <div class="flex">
+                  <Button id="Button" type="submit" label="Login" icon="pi pi-sign-in" :loading="loading" @click="login()" size="small" 
+                class="w-24 text-xs mx-auto  mt-4 md:mt-5 h-7 md:m-auto text-slate-100 px-2"/>
+                </div>
                 
-                <Button id="Button" type="submit" label="Login" icon="pi pi-sign-in" :loading="loading" @click="login()" size="small" class="w-24 text-xs m-auto h-7 md:mt-20 text-slate-100 px-2"/>
                 
                
               </form>
 
-              <div class="flex flex-row text-blue-700  font-semibold w-full space-x-1 text-xs justify-between ">
-                  <p class="cursor-pointer outline-none hover:text-blue-400">Forgot password</p>
+              <div class="flex flex-row text-blue-700  font-semibold w-full lg:w-4/5 lg:mx-auto space-x-1 text-xs justify-between ">
+                <router-link to="/ResetPassword" class="cursor-pointer outline-none hover:text-blue-400">Forgot password</router-link>
                   <p @click="openSignup()" class="cursor-pointer  mr-3  outline-none hover:text-blue-400">Sign up</p>
               </div>
 
-              <Button @click="googleSignIn"  id="gmailButton" class="bg-slate-800 mx-auto flex flex-row justify-between mt-44 py-4 pr-4  w-44">
+              <Button @click="googleSignIn"  id="gmailButton" class="bg-slate-800 mx-auto flex flex-row justify-between mt-44 py-4 pr-4  w-44 shadow-black shadow-sm">
                 <img alt="gmail" :src="gmail" class="w-2/5 -mr-3 -ml-2 -my-4 h-8" />
-                <h3 class="text-xs text-slate-800 font-bold">Log in with Gmail</h3>
+                <h3 class="text-xs text-slate-800 font-bold ">Log in with Gmail</h3>
               </Button>
               
             </div>
@@ -78,31 +88,33 @@
           <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
 
-            <carousel class="h-fit rounded-lg mx-auto  w-full md:h-5/6 overflow-hidden transition-all" :items-to-show="1" :autoplay="3000" :wrap-around="true" :show-arrows="false">
+            <carousel class="md:hidden h-fit rounded-lg mx-auto  w-full md:h-5/6 overflow-hidden transition-all" :items-to-show="1" :autoplay="3000" :wrap-around="true" :show-arrows="false">
               <slide class="h-20 -mt-10" v-for="slide in images" :key="slide">
                 <img class="w-32 h-16 rounded-lg shadow-md"  
                 :src="slide" alt="">
               </slide>
             </carousel>
             <div class="w-full h-full  space-y-2 flex flex-col  md:space-y-5 ">
-              <h2 class="text-slate-800 font-bold text-lg">Sign up</h2>
+              <h2 class="text-slate-800 font-bold text-lg lg:ml-12">Sign up</h2>
               <h4 class="text-slate-800 font-bold text-xs text-center">Enter your email and password to signup.</h4>
               
               <form name="emailAndPassword" @submit.prevent="register()"
               class="flex flex-col space-y-3 ">
               
-              <div class="flex flex-col space-y-3 md:flex-row md:space-x-3 text-xs md:text-sm" >
+              <div class="flex flex-col space-y-3 md:flex-col text-xs md:text-sm" >
                 <input name="Email" type="email" v-model.trim.lazy="registerForm.email" placeholder="Email"
-                class="bg-inherit w-11/12 indent-1 font-semibold border-b-2 border-slate-400"/>
-                <div class="bg-inherit w-11/12 border-b-2 flex justify-between  border-slate-400">
+                class="bg-inherit md:py-2 w-11/12 md:w-full lg:w-3/4 lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
+                <div class="bg-inherit  w-11/12 md:m-auto md:w-full lg:w-3/4 lg:m-auto border-b-2 flex border-slate-400">
                   <input id="password" type="password" v-model.trim.lazy="registerForm.password" placeholder="Enter Password"
-                  class="bg-inherit w-11/12 indent-1 font-semibold "/>
-                  <font-awesome-icon icon="fa-solid fa-eye" @click="showPassword()" class="p-1 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
+                  class="bg-inherit md:py-2 w-11/12 indent-1 font-semibold "/>
+                  <font-awesome-icon icon="fa-solid fa-eye" @click="showPassword()" 
+                  class="p-1 m-auto md:p-2 -mr-0 text-gray-600 border-2 rounded-md border-slate-400" />
                 </div>
                 
               </div>
               
-              <input id="password2" type="password"  placeholder="Confirm password" class="bg-inherit w-11/12 indent-1 font-semibold border-b-2 border-slate-400 md:w-2/4 text-xs md:text-sm"/>
+              <input id="password2" type="password"  placeholder="Confirm password" 
+              class="bg-inherit md:py-2 w-11/12 md:w-full lg:w-3/4 lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
 
                 <Button id="Button" type="submit" label="Signup" icon="pi pi-user-plus" :loading="loading"
                 :pt="{
@@ -112,11 +124,11 @@
                 
                 
               </form>
-              <div class="flex flex-row text-blue-700  font-semibold w-full space-x-1 text-xs justify-between ">
-                  <p class="cursor-pointer outline-none hover:text-blue-400">Forgot password</p>
+              <div class="flex flex-row text-blue-700  font-semibold w-full lg:w-4/5 lg:mx-auto space-x-1 text-xs justify-between ">
+                <router-link to="/ResetPassword" class="cursor-pointer outline-none hover:text-blue-400">Forgot password</router-link>
                   <p @click="openSignup()" class="cursor-pointer mr-3 outline-none hover:text-blue-400">Login</p>
               </div>
-              <Button @click="googleSignIn"  id="gmailButton" class="bg-slate-800 mx-auto flex flex-row justify-between mt-44 py-4 pr-4  w-44">
+              <Button @click="googleSignIn"  id="gmailButton" class="bg-slate-800 mx-auto flex flex-row justify-between mt-44 py-4 pr-4  w-44 shadow-black shadow-sm">
                 <img alt="gmail" :src="gmail" class="w-2/5 -mr-3 -ml-2 -my-4 h-8" />
                 <h3 class="text-xs text-slate-800 font-bold">Sign up with Google</h3>
               </Button>
@@ -124,9 +136,8 @@
             </div>
           </div>
         </div>
+        <!-- End of signup -->
         </div>
-        
-              <!-- End of signup -->
       </div>
     </div>
    
