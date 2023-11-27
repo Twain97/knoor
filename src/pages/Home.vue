@@ -46,7 +46,7 @@
               <p class="m-auto pl-0 text-sm">({{item.rating }})</p>
             
           </div>
-          <h1 class="font-bold text-xs m-auto">{{ item.title }}</h1>
+          <h1 class="font-bold text-xs md:text-base m-auto">{{ item.title }}</h1>
           <h6 class=" font-bold text-xs md:text-sm text-green-700 m-auto">
             
             <span class="line-through text-red-500">#{{ item.smallOldPrice }}</span> 
@@ -61,13 +61,13 @@
         </li>
         </ul>
         <div class="mx-auto flex flex-row space-x-3 my-4">
-          <button @click="backPage">Prev</button>
-          <button v-for="item in Math.ceil(data.length / perPage)" :key="item"
+          <Button @click="backPage" label="Prev" id="button" class="px-4 text-xs"/>
+          <Button v-for="item in Math.ceil(data.length / perPage)" :key="item"
             @click="() => goToPage(item)">
             {{ item }}
-          </button>
+          </Button>
 
-          <button @click="nextPage">Next</button>
+          <Button @click="nextPage" label="Next" id="button" class="px-4 text-xs"/>
         </div>
           
       </div>

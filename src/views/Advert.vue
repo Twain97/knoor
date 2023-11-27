@@ -1,8 +1,8 @@
 <template>
   <div class="hidden md:flex md:w-1/3 border-2 rounded-lg shadow-lg lg:mr-8 ">
         <div class=" w-full flex flex-col space-y-5"> 
-          <div class=" bg-white text-center py-4 w-11/12 mx-auto mt-4 rounded-lg shadow-md">
-            <h2 class="text-sm font-bold">Adverts</h2>
+          <div class=" bg-white text-center py-4 w-11/12 mx-auto mt-3 rounded-lg shadow-md">
+            <h2 class="text-sm font-bold">Other Products</h2>
           </div>         
           <!-- First Adverts Carousel -->
           <div class=" xl:w-72 xl:m-auto lg:w-11/12 lg:m-auto overflow-hidden flex flex-col">
