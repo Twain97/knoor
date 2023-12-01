@@ -11,6 +11,11 @@
         }"
         />
     </div>
+    
+    <div class="flex flex-row ml-4 my-5 space-y-1  ">
+      <p v-if="$store.state.user" class="my-auto md:mx-auto text-slate-900  text-xs md:text-sm">
+      Hi <span class="font-semibold">{{ username }}</span>, what are we cooking today?</p>              
+    </div>
       <!-- Carousel -->
       <CarouselPage/>
         
@@ -93,10 +98,19 @@ import { mapState } from 'vuex';
 import Favourite from '../pages/Favourite.vue'
 import cart from '../pages/Cart.vue'
 import CarouselPage from '../views/Carousel.vue'
-import store from "../store";
 import handlePagination from "../paginnation/handlePagination";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase/firebase";
 
 export default{
+  beforeMount() {
+        onAuthStateChanged(auth, (user)=>{
+          const email =  user.email.split('@', String(1) )
+          this.username = String(email)
+
+          // console.log(username)
+        })
+  },
   components: {
     cart,
     Favourite,
@@ -105,12 +119,14 @@ export default{
     showPagination
   },
   computed: {
+
     foodItems(){
       return this.$store.state.items
     },
     ...mapState({
       cart:"cart",
       wishList:"wishList",
+      username:"username"
     }),
     cartItem(){
       return this.cart
@@ -118,6 +134,9 @@ export default{
     wishListItem(){
       return this.wishList
     },
+    username(){
+      return this.username
+},
     
   },
   methods: {
@@ -138,7 +157,6 @@ export default{
   setup(){
     const toast = useToast()
     const store = useStore()
-    
     const { data, paginatedData, perPage, currentPage, nextPage, backPage, goToPage } = handlePagination(store);
 
 
@@ -165,6 +183,7 @@ export default{
   },
   data () {
     return {
+      username:'',
       previewProduct:{},
       isAdded : false,
       ShowProd:true,

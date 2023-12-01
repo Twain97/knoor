@@ -2,7 +2,7 @@
     <Transition name="slide-fade" >
         <div v-show="showPage" class="fixed outline-none flex flex-col bottom-0 h-full w-full bg-black z-40 bg-opacity-30 text-slate-800">
         
-        <div @click="toggleShowProductPage()" class=" z-50 mx-auto mt-6 -mb-5 w-10 h-10 md:w-16 md:h-16 shadow-md cursor-pointer p-2 hover:bg-slate-300 transition-all rounded-full flex bg-gray-100">
+        <div @click="toggleShowProductPage()" class=" z-50 mx-auto mt-6 -mb-5 w-10 h-10 md:w-12 md:h-12 shadow-md cursor-pointer p-2 hover:bg-slate-300 transition-all rounded-full flex bg-gray-100">
               <font-awesome-icon icon="fa-solid fa-x"  size="sm" style="color: #333366;" class="md:hidden m-auto rounded-full" />
               <font-awesome-icon icon="fa-solid fa-x"  size="lg" style="color: #333366;" class="hidden md:block m-auto rounded-full" />
 

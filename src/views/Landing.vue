@@ -30,6 +30,7 @@
 
 
         <div class="h-full w-full md:w-2/4 ">
+
                                 <!-- Log in -->
 
         <div v-if="showLogin" class="flex z-50 md:py-2 w-full h-full ">
@@ -59,8 +60,17 @@
                 </div>
                 
                 <div class="flex">
-                  <Button id="Button" type="submit" label="Login" icon="pi pi-sign-in" :loading="loading" @click="login()" size="small" 
-                class="w-24 text-xs mx-auto  mt-4 md:mt-5 h-7 md:m-auto text-slate-100 px-2"/>
+                  <Button id="Button" type="submit" label="Login" icon="pi pi-sign-in" :loading="loading" size="small" 
+                class="w-24 h-7 text-xs mx-auto mt-4 md:h-10 md:w-28 md:text-sm md:mt-5 md:m-auto text-slate-100 px-2"
+                :pt="{
+                  icon:{
+                    class:'ml-3 -mr-2'
+                  },
+                  loadingIcon:{
+                    class:'ml-3 -mr-2'
+                  }
+                }"
+                />
                 </div>
                 
                 
@@ -118,10 +128,14 @@
 
                 <Button id="Button" type="submit" label="Signup" icon="pi pi-user-plus" :loading="loading"
                 :pt="{
-                icon:{class:' ml-0'}
-              }" 
-                @click="register()" size="small" class="w-24 text-xs m-auto h-7 text-slate-100 px-2" />
-                
+                  icon:{
+                    class:'ml-3 -mr-2'
+                  },
+                  loadingIcon:{
+                    class:'ml-3 -mr-2'
+                  }
+                }" 
+                size="small" class="w-24 h-7 text-xs mx-auto mt-4 md:h-10 md:w-28 md:text-sm md:mt-5 md:m-auto text-slate-100 px-2" />
                 
               </form>
               <div class="flex flex-row text-blue-700  font-semibold w-full lg:w-4/5 lg:mx-auto space-x-1 text-xs justify-between ">
@@ -160,7 +174,7 @@ import { useToast } from "primevue/usetoast";
 
 import { useStore } from 'vuex';
 import { ref } from 'vue';
-// import {getAuth, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
+import {getAuth, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
 import router from '../router';
 export default {
   components: {
@@ -284,7 +298,11 @@ export default {
 
     const user = result.user;
 
-    return router.push('/todo')
+     router.push('/Home')
+     return {
+      token,
+      user
+     }
     }).catch((error) => {
 
     const errorCode = error.code;
@@ -293,6 +311,11 @@ export default {
     const email = error.customData.email;
 
     const credential = GoogleAuthProvider.credentialFromError(error);
+    return{
+      errorCode,
+      errorMessage,
+      credential
+    }
     })
     }
 
@@ -303,6 +326,7 @@ export default {
       register,
       login,
       googleSignIn,
+      
       showPassword,
     }
   }

@@ -4,8 +4,9 @@
     
       <Product/>
     
-
-    <RouterView class=""/>
+    <Transition name="slide-fade">
+      <RouterView/>
+    </Transition>
 
     <Footer/>
 
@@ -23,30 +24,33 @@
               <p class="mx-auto text-base font-bold">Pages</p>
             </div>
             <div class="text-xs px-2 font-semibold text-slate-600 flex-grow w-full flex flex-col">
-              <router-link to="#" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="#" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">My Profile</p>
               </router-link>
-              <!-- <router-link to="#" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
-                <p class="my-auto pl-2">My Wallet</p>
+              <!-- <router-link to="#" class=" flex-grow flex flex-row w-full hover:bg-slate-100  border-b-2  border-slate-800">
+                <p class="my-auto pl-2">Deals</p>
+                
               </router-link> -->
-              <router-link to="#" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="/cart" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">Cart</p>
               </router-link>
-              <router-link to="#" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="/wishList" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">Wish List</p>
               </router-link>
-              <router-link to="#" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="#" @click="ShowNav()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
+                <p class="my-auto pl-2">Deals</p>
+                <font-awesome-icon icon="fa-solid fa-handshake"  size="lg"  class="my-auto pr-2 rounded-full" />
+              </router-link>
+              <router-link to="#" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">About Us</p>
               </router-link>
-              <router-link to="#" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="#" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">Contact Us</p>
               </router-link>
-              <router-link to="#" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
-                <p class="my-auto pl-2">Offers</p>
-              </router-link>
-              <router-link to="#" class=" flex-grow flex flex-row hover:bg-slate-100  border-b-2  border-slate-800">
+              
+              <router-link to="#" @click="(logout(), ShowNav())" class=" flex-grow flex justify-between flex-row hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">Log out</p>
-                <font-awesome-icon icon="fa-solid fa-right-from-bracket"  size="lg"  class="m-auto p-1 rounded-full" />
+                <font-awesome-icon icon="fa-solid fa-right-from-bracket"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>
             </div>
             <div class="pt-3 mx-auto pl-4 pr-4 w-11/12 text-center text-xs font-thin space-y-1">
@@ -57,10 +61,10 @@
         </div>
       </Transition>
 
-    <nav id="bottomNav" class="lg:hidden fixed z-50 bottom-0 w-full">
+    <nav v-if="this.$store.state.user" id="bottomNav" class="lg:hidden fixed z-50 bottom-0 w-full">
           <div class="flex flex-row mx-auto shadow-md bg-gray-100 h-8 rounded-t-lg w-98">
               <div class="flex flex-row justify-evenly border-brown-500 relative -mt-3 w-full">
-                  <router-link to="/" @click="toggleShowProductPage()" class="my-auto shadow-md cursor-pointer relative p-1 hover:p-2 hover:-mt-1 transition-all rounded-full flex bg-gray-100">
+                  <router-link to="/Home" @click="toggleShowProductPage()" class="my-auto shadow-md cursor-pointer relative p-1 hover:p-2 hover:-mt-1 transition-all rounded-full flex bg-gray-100">
                       <font-awesome-icon icon="fa-solid fa-solid fa-house"  size="xs" style="color: #333366;" class="p-1 rounded-full" />
                   </router-link>
                  
@@ -95,10 +99,14 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, useStore } from 'vuex'
+import { onBeforeMount, onMounted } from 'vue'
+import { browserSessionPersistence, getAuth, 
+onAuthStateChanged, setPersistence } from "firebase/auth"
 import Product from './views/product.vue'
 import Header from '@/views/Header.vue'
 import Footer from '@/views/Footer.vue'
+
 export default {
   computed: {
     ...mapState({
@@ -138,13 +146,45 @@ export default {
     ShowNav(){
       this.nav = !this.nav
       this.nav2 = !this.nav2
+    },
+    logout(){
+      this.$store.dispatch('logOut')
     }
   },
+
   data () {
     return {
       nav:false,
       nav2:false
     }
+  },
+
+  // before loading the whole app, check if the user is logged in or not
+  
+
+  setup(){
+    const store = useStore()
+    const auth = getAuth() //handle the getAuth from firebase auth
+    onBeforeMount(()=>{
+      store.dispatch('fetchUser')
+    })
+    // each time the component is (re)mounted, set the id, handle the token as well as the cookie browserSessionPersistence
+    // also set the persistence so when new tab is open, there will be need for another verificationa as well as generate new token
+    onMounted(()=>{
+      onAuthStateChanged(auth, (user)=>{
+        if(user){
+          // get the user token
+          // alert(user.email)
+          user.getIdToken().then((token)=>{
+            // set the cookie session max time
+            document.cookie = `session= ${token}; max-age= ${60*60*24}`
+          })
+          // set the persistent to browser persistence so user has to sign in again when the open another tab
+          setPersistence(auth, browserSessionPersistence)
+        }
+      })
+    })
+    
   }
 }
 </script>
@@ -156,11 +196,11 @@ export default {
 }
 
 .slide-fade-enter-active {
-  transition: all 0.3s ease-out;
+  transition: all 200ms ease-out;
 }
 
 .slide-fade-leave-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 200ms cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .slide-fade-enter-from,

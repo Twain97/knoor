@@ -1,8 +1,9 @@
 import './assets/style.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faAddressCard, faCartShopping, faCircleChevronDown, faEye, faGreaterThan, faHeadset, faHeart, faHouse, faLock, faRotate,
-     faSearch, faShuffle, faTruckFast, faUser, faUserSecret, faX, faBars, faStar, faRightFromBracket  } from '@fortawesome/free-solid-svg-icons'
+import { faAddressCard, faCartShopping, faCircleChevronDown, faEye, faHeadset, faHeart, faHouse, faLock, faRotate,
+     faSearch, faShuffle, faTruckFast, faUser, faUserSecret, faX, faBars, faStar, faRightFromBracket, faPersonWalkingDashedLineArrowRight,
+     faHandshake } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter, faWhatsapp, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import PrimeVue from 'primevue/config';
 import "primevue/resources/themes/lara-light-indigo/theme.css";
@@ -25,7 +26,8 @@ library.add(faUserSecret, faEye, faUser, faSearch,faBars,
     faHeart, faShuffle, faCartShopping, faX, faTruckFast,
     faRotate, faLock, faHeadset, faHouse, faCircleChevronDown,
     faAddressCard, faStar, faInstagram, faTwitter, faWhatsapp, faFacebook,
-    faTrashCan, faRightFromBracket, faTruckFast)
+    faTrashCan, faRightFromBracket, faTruckFast, faPersonWalkingDashedLineArrowRight,
+    faHandshake)
 const app = createApp(App);
 
 app.use(router);

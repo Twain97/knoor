@@ -43,7 +43,7 @@
                 </slide>
               </carousel>
               <div class="w-full h-full  space-y-2 flex flex-col  md:space-y-5 ">
-                <h2 class="text-slate-800 font-bold text-lg lg:ml-12">Forgot Password</h2>
+                <h2 class="text-slate-800 font-bold text-lg lg:ml-12">Reset Password</h2>
                 <h4 class="text-slate-800 font-bold text-xs text-center">Enter your email to get Password reset link.</h4>
                 
                 <form name="emailAndPassword" @submit.prevent="register()"
@@ -57,9 +57,10 @@
   
                   <Button id="Button" type="submit" label="Send Link" icon="pi pi-inbox" :loading="loading"
                   :pt="{
-                  icon:{class:' mr-2'}
+                  icon:{class:' ml-2'},
+                  loadingIcon:{class:'ml-2'}
                 }" 
-                  @click="sendResetLink()" size="small" class="w-24 text-xs m-auto h-7 text-slate-100 px-2" />
+                  @click="sendResetLink()" size="small" class="w-28 text-xs m-auto h-7 text-slate-100 px-2 md:h-10" />
                   
                   
                 </form>

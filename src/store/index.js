@@ -1,12 +1,25 @@
 import { createStore } from "vuex";
+import { createUserWithEmailAndPassword,
+        signInWithEmailAndPassword, signOut,
+        getAuth
+} from "firebase/auth";
+import { auth } from "../firebase/firebase";
+
+import router from "../router/index"
+
+
 import dish1 from "../images/dishes/dish1.jpg"
 import dish2 from "../images/dishes/dish2.jpg"
 import dish3 from "../images/dishes/dish3.jpg"
 import dish4 from "../images/dishes/dish4.jpg"
 import dish5 from "../images/dishes/dish5.jpg"
 
+
+
 const store = createStore({
     state: {
+        user:null, //the user
+        username:'',
         items:[
             {
                 pic:dish1, title:"Dish 1 picture", inCart:0,
@@ -161,6 +174,7 @@ const store = createStore({
         showProductPage:false, //  0n/off of product page toggle
     },
     mutations: {
+        
         setcart(state){
             const storeCart =  JSON.parse(localStorage.getItem("cart")) // fetch and set the cart in localStorage as object
             const storeCartTotalSmall =  JSON.parse(localStorage.getItem("cartTotalSmall")) // fetch and set the cart in localStorage as object
@@ -271,8 +285,18 @@ const store = createStore({
                 localStorage.setItem("cartTotalBig", JSON.stringify(state.totalBigPrice)) // update totalBigPrice in localStorage
                 localStorage.setItem("cartTotalSmall", JSON.stringify(state.totalSmallPrice)) // update totalSmallPrice in localStorage
                 localStorage.setItem("cartTotalPrice", JSON.stringify(state.overAllTotal)) // create the totalBigPrice in localStorage if it doesnt exist
-            }
+            },
         
+
+
+             // user mutations
+        setUser(state, user){
+            state.user = user
+        },
+        
+        clearUser(state){
+            state.user = null
+        }
     },
     actions: {
         createCart({commit}){
@@ -289,8 +313,114 @@ const store = createStore({
         },
         addTotalPrice({commit}){
             commit('computeTotalPrice')
+        },
+
+        // user actions
+
+    // async user login
+    async login({commit}, details){
+        const {email, password} = details // destructure to retriev email and password
+        //verify the with firebase auth
+        try{
+            await signInWithEmailAndPassword(auth, email, password)
+        }catch(error){
+         
+
+            switch(error.code){
+                case 'auth/user-not-found':
+                    alert('User does not exist, please create an account')
+                    break;
+                case 'auth/wrong-password':
+                    alert('wrong password')
+                    break;
+                case 'auth/missing-password':
+                    alert('please enter your password')
+                    break;
+                case 'auth/network-request-failed':
+                    alert('No network detected')
+                break;
+                default:
+                    alert(error.code)
+                    console.log(error.code)
+                    break;
+            }
+            return //return the result if user is verified
         }
+        commit('setUser', auth.currentUser) //set the currentUser
+        // direct to home
+        router.push('/Home')
+    },
+    async register({commit}, details){
+        // destructure or retrieve the email and password from details
+        const {email, password} = details
+        try{
+
+             // verify them with firebase signin authentication 
+            await createUserWithEmailAndPassword(auth, email, password)
+        }catch(error){
+            switch (error.code) {
+                case 'auth/email-already-in-use':
+                    alert('User already exist, please login')
+                    break;
+                case 'auth/invalid-email':
+                    alert('Email incorrect')
+                    break;
+                case 'auth/operation-not-allowed':
+                    alert('Operation not allowed')
+                    break;
+
+                case 'auth/weak-password':
+                    alert('Weak password')
+                    break;
+                case 'auth/missing-password':
+                    alert('please enter your password')
+                    break;
+                case 'auth/network-request-failed':
+                    alert('No network detected')
+                break;
+                    
+                default:
+                    alert('something went wrong')
+                    console.log(error.code)
+                    break;
+            }
+            return // return the result if user is verified or not
+        }
+        commit('setUser', auth.currentUser) //set the current user in the state
+        // direct to the required route
+        router.push('/Home')
+    },
+    async logOut({commit}){
+                
+        await signOut(auth)
+
+        commit('clearUser')
+        
+        router.push('/')
+        
+    },
+     // fetch the current user
+     fetchUser({commit}){
+        // this is check to see if the user is logged in everytime theres a refresh
+        // and prevent the user from being directed to log in page on every reload
+        auth.onAuthStateChanged(
+            async user => {
+            // check if user is online or not
+            if (user === null) {
+                // if user is empty
+                commit('clearUser')
+               
+            }else{
+                // if user is not empty
+                commit('setUser', user)
+
+                    if(router.isReady() && router.currentRoute.value.path === '/'){
+                        router.push('/Home')
+                }
+            }
+        })
     }
+},
 })
 
 export default store;
