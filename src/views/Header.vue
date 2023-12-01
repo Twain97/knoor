@@ -55,7 +55,7 @@
           </div>
           <div v-if="this.$store.state.user" class="lg:flex space-x-2 ">
             <router-link to="#" class="my-auto cursor-pointer relative p-1 hover:p-2 hover:mt-4 transition-all rounded-full flex bg-gray-100">
-              <font-awesome-icon icon="fa-solid fa-solid fa-shuffle"  size="lg" style="color: #333366;" class="p-1 rounded-full" />
+              <font-awesome-icon icon="fa-solid fa-solid fa-handshake"  size="lg" style="color: #333366;" class="p-1 rounded-full" />
               <div class="w-5 h-5 -right-1 -top-3  absolute rounded-full flex bg-slate-800">
                 <p class="text-stone-200 text-xs m-auto rounded-full">0</p>
               </div>
@@ -76,7 +76,7 @@
           </div>
           <div v-if="this.$store.state.user" class="lg:my-auto flex flex-col">
             <p class="lg:text-sm lg:font-semibold mr-2 ">Total price:</p>
-            <p class="font-bold text-sm my-auto "> totalPrice</p>
+            <p class="font-bold text-sm my-auto text-green-600"> #{{ totalPrice }}</p>
           </div>
 
           <div v-else class="m-auto pr-5">
@@ -88,7 +88,7 @@
         </div>
         <div v-if="this.$store.state.user" class="flex flex-row mb-2 px-4">
          
-          <div class="flex flex-row my-auto mx-auto w-11/12 space-x-10">
+          <div class="flex flex-row my-auto mx-auto w-11/12 space-x-7">
             
               <router-link to="/Home" class="flex flex-row my-auto hover:border-r-2 hover:border-l-2 border-slate-800 h-8 w-36 justify-around text-base font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg ">
                 <p class="my-auto">Home</p>
@@ -158,8 +158,12 @@ export default {
   computed: {
     ...mapState({
       cart:"cart",
+      overAllTotal:"overAllTotal",
       wishList:"wishList",
     }),
+    totalPrice(){
+      return this.overAllTotal
+    },
     cartTotal(){
       return this.cart.length
     },

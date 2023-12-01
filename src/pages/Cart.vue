@@ -1,33 +1,34 @@
 <template>
-  <div v-if="this.$store.state.cart.length !=0" class="w-full text-slate-800 bg-slate-200 pb-5" >
-    <div class="pt-2 text-slate-800" >
-      <div class="flex flex-col bg-white text-center py-1 mx-2 rounded-lg shadow-md">
-        <h2 class="text-sm font-bold">Cart</h2>
+  <div v-if="this.$store.state.cart.length !=0" class="w-full  text-slate-800 bg-slate-200 pb-5" >
+    <div class="pt-2 text-slate-800 lg:w-2/4 m-auto md:py-5" >
+      <div class="flex flex-col bg-white text-center py-1 md:py-4 md:mb-2 mx-2 rounded-lg shadow-md">
+        <h2 class="text-sm md:text-lg font-bold">Cart</h2>
       </div>
       <ul class="space-y-2 bg-slate-200 py-2 px-1">
         <li v-for="(items, index) in cart" :key="index" 
-        class="px-2 py-0 bg-white rounded-lg shadow-md relative">
+        class="px-2 py-1 bg-white rounded-lg shadow-md relative">
 
          <div class=" flex flex-row  h-fit">
           <div class="absolute right-1 -top-2" @click="remove(items, index)">
             <font-awesome-icon icon="fa-regular fa-trash-can"   style="color: #333366;" class="m-auto rounded-full cursor-pointer" />
           </div>
 
-          <div class=" flex flex-row  h-fit" @click="(toggleShowProductPage(), insertProduct(items))">
-            <div class="h-full m-auto ">
-              <img :src="items.pic" alt="item pic" class="w-44 h-22 rounded-md">
+          <div class=" flex flex-row justify-between w-full h-fit" @click="(toggleShowProductPage(), insertProduct(items))">
+            <div class=" m-auto md:my-auto md:w-80 md:h-44">
+              <img :src="items.pic" alt="item pic" class="w-44 h-22 md:w-full md:h-full rounded-md">
             </div>
 
-            <div class="flex flex-col text-xs p-2 w-4/5 space-y-1 -ml-1">
-              <h2 class="font-bold text-sm text-center m-auto">{{ items.title }}</h2>
+            <div class="flex flex-col text-xs p-2 md:justify-center md:space-y-3 md:text-base w-4/5 -ml-1 ">
+              <h2 class="font-bold text-sm text-center mx-auto">{{ items.title }}</h2>
 
-              <div class="flex flex-col">
+              <div class="flex flex-col md:mx-auto">
                 <h4 class="font-semibold">Quantity Selected:</h4>
                 <div class="flex flex-col text-center ml-2 space-y-1">
                   <p>2.5: {{ items.totalSmallInOrder }} x</p>
                   <p>4.6: {{ items.totalBigInOrder}} x</p>
                 </div>
               </div>
+              
               
               <div class="space-y-1">
                 <p class="text-center">2.5: 
@@ -47,7 +48,7 @@
       </ul>
 
       
-      <div class="flex flex-col bg-white mx-1 pt-2 rounded-lg shadow-md">
+      <div class="flex flex-col bg-white mx-1 pt-2 rounded-lg shadow-md ">
         <div class="flex flex-row mb-1 rounded-lg py-2 px-4 text-xs justify-evenly">
         <div class="flex flex-col">
           <h3 class="font-semibold mb-1 mx-auto">Total Price of 2.5</h3>
@@ -66,9 +67,9 @@
         <hr class="m-auto w-5/6 border-slate-400">
 
 
-        <div class="flex flex-row py-2">
+        <div class="flex flex-row py-2" >
           <Button id="button"  label="Place order" size="small" @click="placeOrder()"
-          class="w-wd4 h-5 text-sm font-semibold text-slate-800 m-auto shadow-sm shadow-black" />
+          class="w-wd4 md:w-2/5 md:py-5 h-5 text-sm md:text-lg font-semibold text-slate-800 m-auto shadow-sm shadow-black" />
           <h3 class="text-right m-auto  text-sm font-bold">
           Total = 
           <span id="smallNewPrice" class=" text-green-700 text-sm font-semibold bg-slate-100 px-2 rounded-md">

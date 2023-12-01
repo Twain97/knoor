@@ -1,8 +1,8 @@
 <template>
   <div class="hidden md:flex md:w-1/3 border-2 rounded-lg shadow-lg lg:mr-8 ">
-        <div class=" w-full flex flex-col space-y-5"> 
+        <div class=" w-full flex flex-col space-y-5 m-auto"> 
           <div class=" bg-white text-center py-4 w-11/12 mx-auto mt-3 rounded-lg shadow-md">
-            <h2 class="text-sm font-bold">Other Products</h2>
+            <h2 class="text-sm font-bold">Special Order</h2>
           </div>         
           <!-- First Adverts Carousel -->
           <div class=" xl:w-72 xl:m-auto lg:w-11/12 lg:m-auto overflow-hidden flex flex-col">
@@ -10,7 +10,7 @@
               <slide class="w-full flex rounded-lg">
                 <div class="w-9/12 flex  mx-auto h-fit rounded-lg">
                   <div class="w-full  mx-auto text-center border-4 shadow-lg rounded-lg">
-                    <h2 class="flex flex-col bg-white text-center py-1 rounded-lg shadow-md">Company 1</h2> 
+                    <h2 class="flex flex-col bg-white text-center py-1 rounded-lg shadow-md">Delicacy 1</h2> 
                     <div class=" m-auto w-full h-56">
                       <img :src="lady" alt=""  class="w-full h-full">
                     </div>
@@ -32,7 +32,7 @@
               <slide class="w-full flex rounded-lg">
                 <div class="w-9/12 flex  mx-auto h-fit rounded-lg">
                   <div class="w-full  mx-auto text-center border-4 shadow-lg rounded-lg">
-                    <h2 class="flex flex-col bg-white text-center py-1 rounded-lg shadow-md">Company 1</h2> 
+                    <h2 class="flex flex-col bg-white text-center py-1 rounded-lg shadow-md">Delicacy 2</h2> 
                     <div class=" m-auto w-full h-56">
                       <img :src="lady" alt=""  class="w-full h-full">
                     </div>
@@ -54,7 +54,7 @@
               <slide class="w-full flex rounded-lg">
                 <div class="w-9/12 flex  mx-auto h-fit rounded-lg">
                   <div class="w-full  mx-auto text-center border-4 shadow-lg rounded-lg">
-                    <h2 class="flex flex-col bg-white text-center py-1 rounded-lg shadow-md">Company 1</h2> 
+                    <h2 class="flex flex-col bg-white text-center py-1 rounded-lg shadow-md">Delicacy 3</h2> 
                     <div class=" m-auto w-full h-56">
                       <img :src="lady" alt=""  class="w-full h-full">
                     </div>
