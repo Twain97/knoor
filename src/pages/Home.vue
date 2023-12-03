@@ -100,16 +100,32 @@ import cart from '../pages/Cart.vue'
 import CarouselPage from '../views/Carousel.vue'
 import handlePagination from "../paginnation/handlePagination";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase/firebase";
+import { auth} from "../firebase/firebase";
+import {getAuth, sendEmailVerification} from "firebase/auth"
 
 export default{
   beforeMount() {
+    const auth = getAuth();
         onAuthStateChanged(auth, (user)=>{
           const email =  user.email.split('@', String(1) )
           this.username = String(email)
+          if(auth.currentUser.emailVerified ==false){
+              this.$toast.add({ severity: 'success', summary: 'Verify Email', detail: 'Please check your Email for verification', life: 3000 });
 
+              
+              sendEmailVerification(auth.currentUser)
+                .then(() => {
+                  // router.push('/Home')
+                });
+  
+        }
           // console.log(username)
         })
+
+        
+           
+            
+        
   },
   components: {
     cart,

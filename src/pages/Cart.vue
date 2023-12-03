@@ -10,15 +10,17 @@
 
          <div class=" flex flex-row  h-fit">
           <div class="absolute right-1 -top-2" @click="remove(items, index)">
-            <font-awesome-icon icon="fa-regular fa-trash-can"   style="color: #333366;" class="m-auto rounded-full cursor-pointer" />
+            <font-awesome-icon icon="fa-regular fa-trash-can"  style="color: #333366;" class="md:hidden m-auto rounded-full cursor-pointer" />
+            <font-awesome-icon icon="fa-regular fa-trash-can"  size="lg" style="color: #333366;" class="hidden md:block m-auto rounded-full cursor-pointer" />
+
           </div>
 
-          <div class=" flex flex-row justify-between w-full h-fit" @click="(toggleShowProductPage(), insertProduct(items))">
+          <div class=" flex flex-row justify-between py-1 w-full h-fit" @click="(toggleShowProductPage(), insertProduct(items))">
             <div class=" m-auto md:my-auto md:w-80 md:h-44">
               <img :src="items.pic" alt="item pic" class="w-44 h-22 md:w-full md:h-full rounded-md">
             </div>
 
-            <div class="flex flex-col text-xs p-2 md:justify-center md:space-y-3 md:text-base w-4/5 -ml-1 ">
+            <div class="flex flex-col text-xs p-2 md:justify-center md:space-y-1 md:text-base w-4/5 -ml-1 ">
               <h2 class="font-bold text-sm text-center mx-auto">{{ items.title }}</h2>
 
               <div class="flex flex-col md:mx-auto">

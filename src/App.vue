@@ -1,5 +1,17 @@
 <template>
   <div>
+    <div class="">
+      <Toast class="hidden md:block w-2/4"
+        :pt="{
+          icon:{class:'mx-5 w-8 mt-3'},
+        }"/>
+        <Toast class="w-3/4 text-xs font-extralight md:hidden"
+        :pt="{
+          icon:{class:'mx-2 w-5 '},
+        }"
+        />
+    </div>
+
     <Header/>
     
       <Product/>
@@ -24,7 +36,7 @@
               <p class="mx-auto text-base font-bold">Pages</p>
             </div>
             <div class="text-xs px-2 font-semibold text-slate-600 flex-grow w-full flex flex-col">
-              <router-link to="#" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="/userProfile" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">My Profile</p>
               </router-link>
               <!-- <router-link to="#" class=" flex-grow flex flex-row w-full hover:bg-slate-100  border-b-2  border-slate-800">
@@ -103,6 +115,7 @@ import { mapState, useStore } from 'vuex'
 import { onBeforeMount, onMounted } from 'vue'
 import { browserSessionPersistence, getAuth, 
 onAuthStateChanged, setPersistence } from "firebase/auth"
+import router from '@/router/index.js'
 import Product from './views/product.vue'
 import Header from '@/views/Header.vue'
 import Footer from '@/views/Footer.vue'
@@ -178,9 +191,13 @@ export default {
           user.getIdToken().then((token)=>{
             // set the cookie session max time
             document.cookie = `session= ${token}; max-age= ${60*60*24}`
+            
+
           })
           // set the persistent to browser persistence so user has to sign in again when the open another tab
           setPersistence(auth, browserSessionPersistence)
+        }else{
+          router.push('/')
         }
       })
     })
