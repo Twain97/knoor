@@ -34,23 +34,23 @@
           <!-- Forgot Password -->
           <div  class="flex z-50 md:py-0 md:-mt-1 w-full h-full ">
             <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
-              <img :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
+              <img v-if="!this.$store.state.user" :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
   
-              <carousel class="md:hidden h-fit rounded-lg mx-auto  w-full md:h-5/6 overflow-hidden transition-all" :items-to-show="1" :autoplay="3000" :wrap-around="true" :show-arrows="false">
+              <carousel v-if="!this.$store.state.user" class="md:hidden h-fit rounded-lg mx-auto  w-full md:h-5/6 overflow-hidden transition-all" :items-to-show="1" :autoplay="3000" :wrap-around="true" :show-arrows="false">
                 <slide class="h-20 -mt-10" v-for="slide in images" :key="slide">
                   <img class="w-32 h-16 rounded-lg shadow-md"  
                   :src="slide" alt="">
                 </slide>
               </carousel>
               <div class="w-full h-full  space-y-2 flex flex-col  md:space-y-5 ">
-                <h2 class="text-slate-800 font-bold text-lg lg:ml-12">Reset Password</h2>
+                <h2 class="text-slate-800 font-bold mx-auto text-lg lg:ml-12">Reset Password</h2>
                 <h4 class="text-slate-800 font-bold text-xs text-center">Enter your email to get Password reset link.</h4>
                 
-                <form name="emailAndPassword" @submit.prevent="register()"
+                <form name="emailAndPassword"  @submit.prevent="sendResetLink()"
                 class="flex flex-col space-y-3 ">
                 
                 <div class="flex flex-col space-y-3 md:flex-col text-xs md:text-sm" >
-                  <input name="Email" type="email" v-model.trim.lazy="registerForm.email" placeholder="Email"
+                  <input name="Email" type="email" v-model.trim.lazy="email" placeholder="Email"
                   class="bg-inherit py-2 w-11/12 md:w-full lg:w-3/4 outline-black lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
                   
                 </div>
@@ -60,13 +60,13 @@
                   icon:{class:' ml-2'},
                   loadingIcon:{class:'ml-2'}
                 }" 
-                  @click="sendResetLink()" size="small" class="w-28 text-xs m-auto h-7 text-slate-100 px-2 md:h-10" />
+                  size="small" class="w-28 text-xs m-auto h-7 text-slate-100 px-2 md:h-10" />
                   
                   
                 </form>
-                <div class="flex flex-row text-blue-700  font-semibold w-full lg:w-4/5 lg:mx-auto space-x-1 text-xs justify-between ">
-                  <router-link to="/Landing" class="cursor-pointer mr-3 outline-none hover:text-blue-400">Sign Up</router-link>                  
-                  <router-link to="/Landing" class="cursor-pointer mr-3 outline-none hover:text-blue-400">Log in </router-link>                  
+                <div v-if="!this.$store.state.user" class="flex flex-row text-blue-700  font-semibold w-full lg:w-4/5 lg:mx-auto space-x-1 text-xs justify-between ">
+                  <router-link to="/" class="cursor-pointer mr-3 outline-none hover:text-blue-400">Sign Up</router-link>                  
+                  <router-link to="/" class="cursor-pointer mr-3 outline-none hover:text-blue-400">Log in </router-link>                  
                 </div>
                
                 
@@ -96,8 +96,7 @@
   
   import { useStore } from 'vuex';
   import { ref } from 'vue';
-  // import {getAuth, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
-  import router from '../router';
+  import {sendPasswordResetEmail, getAuth} from 'firebase/auth';
   export default {
     components: {
       Carousel,
@@ -124,17 +123,26 @@
   
   
    setup(){
-    const registerForm = ref({})
+    const email = ref('')
     const store = useStore()
     const toast = useToast();
+    const auth = getAuth();
     const loading = ref(false);
       const sendResetLink = () => {
-  
+
         function load(){
           loading.value = true;
           setTimeout(() => {
               loading.value = false;
-              toast.add({ severity: 'success', summary: 'Success', detail: 'Password Reset Link Sent!', life: 3000 });
+              if(email.value ==''){
+                toast.add({ severity: 'error', summary: 'Error', detail: 'Please enter your Email', life: 3000 });
+              }
+              else{
+                sendPasswordResetEmail(auth, email.value)
+            
+            toast.add({ severity: 'success', summary: 'Success', detail: 'Password Reset Link Sent!', life: 3000 });
+              }
+             
           },1200);
         };
         
@@ -144,7 +152,7 @@
   
 
       return{
-      registerForm,
+      email,
       store,
       loading,
       toast,

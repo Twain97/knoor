@@ -2,7 +2,7 @@
     <Transition name="slide-fade" >
         <div v-show="showPage" class="fixed outline-none flex flex-col bottom-0 h-full w-full bg-black z-40 bg-opacity-30 text-slate-800">
         
-        <div @click="toggleShowProductPage()" class=" z-50 mx-auto mt-6 -mb-5 w-10 h-10 md:w-12 md:h-12 shadow-md cursor-pointer p-2 hover:bg-slate-300 transition-all rounded-full flex bg-gray-100">
+        <div @click="toggleShowProductPage()" class=" z-50 mx-auto mt-6 -mb-5 w-8 h-8 md:w-12 md:h-12 shadow-md cursor-pointer p-2 hover:bg-slate-300 transition-all rounded-full flex bg-gray-100">
               <font-awesome-icon icon="fa-solid fa-x"  size="sm" style="color: #333366;" class="md:hidden m-auto rounded-full" />
               <font-awesome-icon icon="fa-solid fa-x"  size="lg" style="color: #333366;" class="hidden md:block m-auto rounded-full" />
 
@@ -10,7 +10,7 @@
         
         <div class="flex flex-col h-5/6 rounded-xl m-auto pt-2 pb-5 w-wd9 md:w-wd7 lg:w-wd6 xl:w-wd5 overflow-x-hidden overflow-y-auto bg-slate-100 shadow-sm">
           
-          <div class="mt-3 w-fit ml-2 mb-2 font-bold text-xs md:text-base bg-orange-600 rounded-lg p-1 text-slate-800">
+          <div class="mt-3 w-fit ml-2 mb-2 font-bold text-xs md:text-sm bg-orange-600 rounded-lg p-1 text-slate-800">
                 -80%
           </div>
           <!-- image section -->
@@ -19,8 +19,8 @@
           </div>
 
           <!-- Body section -->
-          <div class="flex flex-col space-y-3 px-2 bg-white  pb-5 rounded-b-lg mx-2 md:px-4 lg:px-8">
-            <h1 class="m-auto font-bold text-xl md:text-2xl mt-2  ">{{ previewProduct.title }}</h1>
+          <div class="flex flex-col space-y-2 px-2 bg-white  pb-5 rounded-b-lg mx-2 md:px-4 lg:px-8">
+            <h1 class="m-auto font-bold text-lg md:text-xl mt-2  ">{{ previewProduct.title }}</h1>
             <!-- rating  -->
             <div class="flex px-2 ">
               <Rating v-model="previewProduct.rating" :cancel="false" class=""
@@ -33,17 +33,17 @@
             </div>
             
 
-            <div class=" flex flex-col text-lg ">
+            <div class=" flex flex-col text-sm ">
               <h3 class=" font-bold">Available Sizes:</h3>
-              <div class="flex flex-row m-auto space-x-5 text-sm">
+              <div class="flex flex-row m-auto space-x-5 text-xs md:text-sm">
                 <p>2.4 Litres</p>
               <p>4.5 Litres</p>
               </div>
               
             </div>
-            <div class="flex flex-col text-lg font-semibold">
+            <div class="flex flex-col text-sm  font-semibold">
               <h3 class="font-bold">Prices:</h3>
-              <div class="text-base m-auto">
+              <div class="text-xs md:text-sm m-auto">
                 <p class="">2.4 Litres: 
                 <span id="smallOldPrice" class="line-through mx-3 text-red-600 font-bold" >#{{  previewProduct.smallOldPrice}}</span>
                 <span id="smallNewPrice" class=" text-green-700 font-bold">#{{previewProduct.smallNewPrice }}</span></p>
@@ -54,9 +54,9 @@
               
               
             </div>
-            <div class="flex flex-col text-lg font-semibold ">
+            <div class="flex flex-col text-sm  font-semibold ">
               <h3 class="font-bold">Quantity:</h3>
-              <div class="text-base m-auto">
+              <div class="text-xs md:text-sm m-auto">
                 <p class="">2.5: 
                   <span class="font-extrabold text-xl mx-3" @click="decrementSmall()">-</span> 
                   {{ previewProduct.totalSmallInOrder }}x  
@@ -70,13 +70,13 @@
               </div>
               
             </div>
-            <div class="flex flex-col font-semibold ">
-              <h3 class="text-lg font-bold">Details:  </h3>
-              <p class="text-xs text-center"> {{ previewProduct.details }} </p>
+            <div class="flex flex-col ">
+              <h3 class="text-sm font-bold">Details:  </h3>
+              <p class="text-xs text-left ml-4"> {{ previewProduct.details }} </p>
               
             </div>
             <div class="flex flex-row">
-              <h3 class="font-bold text-lg">Share:</h3>
+              <h3 class="font-bold text-sm">Share:</h3>
               <div class="ml-2 mt-1 flex space-x-3 md:space-x-5 ">
                 <a href="#" class=" bg-slate-300 flex w-6 h-6 md:w-8 md:h-8 rounded-full">
                   <font-awesome-icon icon="fa-brands fa-whatsapp"  size="sm" style="color: #333366;" class="md:hidden m-auto rounded-full" />
@@ -99,17 +99,18 @@
                 </a> 
               </div>
             </div>
-            <div class="flex flex-col space-y-3 w-full">
+            <div class="flex flex-col space-y-3 pt-2 w-full">
                 <Button id="button"  icon="pi pi-cart-plus"  label="ADD TO CART" size="medium"
                 :pt="{
-                  icon:{class:' ml-12 -mr-5 md:ml-20 md:-mr-10'},
+                  icon:{class:'w-3 ml-5 -mr-5 md:ml-20 md:-mr-10'},
+                
                 }" 
-                class="w-wd7 md:w-4/5 text-sm m-auto h-7 md:mt-20 text-slate-100 px-2 shadow-sm shadow-black" @click="addToCart()"/>
+                class="w-wd7 text-xs m-auto h-7 md:mt-20 text-slate-100 px-2 shadow-sm shadow-black md:text-sm md:w-4/5" @click="addToCart()"/>
                 <Button id="button"  icon="pi pi-heart"  label="ADD TO WISH" size="medium" 
                 :pt="{
-                  icon:{class:' ml-12 -mr-5 md:ml-20 md:-mr-10'},
+                  icon:{class:'w-3 ml-5 -mr-5 md:ml-20 md:-mr-10'},
                 }" 
-                class="w-wd7 md:w-4/5 text-sm m-auto h-7 md:mt-20 text-slate-100 px-2 shadow-sm shadow-black" @click="addToFav()"/>
+                class="w-wd7 text-xs m-auto h-7 md:mt-20 text-slate-100 px-2 shadow-sm shadow-black md:text-sm md:w-4/5" @click="addToFav()"/>
             </div>
         
           </div>

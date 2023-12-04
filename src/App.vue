@@ -97,7 +97,7 @@
                   </router-link>
                   
                   <router-link to="#" @click="toggleShowProductPage()" class="my-auto shadow-md cursor-pointer relative p-1 hover:p-2 hover:-mt-1 transition-all rounded-full flex bg-gray-100">
-                      <font-awesome-icon icon="fa-solid fa-solid fa-truck-fast"  size="xs" style="color: #333366;" class="p-1 rounded-full" />
+                      <font-awesome-icon icon="fa-solid fa-solid fa-handshake"  size="xs" style="color: #333366;" class="p-1 rounded-full" />
                       <div class="w-4 h-4 -right-1 -top-1 absolute rounded-full flex bg-slate-800">
                           <p class="text-stone-200 text-xs m-auto rounded-full">0</p>
                       </div>
@@ -188,6 +188,7 @@ export default {
         if(user){
           // get the user token
           // alert(user.email)
+          console.log(user)
           user.getIdToken().then((token)=>{
             // set the cookie session max time
             document.cookie = `session= ${token}; max-age= ${60*60*24}`

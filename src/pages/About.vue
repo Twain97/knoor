@@ -7,7 +7,7 @@
 
                 </div>
             </div>
-            <div class="flex flex-col m-auto w-5/6 space-y-3 text-left text-sm ">
+            <div class="flex flex-col m-auto w-5/6 space-y-3 text-left text-xs md:text-sm ">
                 <div class="space-y-2">
                     <h2 class="  font-bold">About Knoor's Kitchen</h2>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam tempore reiciendis voluptate quia ipsa pariatur ipsum accusantium consectetur? Dolorum, doloremque hic laudantium excepturi deleniti cumque quaerat aliquam iure eveniet iste.</p>

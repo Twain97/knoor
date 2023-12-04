@@ -2,6 +2,7 @@
     <div class="w-full md:w-2/4 py-4 px-4 md:px-6 bg-white flex flex-col col md:m-auto text-xs md:text-base">
         <font-awesome-icon icon="fa-solid fa-user" id="icon"   class="mt-4 mx-auto w-10 h-10 md:w-20 md:h-20 text-slate-800  " />
         <div class="mt-4 flex flex-col space-y-3">
+            <div><b class="mr-2">Name:</b> {{ userName }}</div>
             <div><b class="mr-2">Email:</b> {{ user }}</div>
             <div class="flex justify-between my-auto "><b class="mr-2 md:mr-2 my-auto">Verified Email:</b> <span class="my-auto">{{ verified }}</span> 
             <Button v-if="Button" id="button"  label="Verify" size="small" @click="sendEmail()"
@@ -9,7 +10,7 @@
             <div><b>Joined on:</b> {{ createdTime }}</div>
             <div class="flex flex-row justify-between text-blue-700 pt-10">
                 <router-link to="/ResetPassword"> Reset Password</router-link>
-                <router-link to="#" @click="logOut()" class="flex justify-between my-auto">Log out</router-link>
+                <router-link to="#" @click="logout()" class="flex justify-between my-auto">Log out</router-link>
             </div>
         </div>
     </div>
@@ -18,13 +19,11 @@
 <script>
 import {auth} from '../firebase/firebase.js'
 import { ref } from 'vue'
-import {getAuth, sendEmailVerification} from 'firebase/auth'
-import router from '../router/index.js'
 
 export default {
     methods: {
-        logOut(){
-            this.$store.dispatch('logout')
+        logout(){
+         this.$store.dispatch('logOut')
         },
         sendEmail(){
             this.$toast.add({ severity: 'success', summary: 'Email Sent', detail: 'Please check your Email', life: 3000 });
@@ -39,6 +38,7 @@ export default {
     },
 async setup(){
     var user = ref(null)
+    var userName = ref(null)
     var verified = ref(null)
     var Button = true
     var createdTime = ref(null)
@@ -47,6 +47,7 @@ async setup(){
     const details = async() =>{ 
         await new Promise ((resolve)=>setTimeout(resolve, 5000))
         user =  auth.currentUser.email
+        userName = auth.currentUser.displayName
         const  created= auth.currentUser.metadata.creationTime.split('05', String(1))
         createdTime = String(created)
         
@@ -57,17 +58,13 @@ async setup(){
             return verified = "Verified"
             
         }
-        
-    
-    // this.verify = verified
-    // console.log(createdTime)
-    // console.log(verified)
     }
 
     await details();
     return{
      Button,
      user,
+     userName,
     verified,
     createdTime
     }

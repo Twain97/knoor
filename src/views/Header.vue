@@ -2,8 +2,8 @@
   <div class="section">
     <nav class="lg:w-full flex">
       <!-- For mobilePhone screen -->
-      <div class="lg:hidden w-11/12 m-auto">
-        <div class=" flex flex-col overflow-hidden align-middle justify-between   ">
+      <div class="lg:hidden w-11/12 m-auto ">
+        <div class=" flex flex-col overflow-hidden align-middle justify-between ">
           <div class="justify-between mx-auto flex flex-row w-full">
           
             <img :src="logo" alt="Logo" class="mt-0 w-24 h-12 md:w-36 md:h-20 drop-shadow-xl">
@@ -19,7 +19,7 @@
               <p class="md:hidden text-xs font-semibold">Log In 
                 <font-awesome-icon icon="fa-solid fa-person-walking-dashed-line-arrow-right"  size="sm"  class="m-auto pt-1 rounded-full" />
               </p>
-              <p class="hidden md:block flex flex-row">Log In 
+              <p class="hidden md:block flex-row">Log In 
                 <font-awesome-icon icon="fa-solid fa-person-walking-dashed-line-arrow-right"  size="lg"  class="m-auto pt-1 rounded-full" />
               </p>
             </div>
@@ -28,7 +28,7 @@
             <div v-show="showSearch" class="mb-2 flex">
               <div id="formBorder" class="m-auto w-full pr-3 rounded-md bg-gray-100 lg::outline-none border-slate-800 ">
                 <form class="flex flex-row h-10 text-sm font-bold text-slate-800 justify-between ">
-                  <input type="text" placeholder="Search Anything.. " class=" w-11/12 focus:outline-none bg-inherit indent-3">
+                  <input type="text" placeholder="Search Anything.. " class=" w-11/12 focus:outline-none bg-inherit indent-3 text-xs md:text-sm">
                   <font-awesome-icon icon="fa-solid fa-search" size="sm" style="color: #333366;" class="my-auto cursor-pointer"/>
                 </form>
               </div>

@@ -44,7 +44,7 @@
               </div>
             </div>
             <div id="pic" @click="(toggleShowProductPage(), insertProduct(item))">
-              <img :src="item.pic" alt="" class="h-24 w-full md:h-36 xl:w-80 xl:h-40">
+              <img :src="item.pic" alt="" class="h-full w-full md:h-36 xl:w-80 xl:h-40">
             </div>
           </div>
           <hr class="w-11/12 mx-auto border-2">
@@ -100,15 +100,14 @@ import cart from '../pages/Cart.vue'
 import CarouselPage from '../views/Carousel.vue'
 import handlePagination from "../paginnation/handlePagination";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth} from "../firebase/firebase";
 import {getAuth, sendEmailVerification} from "firebase/auth"
 
 export default{
   beforeMount() {
     const auth = getAuth();
         onAuthStateChanged(auth, (user)=>{
-          const email =  user.email.split('@', String(1) )
-          this.username = String(email)
+          const displayName =  user.displayName.split(' ').slice(-1)[0]
+          this.username = String(displayName)
           if(auth.currentUser.emailVerified ==false){
               this.$toast.add({ severity: 'success', summary: 'Verify Email', detail: 'Please check your Email for verification', life: 3000 });
 
@@ -142,7 +141,6 @@ export default{
     ...mapState({
       cart:"cart",
       wishList:"wishList",
-      username:"username"
     }),
     cartItem(){
       return this.cart
@@ -150,9 +148,6 @@ export default{
     wishListItem(){
       return this.wishList
     },
-    username(){
-      return this.username
-},
     
   },
   methods: {
