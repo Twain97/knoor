@@ -53,7 +53,7 @@
                 <p class="my-auto pl-2">Deals</p>
                 <font-awesome-icon icon="fa-solid fa-handshake"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>
-              <router-link to="#" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="/About" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">About Us</p>
               </router-link>
               <router-link to="#" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">

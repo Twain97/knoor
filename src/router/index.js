@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory} from 'vue-router'
 import Home from '../pages/Home.vue'
 import Faq from '../pages/Faq.vue'
+import About from '../pages/About.vue'
 import Load from '../views/Load.vue'
 import userProfile from '../pages/UserProfile.vue'
 import ResetPassword from '../pages/ResetPassword.vue'
@@ -30,6 +31,11 @@ const router = createRouter({
       path: '/Load',
       name: 'Load',
       component: Load
+    },
+    {
+      path: '/About',
+      name: 'About',
+      component: About
     },
     {
       path: '/Home',

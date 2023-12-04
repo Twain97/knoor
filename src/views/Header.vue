@@ -15,10 +15,12 @@
                 <font-awesome-icon icon="fa-solid fa-x" size="xs"  class="rounded-full m-auto" />
               </div>
             </div>
-            <div v-else class="my-auto pr-2">
-              <p>Log In 
-                <font-awesome-icon icon="fa-solid fa-person-walking-dashed-line-arrow-right"  size="lg"  class="m-auto p-1 rounded-full" />
-
+            <div v-else class="my-auto pr-2 flex flex-row">
+              <p class="md:hidden text-xs font-semibold">Log In 
+                <font-awesome-icon icon="fa-solid fa-person-walking-dashed-line-arrow-right"  size="sm"  class="m-auto pt-1 rounded-full" />
+              </p>
+              <p class="hidden md:block flex flex-row">Log In 
+                <font-awesome-icon icon="fa-solid fa-person-walking-dashed-line-arrow-right"  size="lg"  class="m-auto pt-1 rounded-full" />
               </p>
             </div>
           </div>
@@ -111,7 +113,7 @@
                 <!-- <router-link to="#" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
                   <p class="py-1 mx-auto">My Wallet</p>
                 </router-link> -->
-                <router-link to="#" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
+                <router-link to="/About" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
                   <p class="py-1 mx-auto">About Us</p>
                 </router-link>
                 <router-link to="#" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
@@ -122,7 +124,7 @@
             </div>
             <div class="flex flex-row my-auto hover:border-r-2 hover:border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">
               <p class="my-auto">About us</p>
-              <router-link to="#" class="my-auto">
+              <router-link to="/About" class="my-auto">
                 <font-awesome-icon icon="fa-solid fa-address-card" size="lg" style="color: #333366;" class=""/>
               </router-link>
             </div>
