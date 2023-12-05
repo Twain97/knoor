@@ -56,7 +56,7 @@
             </form>
           </div>
           <div v-if="this.$store.state.user" class="lg:flex space-x-2 ">
-            <router-link to="#" class="my-auto cursor-pointer relative p-1 hover:p-2 hover:mt-4 transition-all rounded-full flex bg-gray-100">
+            <router-link to="/Deals" class="my-auto cursor-pointer relative p-1 hover:p-2 hover:mt-4 transition-all rounded-full flex bg-gray-100">
               <font-awesome-icon icon="fa-solid fa-solid fa-handshake"  size="lg" style="color: #333366;" class="p-1 rounded-full" />
               <div class="w-5 h-5 -right-1 -top-3  absolute rounded-full flex bg-slate-800">
                 <p class="text-stone-200 text-xs m-auto rounded-full">0</p>
@@ -110,22 +110,20 @@
                 <router-link to="/wishList" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
                   <p class="py-1 mx-auto">Wish List</p>
                 </router-link>
-                <!-- <router-link to="#" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
-                  <p class="py-1 mx-auto">My Wallet</p>
-                </router-link> -->
+                <router-link to="/Deals" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
+                  <p class="py-1 mx-auto">Deals</p>
+                </router-link>
                 <router-link to="/About" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
                   <p class="py-1 mx-auto">About Us</p>
-                </router-link>
-                <router-link to="#" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
-                  <p class="py-1 mx-auto ">Contact Us</p>
                 </router-link>
               </div>
               
             </div>
-            <div class="flex flex-row my-auto hover:border-r-2 hover:border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">
-              <p class="my-auto">About us</p>
-              <router-link to="/About" class="my-auto">
-                <font-awesome-icon icon="fa-solid fa-address-card" size="lg" style="color: #333366;" class=""/>
+            <div class=" hover:border-r-2 hover:border-l-2 border-slate-800  cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">
+                
+              <router-link to="/About" class="flex flex-row my-auto h-8 w-36 justify-around text-base pr-3 font-bold">
+                <p class="my-auto">About us</p>
+                <font-awesome-icon icon="fa-solid fa-address-card" size="lg" style="color: #333366;" class="my-auto"/>
               </router-link>
             </div>
             <div class="flex flex-row my-auto hover:border-r-2 hover:border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">

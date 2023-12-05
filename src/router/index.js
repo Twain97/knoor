@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory} from 'vue-router'
 import Home from '../pages/Home.vue'
 import Faq from '../pages/Faq.vue'
 import About from '../pages/About.vue'
+import Deals from '../pages/Deals.vue'
 import Load from '../views/Load.vue'
 import userProfile from '../pages/UserProfile.vue'
 import ResetPassword from '../pages/ResetPassword.vue'
@@ -42,6 +43,12 @@ const router = createRouter({
       name: 'Home',
       meta:{ requiresAuth : true },
       component: Home
+    },
+    {
+      path: '/Deals',
+      name: 'Deals',
+      meta:{ requiresAuth : true },
+      component: Deals
     },
     {
       path: '/userProfile',
@@ -93,7 +100,16 @@ auth.onAuthStateChanged((user)=>{
     if(to.path == '/Home' && !auth.currentUser){
       return router.push('/')
     }
+    if(to.path == '/Deals' && !auth.currentUser){
+      return router.push('/')
+    }
+    if(to.path == '/product' && !auth.currentUser){
+      return router.push('/')
+    }
     if(to.path ==  '/cart' && !auth.currentUser){
+      return router.push('/')
+    }
+    if(to.path == '/userProfile' && !auth.currentUser){
       return router.push('/')
     }
     if(to.path == '/wishList' && !auth.currentUser){

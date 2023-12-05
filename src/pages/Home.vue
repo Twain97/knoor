@@ -19,7 +19,7 @@
       <!-- Carousel -->
       <CarouselPage/>
         
-    <div class="w-full flex flex-row md:pr-4 mt-5">
+    <div class="w-full flex flex-row md:pr-2 mt-5">
       <!-- Adverts -->
       <Advert/>
 
@@ -27,7 +27,7 @@
       <!-- main page -->
 
 
-      <div class=" flex flex-col md:w-2/3 border-2 rounded-lg shadow-lg">
+      <div class=" flex flex-col lg:w-2/3 border-2 rounded-lg shadow-lg">
         <h1 class="text-lg font-bold text-slate-800 mx-auto mt-3">Available</h1>
         <ul class="flex flex-row flex-wrap justify-between p-1 ">
           <li v-for="item in paginatedData" :key="item.index" 

@@ -39,17 +39,13 @@
               <router-link to="/userProfile" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">My Profile</p>
               </router-link>
-              <!-- <router-link to="#" class=" flex-grow flex flex-row w-full hover:bg-slate-100  border-b-2  border-slate-800">
-                <p class="my-auto pl-2">Deals</p>
-                
-              </router-link> -->
               <router-link to="/cart" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">Cart</p>
               </router-link>
               <router-link to="/wishList" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">Wish List</p>
               </router-link>
-              <router-link to="#" @click="ShowNav()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="/Deals" @click="ShowNav()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">Deals</p>
                 <font-awesome-icon icon="fa-solid fa-handshake"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>
@@ -96,7 +92,7 @@
                       </div>
                   </router-link>
                   
-                  <router-link to="#" @click="toggleShowProductPage()" class="my-auto shadow-md cursor-pointer relative p-1 hover:p-2 hover:-mt-1 transition-all rounded-full flex bg-gray-100">
+                  <router-link to='/Deals' @click="toggleShowProductPage()" class="my-auto shadow-md cursor-pointer relative p-1 hover:p-2 hover:-mt-1 transition-all rounded-full flex bg-gray-100">
                       <font-awesome-icon icon="fa-solid fa-solid fa-handshake"  size="xs" style="color: #333366;" class="p-1 rounded-full" />
                       <div class="w-4 h-4 -right-1 -top-1 absolute rounded-full flex bg-slate-800">
                           <p class="text-stone-200 text-xs m-auto rounded-full">0</p>

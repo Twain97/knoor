@@ -174,7 +174,7 @@ export default{
         if(this.product.totalSmallInOrder != 0 || this.product.totalBigInOrder !=0 && localStorage.getItem("cart")){
           // console.log("localStorage Exist!")
           if(this.$store.state.cart.includes(this.product)){
-            this.$toast.add({ severity: 'error', summary: 'Empty', detail: 'Already In Cart', life: 3000 });
+            this.$toast.add({ severity: 'error', summary: 'Error', detail: 'Already In Cart', life: 3000 });
           }
           else{
             

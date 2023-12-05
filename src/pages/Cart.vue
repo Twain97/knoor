@@ -106,10 +106,10 @@
     
   </div>
   <div v-else class="w-full h-96 flex text-slate-800">
-      <div class="m-auto text-lg font-bold">
-        <h2>{{ itemExist }}</h2>
-      </div>
+    <div class="m-auto text-lg font-bold">
+      <h2>{{ itemExist }}</h2>
     </div>
+  </div>
 </template>
 
 <script>

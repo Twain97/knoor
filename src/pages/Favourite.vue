@@ -19,17 +19,7 @@
             </div>
 
             <div class="flex flex-col text-xs p-2 md:justify-center md:space-y-3 md:text-base w-4/5 -ml-1 ">
-              <h2 class="font-bold text-sm text-center mx-auto">{{ items.title }}</h2>
-
-              <div class="flex flex-col md:mx-auto">
-                <h4 class="font-semibold">Quantity Selected:</h4>
-                <div class="flex flex-col text-center ml-2 space-y-1">
-                  <p>2.5: {{ items.totalSmallInOrder }} x</p>
-                  <p>4.6: {{ items.totalBigInOrder}} x</p>
-                </div>
-              </div>
-              
-              
+              <h2 class="font-bold text-sm text-center m-auto">{{ items.title }}</h2>
             </div>
           </div>
           
@@ -58,12 +48,10 @@ export default {
     computed: {
         ...mapState({
             wishList:'wishList',
-            smallInCart:"smallInCart",
-            bigInCart:"bigInCart",
-            totalSmallPrice:"totalSmallPrice",
-            totalBigPrice:"totalBigPrice",
-            overAllTotal:"overAllTotal"
         }),
+        mounted () {
+          console.log(this.wishList)
+        },
         itemExist(){
           if(this.wishList.length==0){
             return "Oops! wishList is currently empty!"
@@ -72,8 +60,15 @@ export default {
     },
 
     methods: {
-      remove(items, index){
+      toggleShowProductPage(){
+      this.$store.state.showProductPage = !this.$store.state.showProductPage
+      },
 
+      insertProduct(items){
+      this.$store.dispatch('addProduct', items)
+      },
+      remove(items, index){
+        this.$toast.add({ severity: 'info', summary: 'Info Message', detail: 'Item removed!', life: 3000 });
         this.$store.state.wishList = this.$store.state.wishList.filter((items, i) => i != index)
         localStorage.setItem("wishList", JSON.stringify(this.$store.state.wishList)) 
       }

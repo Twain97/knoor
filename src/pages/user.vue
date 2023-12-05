@@ -7,7 +7,7 @@
             <div class="flex justify-between my-auto "><b class="mr-2 md:mr-2 my-auto">Verified Email:</b> <span class="my-auto">{{ verified }}</span> 
             <Button v-if="Button" id="button"  label="Verify" size="small" @click="sendEmail()"
             class=" px-2 h-2 text-sm md:text-base font-semibold text-slate-800 m-auto shadow-sm shadow-black " /></div>
-            <div><b>Joined on:</b> {{ createdTime }}</div>
+            <div><b>Joined on:</b> {{ createdTime }} o'clock</div>
             <div class="flex flex-row justify-between text-blue-700 pt-10">
                 <router-link to="/ResetPassword"> Reset Password</router-link>
                 <router-link to="#" @click="logout()" class="flex justify-between my-auto">Log out</router-link>
@@ -48,7 +48,9 @@ async setup(){
         await new Promise ((resolve)=>setTimeout(resolve, 5000))
         user =  auth.currentUser.email
         userName = auth.currentUser.displayName
-        const  created= auth.currentUser.metadata.creationTime.split('05', String(1))
+       
+       
+        const  created= auth.currentUser.metadata.creationTime.split(':', String(1))
         createdTime = String(created)
         
          if(auth.currentUser.emailVerified ==false){
@@ -58,6 +60,9 @@ async setup(){
             return verified = "Verified"
             
         }
+         // if(auth.currentUser.displayName == null){
+        //     return userName = 'Not updated yet'
+        // }
     }
 
     await details();

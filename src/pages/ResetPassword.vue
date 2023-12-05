@@ -29,7 +29,7 @@
           
   
   
-          <div class="h-full w-full md:w-2/4 ">
+          <div class="h-full w-full m-auto md:w-2/4 ">
   
           <!-- Forgot Password -->
           <div  class="flex z-50 md:py-0 md:-mt-1 w-full h-full ">
@@ -42,12 +42,12 @@
                   :src="slide" alt="">
                 </slide>
               </carousel>
-              <div class="w-full h-full  space-y-2 flex flex-col  md:space-y-5 ">
+              <div class="w-full h-full  space-y-2  flex flex-col  md:space-y-10 ">
                 <h2 class="text-slate-800 font-bold mx-auto text-lg lg:ml-12">Reset Password</h2>
-                <h4 class="text-slate-800 font-bold text-xs text-center">Enter your email to get Password reset link.</h4>
+                <h4 class="text-slate-800 font-semibold text-xs md:text-base text-center">Enter your email to get Password reset link.</h4>
                 
                 <form name="emailAndPassword"  @submit.prevent="sendResetLink()"
-                class="flex flex-col space-y-3 ">
+                class="flex flex-col space-y-3 md:space-y-5 ">
                 
                 <div class="flex flex-col space-y-3 md:flex-col text-xs md:text-sm" >
                   <input name="Email" type="email" v-model.trim.lazy="email" placeholder="Email"
@@ -60,7 +60,7 @@
                   icon:{class:' ml-2'},
                   loadingIcon:{class:'ml-2'}
                 }" 
-                  size="small" class="w-28 text-xs m-auto h-7 text-slate-100 px-2 md:h-10" />
+                  size="small" class="w-28 text-xs m-auto h-7 text-slate-100 px-2 md:h-10 md:mt-5" />
                   
                   
                 </form>
