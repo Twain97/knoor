@@ -99,8 +99,10 @@ import Favourite from '../pages/Favourite.vue'
 import cart from '../pages/Cart.vue'
 import CarouselPage from '../views/Carousel.vue'
 import handlePagination from "../paginnation/handlePagination";
-import { onAuthStateChanged } from "firebase/auth";
-import {getAuth, sendEmailVerification} from "firebase/auth"
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {sendEmailVerification} from "firebase/auth"
+import {db} from '@/firebase/firebase.js'
+import{ doc, setDoc} from 'firebase/firestore'
 
 export default{
   beforeMount() {
@@ -120,9 +122,8 @@ export default{
         }
           // console.log(username)
         })
-
         
-           
+        
             
         
   },
@@ -150,7 +151,17 @@ export default{
     },
     
   },
+  created () {
+    this.createDoc()
+  },
   methods: {
+    async createDoc(){
+          const auth = getAuth()
+          const displayName = String(auth.currentUser.displayName)
+          const email = String(auth.currentUser.email) 
+
+          await setDoc(doc(db, 'users', displayName ), {email : email}, { merge:true})
+     },
     toggleShowProductPage(){
       this.$store.state.showProductPage = !this.$store.state.showProductPage
     },

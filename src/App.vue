@@ -11,24 +11,27 @@
         }"
         />
     </div>
-    <!-- <div class=" flex justify-center p-4 ">
-        <Toast position="bottom-center"  class="mb-52 " group="bc" @close="onClose">
-            <template #message="slotProps">
-                <div class="flex flex-col items-start rounded-lg pr-2 pl-4 py-4  flex-1 border-l-8 border-orange-500 ">
+    <div class=" flex justify-center p-2 w-full ">
+        <Toast position="bottom-center"  class="mb-52 w-full md:w-wd8 lg:w-wd45 xl:w-wd4 px-4" group="bc" @close="onClose"
+        :pt="{
+          closeButton:{class:'text-orange-800 mt-4 mr-3'}
+        }">
+            <template #message>
+                <div class="w-5/6  m-auto flex flex-col items-start rounded-lg pr-2 pl-4 py-2  flex-1 border-l-8 border-orange-500 ">
                     <div class="flex items-center space-y-2 space-x-2">
                         <Avatar :image="logoSmall" shape="circle" />
                         <span class="font-bold text-slate-800"><span class="font-bold text-orange-500">K</span>noor</span>
                     </div>
                     <div class="font-semibold text-base md:text-lg text-slate-800 my-3 h-24 w-full">
-                      <form class="bg-transparent text-xs md:text-sm w-full h-full">
-                        <textarea type="" placeholder="Hi, drop your message" class="w-full h-full bg-transparent"></textarea>
+                      <form class="bg-transparent outline-none text-xs md:text-sm w-full h-full">
+                        <textarea v-model="complaint" placeholder="Hi, drop your message" class="w-full outline-none h-full bg-transparent"></textarea>
                       </form>
                     </div>
                     <Button class="px-4 py-2 text-slate-50 bg-blue-900" label="Reply" @click="onReply()"></Button>
                 </div>
             </template>
         </Toast>
-    </div> -->
+    </div>
 
     <Header/>
     
@@ -134,14 +137,18 @@
 </template>
 
 <script>
+import logoSmall from "./images/knoor logo.png"
 import { mapState, useStore } from 'vuex'
 import { onBeforeMount, onMounted } from 'vue'
+
 import { browserSessionPersistence, getAuth, 
 onAuthStateChanged, setPersistence } from "firebase/auth"
 import router from '@/router/index.js'
 import Product from './views/product.vue'
 import Header from '@/views/Header.vue'
 import Footer from '@/views/Footer.vue'
+import {db} from '@/firebase/firebase.js'
+import{ doc, setDoc} from 'firebase/firestore'
 
 export default {
   computed: {
@@ -182,9 +189,20 @@ export default {
             }
         },
         onReply() {
-        alert(slotProps.message)
-            this.$toast.removeGroup('bc');
+         this.$store.dispatch('addComplaint', this.complaint)
+         
+         const auth = getAuth()
+          const displayName = String(auth.currentUser.displayName)
+
+         setDoc(doc(db, 'users', displayName ), {Complaint : this.complaint},{ merge:true})
+          this.complaint = ''
+
+        this.$toast.removeGroup('bc');
+          
             this.visible = false;
+
+            this.$toast.add({ severity: 'success', summary: 'Sent', detail:'Message sent successfully, thank you for the feedback', life: '3000' });
+
         },
         onClose() {
             this.visible = false;
@@ -205,7 +223,9 @@ export default {
   data () {
     return {
       nav:false,
-      nav2:false
+      nav2:false,
+     complaint:'',
+      logoSmall:logoSmall,
     }
   },
 

@@ -3,6 +3,8 @@ import { createUserWithEmailAndPassword,
         signInWithEmailAndPassword, signOut,
         getAuth
 } from "firebase/auth";
+// import {db} from '@/firebase/firebase.js'
+// import{ doc, setDoc} from 'firebase/firestore'
 import { auth } from "../firebase/firebase";
 
 import router from "../router/index"
@@ -20,6 +22,7 @@ const store = createStore({
     state: {
         user:null, //the user
         username:'',
+        complaint:'',
         items:[
             {
                 pic:dish1, title:"Dish 1 picture", inCart:0,
@@ -174,7 +177,9 @@ const store = createStore({
         showProductPage:false, //  0n/off of product page toggle
     },
     mutations: {
-        
+        setComplaint(state, payload){
+            state.complaint = payload
+        },
         setcart(state){
             const storeCart =  JSON.parse(localStorage.getItem("cart")) // fetch and set the cart in localStorage as object
             const storeCartTotalSmall =  JSON.parse(localStorage.getItem("cartTotalSmall")) // fetch and set the cart in localStorage as object
@@ -299,6 +304,9 @@ const store = createStore({
         }
     },
     actions: {
+        addComplaint({commit}){
+            commit('setComplaint')
+        },
         createCart({commit}){
             commit("setcart")
         },
@@ -357,6 +365,20 @@ const store = createStore({
 
              // verify them with firebase signin authentication 
             await createUserWithEmailAndPassword(auth, email, password)
+            // function createUser(){
+             
+
+            //  const dataObj = {
+            //     Email :email
+            //  }
+            //  const userName = auth.currentUser.displayName
+            // //  const colRef = collection()
+
+            //  const docRef = setDoc(doc(db, 'users', userName ), dataObj)
+             
+            // }
+
+            // createUser()
         }catch(error){
             switch (error.code) {
                 case 'auth/email-already-in-use':
