@@ -19,8 +19,8 @@
       <div class="h-fit m-auto px-2 flex flex-col-reverse rounded-lg md:flex-row w-4/5  bg-slate-50">
        
         <div class=" w-2/4 flex ">
-          <carousel class="hidden shadow-lg md:rounded-lg m-auto md:block md:h-2/5 xl:h-2/3 md:overflow-hidden md:w-full" :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false" >
-            <slide class=" w-full h-full " v-for="slide in images" :key="slide">
+          <carousel class="hidden shadow-lg md:rounded-lg m-auto md:block md:h-2/5 lg:h-3/5 md:overflow-hidden md:w-full" :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false" >
+            <slide class=" w-full h-full  " v-for="slide in images" :key="slide">
               <img class="w-full h-full md:ml-15 lg:ml-20 lg:-mt-12 xl:-mt-8"  
               :src="slide" alt="">
             </slide>

@@ -11,6 +11,24 @@
         }"
         />
     </div>
+    <!-- <div class=" flex justify-center p-4 ">
+        <Toast position="bottom-center"  class="mb-52 " group="bc" @close="onClose">
+            <template #message="slotProps">
+                <div class="flex flex-col items-start rounded-lg pr-2 pl-4 py-4  flex-1 border-l-8 border-orange-500 ">
+                    <div class="flex items-center space-y-2 space-x-2">
+                        <Avatar :image="logoSmall" shape="circle" />
+                        <span class="font-bold text-slate-800"><span class="font-bold text-orange-500">K</span>noor</span>
+                    </div>
+                    <div class="font-semibold text-base md:text-lg text-slate-800 my-3 h-24 w-full">
+                      <form class="bg-transparent text-xs md:text-sm w-full h-full">
+                        <textarea type="" placeholder="Hi, drop your message" class="w-full h-full bg-transparent"></textarea>
+                      </form>
+                    </div>
+                    <Button class="px-4 py-2 text-slate-50 bg-blue-900" label="Reply" @click="onReply()"></Button>
+                </div>
+            </template>
+        </Toast>
+    </div> -->
 
     <Header/>
     
@@ -36,24 +54,33 @@
               <p class="mx-auto text-base font-bold">Pages</p>
             </div>
             <div class="text-xs px-2 font-semibold text-slate-600 flex-grow w-full flex flex-col">
-              <router-link to="/userProfile" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="/userProfile" @click="ShowNav()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">My Profile</p>
+                <font-awesome-icon icon="fa-solid fa-user"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>
-              <router-link to="/cart" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="/cart" @click="ShowNav()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">Cart</p>
+                <font-awesome-icon icon="fa-solid fa-shopping-cart"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>
-              <router-link to="/wishList" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
-                <p class="my-auto pl-2">Wish List</p>
+              <router-link to="/wishList" @click="ShowNav()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
+                <p class="my-auto pl-2">wishList</p>
+                <font-awesome-icon icon="fa-solid fa-heart"  size="lg"  class="my-auto pr-2 rounded-full" />
+              </router-link>
+              <router-link to="/TrackOrder" @click="ShowNav()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
+                <p class="my-auto pl-2">Orders</p>
+                <font-awesome-icon icon="fa-solid fa-truck-fast"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>
               <router-link to="/Deals" @click="ShowNav()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">Deals</p>
                 <font-awesome-icon icon="fa-solid fa-handshake"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>
-              <router-link to="/About" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="/About" @click="ShowNav()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">About Us</p>
+                <font-awesome-icon icon="fa-solid fa-address-card"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>
-              <router-link to="#" @click="ShowNav()" class=" flex-grow flex hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="#" @click="ShowNav(), showTemplate()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">Contact Us</p>
+                <font-awesome-icon icon="fa-solid fa-headset"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>
               
               <router-link to="#" @click="(logout(), ShowNav())" class=" flex-grow flex justify-between flex-row hover:bg-slate-100  border-b-2  border-slate-800">
@@ -148,6 +175,20 @@ export default {
 
   },
   methods: {
+    showTemplate() {
+            if (!this.visible) {
+                this.$toast.add({ severity: 'success', summary: 'Can you send me the report?', group: 'bc' });
+                this.visible = true;
+            }
+        },
+        onReply() {
+        alert(slotProps.message)
+            this.$toast.removeGroup('bc');
+            this.visible = false;
+        },
+        onClose() {
+            this.visible = false;
+        },
     toggleShowProductPage(){
       this.$store.state.showProductPage = false
       this.$store.state.product ={}

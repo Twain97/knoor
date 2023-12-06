@@ -1,5 +1,23 @@
 <template>
   <div class="section">
+    <div class=" flex justify-center p-4 ">
+        <Toast position="bottom-center"  class="mb-52 " group="bc" @close="onClose">
+            <template #message="slotProps">
+                <div class="flex flex-col items-start rounded-lg pr-2 pl-4 py-4  flex-1 border-l-8 border-orange-500 ">
+                    <div class="flex items-center space-y-2 space-x-2">
+                        <Avatar :image="logoSmall" shape="circle" />
+                        <span class="font-bold text-slate-800"><span class="font-bold text-orange-500">K</span>noor</span>
+                    </div>
+                    <div class="font-semibold text-base md:text-lg text-slate-800 my-3 h-24 w-full">
+                      <form class="bg-transparent  text-xs md:text-sm w-full h-full">
+                        <textarea type="" placeholder="Hi, drop your message" class="outline-none   w-full h-full bg-transparent"></textarea>
+                      </form>
+                    </div>
+                    <Button class="px-4 py-2 text-slate-50 bg-blue-900" label="Reply" @click="onReply()"></Button>
+                </div>
+            </template>
+        </Toast>
+    </div>
     <nav class="lg:w-full flex">
       <!-- For mobilePhone screen -->
       <div class="lg:hidden w-11/12 m-auto ">
@@ -126,7 +144,7 @@
                 <font-awesome-icon icon="fa-solid fa-address-card" size="lg" style="color: #333366;" class="my-auto"/>
               </router-link>
             </div>
-            <div class="flex flex-row my-auto hover:border-r-2 hover:border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">
+            <div  @click="showTemplate" class="flex flex-row my-auto hover:border-r-2 hover:border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">
               <p class="my-auto">Contact us</p>
               <font-awesome-icon icon="fa-solid fa-headset" size="lg" style="color: #333366;" class="my-auto transition-all"/>
             </div>          
@@ -146,6 +164,7 @@
 
 <script>
 import logo from "../images/knoorLogo2.png"
+import logoSmall from "../images/knoor logo.png"
 import { mapState } from "vuex"
 export default {
   // watch:{
@@ -172,6 +191,20 @@ export default {
     }
   },
   methods: {
+    showTemplate() {
+            if (!this.visible) {
+                this.$toast.add({ severity: 'success', summary: 'Can you send me the report?', group: 'bc' });
+                this.visible = true;
+            }
+        },
+        onReply() {
+        alert(slotProps.message)
+            this.$toast.removeGroup('bc');
+            this.visible = false;
+        },
+        onClose() {
+            this.visible = false;
+        },
     searchToggle(){
       if(this.showSearch == false && this.showSearchToggle == true){
         this.showSearch = true
@@ -191,8 +224,10 @@ export default {
     return {
      name:'',
       logo:logo,
+      logoSmall:logoSmall,
       showSearchToggle:true,
-      showSearch:false
+      showSearch:false,
+      visible: false
     }
   },
 

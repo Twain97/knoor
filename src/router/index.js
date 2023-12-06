@@ -5,8 +5,11 @@ import About from '../pages/About.vue'
 import Deals from '../pages/Deals.vue'
 import Load from '../views/Load.vue'
 import userProfile from '../pages/UserProfile.vue'
+import TrackOrder from '../pages/TrackOrder.vue'
 import ResetPassword from '../pages/ResetPassword.vue'
+import ConfirmPayment from '../pages/ConfirmPayment.vue'
 import {auth} from '../firebase/firebase.js'
+
 
 
 const router = createRouter({
@@ -27,6 +30,18 @@ const router = createRouter({
       name: 'Faq',
       meta:{ requiresAuth : true },
       component: Faq
+    },
+    {
+      path: '/ConfirmPayment',
+      name: 'ConfirmPayment',
+      meta:{ requiresAuth : true },
+      component: ConfirmPayment
+    },
+    {
+      path: '/TrackOrder',
+      name: 'TrackOrder',
+      meta:{ requiresAuth : true },
+      component:TrackOrder
     },
     {
       path: '/Load',
@@ -98,6 +113,9 @@ auth.onAuthStateChanged((user)=>{
       return router.push(router.currentRoute)
     }
     if(to.path == '/Home' && !auth.currentUser){
+      return router.push('/')
+    }
+    if(to.path == '/rackOrder' && !auth.currentUser){
       return router.push('/')
     }
     if(to.path == '/Deals' && !auth.currentUser){

@@ -8,6 +8,7 @@ import { faTwitter, faWhatsapp, faFacebook } from '@fortawesome/free-brands-svg-
 import PrimeVue from 'primevue/config';
 import "primevue/resources/themes/lara-light-indigo/theme.css";
 import Button from "primevue/button"
+import Avatar from 'primevue/avatar';
 import 'primeicons/primeicons.css'
 import Toast from 'primevue/toast'
 import Rating from 'primevue/rating'
@@ -39,4 +40,5 @@ app.component('Toast', Toast);
 app.component('Rating', Rating);
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.component('Button', Button);
+app.component('Avatar', Avatar);
 app.mount('#app');
