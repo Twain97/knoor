@@ -114,7 +114,9 @@
 
 <script>
 import {mapState} from 'vuex'
-
+import { getAuth } from 'firebase/auth'
+import {db} from '@/firebase/firebase.js'
+import{ doc, setDoc} from 'firebase/firestore'
 export default {
     computed: {
         ...mapState({
@@ -134,7 +136,18 @@ export default {
 
     methods: {
       placeOrder(){
-        localStorage.clear()
+        const titles = []
+
+        for (const item of this.cart){
+          titles.push(`food Name = ${item.title},  Big size = ${item.totalBigInOrder}, Small size = ${item.totalSmallInOrder}`)
+        }
+        console.log(titles)
+        const auth = getAuth()
+          const displayName = String(auth.currentUser.displayName)
+
+        setDoc(doc(db, 'users', displayName ), {Order: titles},{ merge:true})
+
+        // localStorage.clear()
       },
       toggleShowProductPage(){
       this.$store.state.showProductPage = !this.$store.state.showProductPage

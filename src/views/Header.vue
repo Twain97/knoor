@@ -114,6 +114,9 @@
                 <router-link to="/Deals" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
                   <p class="py-1 mx-auto">Deals</p>
                 </router-link>
+                <router-link to="/TrackOrder" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
+                  <p class="py-1 mx-auto">Orders</p>
+                </router-link>
                 <router-link to="/About" class=" flex rounded-md hover:bg-slate-400 hover:text-white">
                   <p class="py-1 mx-auto">About Us</p>
                 </router-link>
