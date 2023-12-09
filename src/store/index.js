@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 import { createUserWithEmailAndPassword,
         signInWithEmailAndPassword, signOut,
-        getAuth
+        getAuth, updateProfile
 } from "firebase/auth";
 // import {db} from '@/firebase/firebase.js'
 // import{ doc, setDoc} from 'firebase/firestore'
@@ -327,7 +327,7 @@ const store = createStore({
 
     // async user login
     async login({commit}, details){
-        const {email, password} = details // destructure to retriev email and password
+        const {email,password } = details // destructure to retriev email and password
         //verify the with firebase auth
         try{
             await signInWithEmailAndPassword(auth, email, password)
@@ -360,25 +360,14 @@ const store = createStore({
     },
     async register({commit}, details){
         // destructure or retrieve the email and password from details
-        const {email, password} = details
+        const {email,name,phone, password} = details
         try{
 
              // verify them with firebase signin authentication 
             await createUserWithEmailAndPassword(auth, email, password)
-            // function createUser(){
-             
+            
 
-            //  const dataObj = {
-            //     Email :email
-            //  }
-            //  const userName = auth.currentUser.displayName
-            // //  const colRef = collection()
-
-            //  const docRef = setDoc(doc(db, 'users', userName ), dataObj)
-             
-            // }
-
-            // createUser()
+            
         }catch(error){
             switch (error.code) {
                 case 'auth/email-already-in-use':
@@ -411,6 +400,19 @@ const store = createStore({
         commit('setUser', auth.currentUser) //set the current user in the state
         // direct to the required route
         router.push('/Home')
+
+        const curntUser = getAuth().currentUser
+        updateProfile(curntUser, {
+            displayName: name,
+            phoneNumber:phone
+          })
+          .then(() => {
+            console.log("User profile updated successfully")
+          })
+          .catch((error) => {
+            console.log(" Handle error updating user profile")
+          });
+
     },
     async logOut({commit}){
                 

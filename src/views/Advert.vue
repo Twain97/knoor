@@ -11,7 +11,7 @@
                 <div class="w-9/12 flex  mx-auto h-fit ">
                   <div class="w-full  mx-auto text-center border-4 ">
                     <h2 class="flex flex-col bg-white text-center py-1 shadow-md">Delicacy 1</h2> 
-                    <div class=" m-auto w-full h-56">
+                    <div class=" m-auto w-full h-36">
                       <img :src="lady" alt=""  class="w-full h-full">
                     </div>
                     
@@ -33,7 +33,7 @@
                 <div class="w-9/12 flex  mx-auto h-fit ">
                   <div class="w-full  mx-auto text-center border-4 ">
                     <h2 class="flex flex-col bg-white text-center py-1 shadow-md">Delicacy 2</h2> 
-                    <div class=" m-auto w-full h-56">
+                    <div class=" m-auto w-full h-36">
                       <img :src="lady" alt=""  class="w-full h-full">
                     </div>
                     
@@ -54,7 +54,7 @@
                 <div class="w-9/12 flex  mx-auto h-fit ">
                   <div class="w-full  mx-auto text-center border-4 ">
                     <h2 class="flex flex-col bg-white text-center py-1 shadow-md">Delicacy 3</h2> 
-                    <div class=" m-auto w-full h-56">
+                    <div class=" m-auto w-full h-36">
                       <img :src="lady" alt=""  class="w-full h-full">
                     </div>
                     
@@ -83,12 +83,12 @@
           </div>         
           <!-- First Adverts Carousel -->
           <div class=" xl:w-72 xl:m-auto lg:w-11/12 lg:m-auto overflow-hidden flex flex-col">
-            <carousel class="m-auto  w-11/12 overflow-hidden" :items-to-show="0.8" :autoplay="3000" :wrap-around="true" :show-arrows="false">
+            <carousel class="m-auto  w-11/12 overflow-hidden" :items-to-show="0.8" :autoplay="4000" :wrap-around="true" :show-arrows="false">
               <slide class="w-full flex ">
                 <div class="w-9/12 flex  mx-auto h-fit ">
                   <div class="w-full  mx-auto text-center border-4 ">
                     <h2 class="flex flex-col bg-white text-center py-1 shadow-md">Delicacy 1</h2> 
-                    <div class=" m-auto w-full h-56">
+                    <div class=" m-auto w-full h-36">
                       <img :src="lady" alt=""  class="w-full h-full">
                     </div>
                     
@@ -109,7 +109,7 @@
                 <div class="w-9/12 flex  mx-auto h-fit ">
                   <div class="w-full  mx-auto text-center border-4 ">
                     <h2 class="flex flex-col bg-white text-center py-1 shadow-md">Delicacy 2</h2> 
-                    <div class=" m-auto w-full h-56">
+                    <div class=" m-auto w-full h-36">
                       <img :src="lady" alt=""  class="w-full h-full">
                     </div>
                     
@@ -130,7 +130,7 @@
                 <div class="w-9/12 flex  mx-auto h-fit ">
                   <div class="w-full  mx-auto text-center border-4 ">
                     <h2 class="flex flex-col bg-white text-center py-1 shadow-md">Delicacy 3</h2> 
-                    <div class=" m-auto w-full h-56">
+                    <div class=" m-auto w-full h-36">
                       <img :src="lady" alt=""  class="w-full h-full">
                     </div>
                     

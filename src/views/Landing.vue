@@ -114,6 +114,12 @@
               <div class="flex flex-col space-y-3 md:flex-col text-xs md:text-sm" >
                 <input name="Email" type="email" v-model.trim.lazy="registerForm.email" placeholder="Email"
                 class="bg-inherit md:py-2 w-11/12 md:w-full lg:w-3/4 lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
+                <input name="DisplayName" type="text" v-model.trim.lazy="registerForm.name" placeholder="Full Name"
+                class="bg-inherit md:py-2 w-11/12 md:w-full lg:w-3/4 lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
+                <input name="Phone" type="tel" v-model.trim.lazy="registerForm.phone" placeholder="Enter Phone Number"
+                class="bg-inherit md:py-2 w-11/12 md:w-full lg:w-3/4 lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
+                
+                
                 <div class="bg-inherit  w-11/12 md:m-auto md:w-full lg:w-3/4 lg:m-auto border-b-2 flex border-slate-400">
                   <input id="password" type="password" v-model.trim.lazy="registerForm.password" placeholder="Enter Password"
                   class="bg-inherit md:py-2 w-11/12 indent-1 font-semibold "/>
@@ -124,7 +130,7 @@
               </div>
               
               <input id="password2" type="password"  placeholder="Confirm password" 
-              class="bg-inherit md:py-2 w-11/12 md:w-full lg:w-3/4 lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
+              class="bg-inherit text-xs md:text-sm md:py-2 w-11/12 md:w-full lg:w-3/4 lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
 
                 <Button id="Button" type="submit" label="Signup" icon="pi pi-user-plus" :loading="loading"
                 :pt="{
