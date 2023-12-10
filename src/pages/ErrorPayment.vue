@@ -3,28 +3,24 @@
     <div class="w-full h-80 md:w-2/4  px-4 md:px-6 bg-white flex flex-col col md:m-auto text-xs md:text-base">
       <div class="m-auto flex flex-col space-y-2 md:space-y-5">
         <div class="md:hidden">
-          <svg class="checkmark m-auto " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-          <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-          <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-        </svg>
         </div>
       
 
-        <div class="animation-ctn m-auto hidden md:flex">
-            <div class="icon icon--order-success svg">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="154px" height="154px">  
-                    <g fill="none" stroke="#22AE73" stroke-width="2"> 
-                      <circle cx="77" cy="77" r="72" style="stroke-dasharray:480px, 480px; stroke-dashoffset: 960px;"></circle>
-                      <circle id="colored" fill="#22AE73" cx="77" cy="77" r="72" style="stroke-dasharray:480px, 480px; stroke-dashoffset: 960px;"></circle>
-                      <polyline class="st0" stroke="#fff" stroke-width="10" points="43.5,77.8 63.7,97.9 112.2,49.4 " style="stroke-dasharray:100px, 100px; stroke-dashoffset: 200px;"/>   
-                    </g> 
-                  </svg>
-                </div>
+        <div class="animation-ctn m-auto md:flex">
+          <div class="icon icon--order-success svg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="154px" height="154px">  
+            <g fill="none" stroke="#F44812" stroke-width="2"> 
+              <circle cx="77" cy="77" r="72" style="stroke-dasharray:480px, 480px; stroke-dashoffset: 960px;"></circle>
+              <circle id="colored" fill="#F44812" cx="77" cy="77" r="72" style="stroke-dasharray:480px, 480px; stroke-dashoffset: 960px;"></circle>
+              <polyline class="st0" stroke="#fff" stroke-width="10" points="43.5,77.8  112.2,77.8 " style="stroke-dasharray:100px, 100px; stroke-dashoffset: 200px;"/>   
+            </g> 
+          </svg>
         </div>
-        <h2 class="font-bold text-base mx-auto md:text-lg">Payment Sent!</h2>
+        </div>
+        <h2 class="font-bold text-base mx-auto md:text-lg">Payment Error!</h2>
 
         <div class="mt-10 mx-auto text-blue-500 font-semibold underline">
-          <router-link to="/trackOrder"> Track Order</router-link>
+          <!-- <router-link to="/trackOrder"> Track Order</router-link> -->
         </div>
 
         <h1 class="font-semibold text-base"> You'll be redirected home in <span class="font-extrabold text-lg">{{ timer }}</span> </h1>
@@ -38,14 +34,7 @@
 <script>
 import router from '../router/index.js'
 export default {
-  created () {
-    console.log("Cart in localStorage storage and state cleaned")
-
-    localStorage.removeItem("cart")
-    localStorage.removeItem("cartTotalSmall")
-    localStorage.removeItem("cartTotalBig")
-    localStorage.removeItem("cartTotalPrice")
-  },
+ 
   mounted () {
     // const date =  new Date()
 
@@ -56,11 +45,8 @@ export default {
     }, 1000)
 
     setTimeout(()=>{
-      router.push('/Home')
+      // router.push('/Home')
     }, 10000)
-
-
-    this.$store.state.cart=[]
   },
   data(){
     return{

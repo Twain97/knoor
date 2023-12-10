@@ -114,6 +114,7 @@
 
 <script>
 import {mapState} from 'vuex'
+import router from '../router/index.js'
 import { getAuth } from 'firebase/auth'
 import {db} from '@/firebase/firebase.js'
 import{ doc, setDoc} from 'firebase/firestore'
@@ -136,19 +137,88 @@ export default {
 
     methods: {
       placeOrder(){
-        const titles = []
+            const auth = getAuth()
+        // this code directs to monnify payment api
+            const customerName = auth.currentUser.displayName
+            const customerEmail = auth.currentUser.email
+            const cart = this.cart
+            const amount = this.overAllTotal
+            var paid = false
+            MonnifySDK.initialize({
+                amount: amount,
+                currency: "NGN",
+                reference: "KNOOR_" + Math.floor((Math.random() * 1000000000)+1),
+                customerFullName: customerName,
+                customerEmail: customerEmail,
+                apiKey: "MK_TEST_YCL28KNQQ9",
+                contractCode: "4566722754",
+                paymentDescription: "Knoor Payment",
+                isTestMode:true,
+                // metadata: {
+                //     "name": "Damilare",
+                //     "age": 45
+                // },
+                // incomeSplitConfig: [{
+                //     "subAccountCode": "MFY_SUB_342113621921",
+                //     "feePercentage": 50,
+                //     "splitAmount": 1900,
+                //     "feeBearer": true
+                // }, {
+                //     "subAccountCode": "MFY_SUB_342113621922",
+                //     "feePercentage": 50,
+                //     "splitAmount": 2100,
+                //     "feeBearer": true
+                // }],
+                onLoadStart: () => {
+                    console.log("loading has started");
+                },
+                onLoadComplete: () => {
+                    console.log("SDK is UP");
+                },
+                onComplete: function(response) {
+                    //Implement what happens when the transaction is completed.
+                    console.log(response.status);
+                   
+                    if(response.status === "SUCCESS"){
+                      paid = true
+                      if(paid){
+                        // send the order to the database
+                         const titles = []
 
-        for (const item of this.cart){
-          titles.push(`food Name = ${item.title},  Big size = ${item.totalBigInOrder}, Small size = ${item.totalSmallInOrder}`)
-        }
-        console.log(titles)
-        const auth = getAuth()
-          const displayName = String(auth.currentUser.displayName)
+                        for (const item of cart){
+                          titles.push(`food Name = ${item.title},  Big size = ${item.totalBigInOrder}, Small size = ${item.totalSmallInOrder}`)
+                        }
+                        console.log(titles)
+                        const auth = getAuth()
+                          const displayName = String(auth.currentUser.displayName)
 
-        setDoc(doc(db, 'users', displayName ), {Order: titles},{ merge:true})
+                        setDoc(doc(db, 'users', displayName ), {Order: titles},{ merge:true})
 
-        // localStorage.clear()
+
+                        // direct to ConfirmPayment page
+                        router.push('/ConfirmPayment')
+                      }
+                     
+                    }else{
+                      // direct to error page
+                      router.push('/ErrorPayment')
+
+                    }
+                    
+                },
+                onClose: function(data) {
+                    //Implement what should happen when the modal is closed here
+                    console.log(data);
+                }
+            });
+        
       },
+
+
+
+
+
+
       toggleShowProductPage(){
       this.$store.state.showProductPage = !this.$store.state.showProductPage
       },

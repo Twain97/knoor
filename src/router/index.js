@@ -7,6 +7,7 @@ import userProfile from '../pages/UserProfile.vue'
 import TrackOrder from '../pages/TrackOrder.vue'
 import ResetPassword from '../pages/ResetPassword.vue'
 import ConfirmPayment from '../pages/ConfirmPayment.vue'
+import ErrorPayment from '../pages/ErrorPayment.vue'
 import {auth} from '../firebase/firebase.js'
 
 
@@ -35,6 +36,13 @@ const router = createRouter({
       name: 'ConfirmPayment',
       meta:{ requiresAuth : true },
       component: ConfirmPayment
+    },
+    ,
+    {
+      path: '/ErrorPayment',
+      name: 'ErrorPayment',
+      meta:{ requiresAuth : true },
+      component: ErrorPayment
     },
     {
       path: '/TrackOrder',
@@ -118,7 +126,13 @@ auth.onAuthStateChanged((user)=>{
     if(to.path == '/Home' && !auth.currentUser){
       return router.push('/')
     }
-    if(to.path == '/rackOrder' && !auth.currentUser){
+    if(to.path == '/TrackOrder' && !auth.currentUser){
+      return router.push('/')
+    }
+    if(to.path == '/ConfirmPayment' && !auth.currentUser){
+      return router.push('/')
+    }
+    if(to.path == '/ErrorPayment' && !auth.currentUser){
       return router.push('/')
     }
     if(to.path == '/Deals' && !auth.currentUser){

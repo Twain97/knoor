@@ -111,7 +111,7 @@ export default{
           const displayName =  user.displayName.split(' ').slice(-1)[0]
           this.username = String(displayName)
           if(auth.currentUser.emailVerified ==false){
-              this.$toast.add({ severity: 'success', summary: 'Verify Email', detail: 'Please check your Email for verification', life: 3000 });
+              this.$toast.add({ severity: 'success', summary: 'Verify Email', detail: 'Please check your Email for verification', life: 6000 });
 
               
               sendEmailVerification(auth.currentUser)

@@ -3,7 +3,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faAddressCard, faCartShopping, faCircleChevronDown, faEye, faHeadset, faHeart, faHouse, faLock, faRotate,
      faSearch, faShuffle, faTruckFast, faUser, faUserSecret, faX, faBars, faStar, faRightFromBracket, faPersonWalkingDashedLineArrowRight,
-     faHandshake } from '@fortawesome/free-solid-svg-icons'
+     faHandshake, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter, faWhatsapp, faFacebook } from '@fortawesome/free-brands-svg-icons'
 import PrimeVue from 'primevue/config';
 import "primevue/resources/themes/lara-light-indigo/theme.css";
@@ -28,7 +28,7 @@ library.add(faUserSecret, faEye, faUser, faSearch,faBars,
     faRotate, faLock, faHeadset, faHouse, faCircleChevronDown,
     faAddressCard, faStar, faInstagram, faTwitter, faWhatsapp, faFacebook,
     faTrashCan, faRightFromBracket, faTruckFast, faPersonWalkingDashedLineArrowRight,
-    faHandshake)
+    faHandshake, faEyeSlash)
 const app = createApp(App);
 
 app.use(router);

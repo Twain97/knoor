@@ -21,6 +21,7 @@ import dish5 from "../images/dishes/dish5.jpg"
 const store = createStore({
     state: {
         user:null, //the user
+        paid:false,
         username:'',
         complaint:'',
         items:[
@@ -180,6 +181,9 @@ const store = createStore({
         setComplaint(state, payload){
             state.complaint = payload
         },
+        setPaid(state, payload){
+            state.paid = payload
+        },
         setcart(state){
             const storeCart =  JSON.parse(localStorage.getItem("cart")) // fetch and set the cart in localStorage as object
             const storeCartTotalSmall =  JSON.parse(localStorage.getItem("cartTotalSmall")) // fetch and set the cart in localStorage as object
@@ -304,6 +308,9 @@ const store = createStore({
         }
     },
     actions: {
+        addPaid({commit}, payload){
+            commit('setPaid', payload)
+        },
         addComplaint({commit}){
             commit('setComplaint')
         },

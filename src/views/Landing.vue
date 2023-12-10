@@ -55,7 +55,9 @@
                   <div class="bg-inherit  w-11/12 md:m-auto md:w-full lg:w-3/4 lg:m-auto border-b-2 flex border-slate-400">
                     <input id="password" type="password" v-model.trim.lazy="registerForm.password" placeholder="Enter Password"
                       class="bg-inherit md:py-2 w-11/12 indent-1 font-semibold "/>
-                    <font-awesome-icon icon="fa-solid fa-eye" @click="showPassword()" class="-mr-0 p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
+                    <font-awesome-icon v-if="showEye" icon="fa-solid fa-eye" @click="(showPassword(), eyes())" class="-mr-0 p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
+                    <font-awesome-icon v-else icon="fa-solid fa-eye-slash" @click="(showPassword(), eyes())" class="-mr-0 p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
+
                   </div>
                 </div>
                 
@@ -123,13 +125,16 @@
                 <div class="bg-inherit  w-11/12 md:m-auto md:w-full lg:w-3/4 lg:m-auto border-b-2 flex border-slate-400">
                   <input id="password" type="password" v-model.trim.lazy="registerForm.password" placeholder="Enter Password"
                   class="bg-inherit md:py-2 w-11/12 indent-1 font-semibold "/>
-                  <font-awesome-icon icon="fa-solid fa-eye" @click="showPassword()" 
+                  <font-awesome-icon v-if="showEye" icon="fa-solid fa-eye" @click="(showPassword(), eyes())" 
                   class="p-1 m-auto md:p-2 -mr-0 text-gray-600 border-2 rounded-md border-slate-400" />
+                  <font-awesome-icon v-else icon="fa-solid fa-eye-slash" @click="(showPassword(), eyes())" 
+                  class="p-1 m-auto md:p-2 -mr-0 text-gray-600 border-2 rounded-md border-slate-400" />
+
                 </div>
                 
               </div>
               
-              <input id="password2" type="password"  placeholder="Confirm password" 
+              <input id="password" type="password"  placeholder="Confirm password" 
               class="bg-inherit text-xs md:text-sm md:py-2 w-11/12 md:w-full lg:w-3/4 lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
 
                 <Button id="Button" type="submit" label="Signup" icon="pi pi-user-plus" :loading="loading"
@@ -191,6 +196,7 @@ export default {
   },
  data(){
   return{
+    showEye:true,
     showLogin:true,
     showSignup:false,
     logo:logo,
@@ -205,6 +211,9 @@ export default {
   }
  },
  methods: {
+  eyes(){
+    this.showEye = !this.showEye
+  },
   openSignup(){
     this.showLogin = !this.showLogin
   }
@@ -283,14 +292,11 @@ export default {
 
     function showPassword(){
       var toggle = document.getElementById("password")
-      var toggle2 = document.getElementById("password2")
       if(toggle.type === "password" ){
         toggle.type = "text"
-        toggle2.type = "text"
         
       }else{
         toggle.type = "password"
-        toggle2.type = "password"
       }
     }
     function googleSignIn() {
