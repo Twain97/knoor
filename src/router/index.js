@@ -5,6 +5,7 @@ import Deals from '../pages/Deals.vue'
 import Load from '../views/Load.vue'
 import userProfile from '../pages/UserProfile.vue'
 import TrackOrder from '../pages/TrackOrder.vue'
+import searchError from '../pages/searchError.vue'
 import ResetPassword from '../pages/ResetPassword.vue'
 import ConfirmPayment from '../pages/ConfirmPayment.vue'
 import ErrorPayment from '../pages/ErrorPayment.vue'
@@ -92,6 +93,21 @@ const router = createRouter({
       component: () => import('../views/product.vue')
     },
     {
+      path: '/searchResult',
+      name: 'searchResult',
+      // meta:{requiresAuth:true},
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/searchResult.vue')
+    },
+    {
+      path: '/searchError',
+      name: 'searchError',
+      meta:{ requiresAuth : true },
+      component: searchError
+    },
+    {
       path: '/wishList',
       name: 'wishList',
       meta:{ requiresAuth : true },
@@ -130,6 +146,12 @@ auth.onAuthStateChanged((user)=>{
       return router.push('/')
     }
     if(to.path == '/ConfirmPayment' && !auth.currentUser){
+      return router.push('/')
+    }
+    if(to.path == '/searchResult' && !auth.currentUser){
+      return router.push('/')
+    }
+    if(to.path == '/searchError' && !auth.currentUser){
       return router.push('/')
     }
     if(to.path == '/ErrorPayment' && !auth.currentUser){

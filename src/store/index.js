@@ -28,6 +28,7 @@ const store = createStore({
             {
                 pic:dish1, title:"Dish 1 picture", inCart:0,
                 smallOldPrice:"4000",smallNewPrice:"3000",
+                foodType:"rice",
                 bigOldPrice:"8000", bigNewPrice:"6000",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
@@ -37,6 +38,7 @@ const store = createStore({
             {
                 pic:dish2, title:"Dish 2 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
+                foodType:"rice",
                 bigOldPrice:"8000", bigNewPrice:"6000",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
@@ -47,6 +49,7 @@ const store = createStore({
                 pic:dish3, title:"Dish 3 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"rice",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -56,6 +59,7 @@ const store = createStore({
                 pic:dish4, title:"Dish 4 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"rice",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -65,6 +69,7 @@ const store = createStore({
                 pic:dish5, title:"Dish 5 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"beans",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -74,6 +79,7 @@ const store = createStore({
                 pic:dish1, title:"Dish 1 picture", inCart:0,
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"beans",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -83,6 +89,7 @@ const store = createStore({
                 pic:dish2, title:"Dish 2 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"beans",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -92,6 +99,7 @@ const store = createStore({
                 pic:dish3, title:"Dish 3 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"soup",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -101,6 +109,7 @@ const store = createStore({
                 pic:dish4, title:"Dish 4 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"soup",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -110,6 +119,7 @@ const store = createStore({
                 pic:dish5, title:"Dish 5 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"soup",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -119,6 +129,7 @@ const store = createStore({
                 pic:dish1, title:"Dish 1 picture", inCart:0,
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"soup",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -128,6 +139,7 @@ const store = createStore({
                 pic:dish2, title:"Dish 2 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"soup",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -137,6 +149,7 @@ const store = createStore({
                 pic:dish3, title:"Dish 3 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"soup",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -146,6 +159,7 @@ const store = createStore({
                 pic:dish4, title:"Dish 4 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"soup",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -155,6 +169,7 @@ const store = createStore({
                 pic:dish5, title:"Dish 5 picture", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"soup",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
@@ -163,6 +178,8 @@ const store = createStore({
         ],
 
         cart:[],
+        searchWord:"",
+        searchResult:[],
         wishList:[],
         product:{},
         smallInCart:[],
@@ -178,6 +195,17 @@ const store = createStore({
         showProductPage:false, //  0n/off of product page toggle
     },
     mutations: {
+        setSearch(state, payload){
+
+            const filtered = state.items.filter(function(obj){
+                if(obj.foodType==payload){
+                    state.searchResult.push(obj)
+                }
+                
+            })
+            state.searchWord = payload
+            console.log( state.searchResult)
+        },
         setComplaint(state, payload){
             state.complaint = payload
         },
@@ -308,6 +336,9 @@ const store = createStore({
         }
     },
     actions: {
+        addSearch({commit}, payload){
+            commit('setSearch', payload)
+        },
         addPaid({commit}, payload){
             commit('setPaid', payload)
         },

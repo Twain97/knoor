@@ -28,9 +28,9 @@
           <Transition>
             <div v-show="showSearch" class="mb-2 flex">
               <div id="formBorder" class="m-auto w-full pr-3 rounded-md bg-gray-100 lg::outline-none border-slate-800 ">
-                <form class="flex flex-row h-10 text-sm font-bold text-slate-800 justify-between ">
-                  <input type="text" placeholder="Search Anything.. " class=" w-11/12 focus:outline-none bg-inherit indent-3 text-xs md:text-sm">
-                  <font-awesome-icon icon="fa-solid fa-search" size="sm" style="color: #333366;" class="my-auto cursor-pointer"/>
+                <form class="flex flex-row h-10 text-xs md:text-sm font-bold text-slate-800 justify-between " @submit.prevent="search()">
+                  <input type="text" v-model.lazy.trim="food" placeholder="Search Anything.. " class=" w-11/12 focus:outline-none bg-inherit indent-3 text-xs md:text-sm">
+                  <font-awesome-icon @click="search()" icon="fa-solid fa-search" size="sm" style="color: #333366;" class="my-auto cursor-pointer"/>
                 </form>
               </div>
           </div>
@@ -51,9 +51,9 @@
             </div> -->
           </div>
           <div v-if="this.$store.state.user" class="lg:my-auto w-80 lg:w-96 px-2 rounded-md bg-gray-100 lg:outline-none hover:border-4 hover:border-slate-800">
-            <form class="flex flex-row h-12 text-sm font-bold text-slate-800 ">
-              <input type="text" placeholder="Search Anything.. " class=" w-11/12 focus:outline-none bg-inherit indent-5">
-              <font-awesome-icon icon="fa-solid fa-search" size="lg" style="color: #333366;" class="my-auto cursor-pointer p-2"/>
+            <form class="flex flex-row h-12 text-sm font-bold text-slate-800 " @submit.prevent="search()">
+              <input type="text" v-model.lazy.trim="food" placeholder="Search food... " class=" w-11/12 focus:outline-none bg-inherit indent-5">
+              <font-awesome-icon @click="search()" icon="fa-solid fa-search" size="lg" style="color: #333366;" class="my-auto cursor-pointer p-2"/>
             </form>
           </div>
           <div v-if="this.$store.state.user" class="lg:flex space-x-2 ">
@@ -151,6 +151,7 @@
 <script>
 import logo from "../images/knoorLogo2.png"
 import { mapState } from "vuex"
+import router from "../router";
 import { getAuth} from "firebase/auth";
 import {db} from '@/firebase/firebase.js'
 import{ doc, setDoc} from 'firebase/firestore'
@@ -179,6 +180,21 @@ export default {
     }
   },
   methods: {
+    search(){
+      this.$store.state.searchResult=[]// first clear the searchResult state 
+
+      // then set a new searchResult values
+     this.$store.dispatch('addSearch', this.food)
+
+    //  direct to searchResult page 
+    if(this.$store.state.searchResult.length >= 1){
+      router.push('/searchResult')
+    }
+    else{
+      router.push('/searchError')
+    }
+    
+    },
     showTemplate() {
             if (!this.visible) {
                 this.$toast.add({ severity: 'success', summary: 'Can you send me the report?', group: 'bc' });
@@ -221,6 +237,7 @@ export default {
   },
   data () {
     return {
+     food:"",
      name:'',
      complaint:'',
       logo:logo,

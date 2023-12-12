@@ -4,9 +4,9 @@
       <div class="flex flex-col bg-white text-center py-1 md:py-4 md:mb-2 mx-2 rounded-lg shadow-md">
         <h2 class="text-sm md:text-lg font-bold">Cart</h2>
       </div>
-      <ul class="space-y-2 bg-slate-200 py-2 px-1">
+      <ul class=" bg-slate-200 py-2 px-1">
         <li v-for="(items, index) in cart" :key="index" 
-        class="px-2 py-1 bg-white rounded-lg shadow-md relative">
+        class="my-1px-2 py-1 bg-white rounded-lg shadow-md relative">
 
          <div class=" flex flex-row  h-fit">
           <div class="absolute right-1 -top-2" @click="remove(items, index)">
