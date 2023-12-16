@@ -184,7 +184,7 @@ export default {
       this.$store.state.searchResult=[]// first clear the searchResult state 
 
       // then set a new searchResult values
-     this.$store.dispatch('addSearch', this.food)
+     this.$store.dispatch('addSearch', this.food.toLowerCase())
 
     //  direct to searchResult page 
     if(this.$store.state.searchResult.length >= 1){

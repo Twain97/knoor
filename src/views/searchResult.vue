@@ -72,7 +72,15 @@ export default {
         })
         
     },
+    methods: {
+      toggleShowProductPage(){
+      this.$store.state.showProductPage = !this.$store.state.showProductPage
+      },
 
+      insertProduct(items){
+      this.$store.dispatch('addProduct', items)
+      },
+    }
     
 }
 </script>
