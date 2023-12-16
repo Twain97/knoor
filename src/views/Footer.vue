@@ -8,8 +8,8 @@
             </div>
             <div class="m-auto w-full lg:w-1/2 cursor-pointer focus:outline-none pr-2 md:pr-4 rounded-lg bg-gray-100 outline-none flex">
                 <form class="w-full flex flex-row h-14 text-xs md:text-sm font-bold text-slate-800 m-auto ">
-                    <input type="text" placeholder="Enter Email... " class=" w-11/12 focus:outline-none bg-inherit indent-3 lg:indent-10">
-                    <div class="w-32 md:w-40 bg-orange-600 hover:bg-orange-400 my-2 flex  rounded-lg">
+                    <input type="text" v-model.lazy.trim="subscribeEmail" placeholder="Enter Email... " class=" w-11/12 focus:outline-none bg-inherit indent-3 lg:indent-10">
+                    <div @click="subscribe()" class="w-32 md:w-40 bg-orange-600 hover:bg-orange-400 my-2 flex  rounded-lg">
                         <h2 class="m-auto text-xs font-bold md:text-base">Subscribe</h2>
                     </div>
                 </form>
@@ -135,10 +135,26 @@
 
 <script>
 import logo from "../images/knoorLogo2.png"
+import { getAuth } from "firebase/auth";
+import {db} from '@/firebase/firebase.js'
+import{ doc, setDoc} from 'firebase/firestore'
+
 export default {
+    methods: {
+      subscribe(){
+        const auth = getAuth()
+          const displayName = String(auth.currentUser.displayName)
+
+         setDoc(doc(db, 'subscribedUsers', displayName ), {email : this.subscribeEmail},{ merge:true})
+          this.subscribeEmail = ''
+          this.$toast.add({ severity: 'success', summary: 'Done!', detail: 'Subscribed Succefully', life: 6000 });
+
+      }  
+    },
     data () {
         return {
-            logo:logo
+            logo:logo,
+            subscribeEmail:''
         }
     }
 

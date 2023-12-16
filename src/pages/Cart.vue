@@ -16,23 +16,23 @@
           </div>
 
           <div class=" flex flex-row justify-between py-1 w-full h-fit" @click="(toggleShowProductPage(), insertProduct(items))">
-            <div class=" m-auto md:my-auto md:w-80 md:h-44">
-              <img :src="items.pic" alt="item pic" class="w-44 h-22 md:w-full md:h-full rounded-md">
+            <div class="pl-3 m-auto md:my-auto md:w-80 md:h-44">
+              <img :src="items.pic" alt="item pic" class=" w-44 h-22 md:w-full md:h-full rounded-md">
             </div>
 
             <div class="flex flex-col text-xs p-2 md:justify-center md:space-y-1 md:text-base w-4/5 -ml-1 ">
               <h2 class="font-bold text-sm text-center mx-auto">{{ items.title }}</h2>
 
               <div class="flex flex-col md:mx-auto">
-                <h4 class="font-semibold">Quantity Selected:</h4>
-                <div class="flex flex-col text-center ml-2 space-y-1">
+                <h4 class="font-semibold mx-auto">Order Quantity:</h4>
+                <div class="flex flex-col text-center ml-2 space-y-1 text-xs md:text-sm">
                   <p>2.5: {{ items.totalSmallInOrder }} x</p>
                   <p>4.6: {{ items.totalBigInOrder}} x</p>
                 </div>
               </div>
               
               
-              <div class="space-y-1">
+              <div class=" text-xs md:text-sm">
                 <p class="text-center">2.5: 
                   <span id="smallNewPrice" class=" text-green-700 text-sm font-semibold">{{items.smallNewPrice }}</span> X {{ items.totalSmallInOrder }} 
                   = #{{ items.totalSmallInOrder * items.smallNewPrice}} 

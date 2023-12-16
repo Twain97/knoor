@@ -1,5 +1,10 @@
 <template>
   <div>
+    <div id="whatsapp" class="fixed bottom-20 lg:bottom-10 -left-3 md:left-2 z-50 w-fit">
+      <a href="#">
+        <img :src="whatsapp" alt="whatsappIcon" class="w-16 lg:w-20"/>
+      </a>
+    </div>
     <div class="">
       <Toast class="hidden md:block w-2/4"
         :pt="{
@@ -81,7 +86,7 @@
                 <p class="my-auto pl-2">About Us</p>
                 <font-awesome-icon icon="fa-solid fa-address-card"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>
-              <router-link to="#" @click="ShowNav(), showTemplate()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="#" @click="ShowNav(), showContact()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">Contact Us</p>
                 <font-awesome-icon icon="fa-solid fa-headset"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>
@@ -138,6 +143,7 @@
 
 <script>
 import logoSmall from "./images/knoor logo.png"
+import whatsapp from "./images/whatsappIcon.png"
 import { mapState, useStore } from 'vuex'
 import { onBeforeMount, onMounted } from 'vue'
 
@@ -172,6 +178,7 @@ export default {
   mounted(){
     console.log(localStorage)
     this.$store.dispatch("createCart")
+    
     // localStorage.setItem("name", JSON.stringify("Taiwo"))
     // const name = localStorage.getItem("name")
     // if(!name){
@@ -182,7 +189,7 @@ export default {
 
   },
   methods: {
-    showTemplate() {
+    showContact() {
             if (!this.visible) {
                 this.$toast.add({ severity: 'success', summary: 'Can you send me the report?', group: 'bc' });
                 this.visible = true;
@@ -225,6 +232,7 @@ export default {
       nav:false,
       nav2:false,
      complaint:'',
+     whatsapp:whatsapp,
       logoSmall:logoSmall,
     }
   },

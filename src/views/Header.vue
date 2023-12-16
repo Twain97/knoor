@@ -130,7 +130,7 @@
                 <font-awesome-icon icon="fa-solid fa-address-card" size="lg" style="color: #333366;" class="my-auto"/>
               </router-link>
             </div>
-            <div  @click="showTemplate" class="flex flex-row my-auto hover:border-r-2 hover:border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">
+            <div  @click="showContact" class="flex flex-row my-auto hover:border-r-2 hover:border-l-2 border-slate-800 h-8 w-36 justify-around text-base pr-3 font-bold cursor-pointer hover:shadow-lg hover:bg-slate-100 transition-all rounded-lg">
               <p class="my-auto">Contact us</p>
               <font-awesome-icon icon="fa-solid fa-headset" size="lg" style="color: #333366;" class="my-auto transition-all"/>
             </div>          
@@ -195,7 +195,7 @@ export default {
     }
     
     },
-    showTemplate() {
+    showContact() {
             if (!this.visible) {
                 this.$toast.add({ severity: 'success', summary: 'Can you send me the report?', group: 'bc' });
                 this.visible = true;

@@ -175,6 +175,10 @@ export default{
           // console.log("localStorage Exist!")
           if(this.$store.state.cart.includes(this.product)){
             this.$toast.add({ severity: 'error', summary: 'Error', detail: 'Already In Cart', life: 3000 });
+            function vib( ){
+                navigator.vibrate([100, 50,]);
+              };
+              vib( )
           }
           else{
             
@@ -184,11 +188,14 @@ export default{
 
                 
                 this.$store.dispatch('addCart')
+                this.$toast.add({ severity: 'success', summary: 'Done!', detail: 'Item added to Cart', life: 3000 });
                 // alert("na this one")
                 if(this.$store.state.cart.length!=0){
                   this.$store.dispatch('addTotalPrice')
                 }
                 localStorage.setItem("cart", JSON.stringify(this.$store.state.cart)) // update cart in localStorage
+
+                
                 
               }
               else{
