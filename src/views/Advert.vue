@@ -1,5 +1,5 @@
 <template>
-  <div class="hidden  space-y-14 flex-col lg:flex lg:w-1/3 rounded-lg shadow-lg lg:mr-1 ">
+  <div class="hidden  space-y-14 pt-5 flex-col lg:flex lg:w-1/3 rounded-lg shadow-lg lg:mr-1 ">
         <div class=" w-full flex flex-col space-y-5 mx-auto"> 
           <div class=" bg-white text-center py-1 w-11/12 mx-auto mt-3 rounded-lg shadow-md">
             <h2 class="text-base font-bold">Special Order</h2>

@@ -24,10 +24,10 @@
                     </div>
                     <div class="font-semibold text-base md:text-lg text-slate-800 my-3 h-24 w-full">
                       <form class="bg-transparent outline-none text-xs md:text-sm w-full h-full">
-                        <textarea v-model="complaint" placeholder="Hi, drop your message" class="w-full outline-none h-full bg-transparent"></textarea>
+                        <textarea v-model="complaint" placeholder="Hi, drop your message" class="w-full resize-none outline-none h-full bg-transparent"></textarea>
                       </form>
                     </div>
-                    <Button class="px-4 py-2 text-slate-50 bg-blue-900" label="Reply" @click="onReply()"></Button>
+                    <Button class="px-4 py-2 text-slate-50 bg-blue-950" label="Reply" @click="onReply()"></Button>
                 </div>
             </template>
         </Toast>
