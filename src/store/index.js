@@ -3,10 +3,9 @@ import { createUserWithEmailAndPassword,
         signInWithEmailAndPassword, signOut,
         getAuth, updateProfile
 } from "firebase/auth";
-// import {db} from '@/firebase/firebase.js'
-// import{ doc, setDoc} from 'firebase/firestore'
 import { auth } from "../firebase/firebase";
-
+import { db } from "../firebase/firebase";
+import { setDoc, doc } from "firebase/firestore";
 import router from "../router/index"
 
 
@@ -182,16 +181,12 @@ const store = createStore({
         searchResult:[],
         wishList:[],
         product:{},
+        orderId:[],
         smallInCart:[],
         bigInCart:[],
         totalSmallPrice:0,
         totalBigPrice:0,
         overAllTotal:0,
-        smallReductionCounter:1,
-        smallIncrementCounter:1,
-        bigReductionCounter:1,
-        bigIncrementCounter:1,
-
         showProductPage:false, //  0n/off of product page toggle
     },
     mutations: {
@@ -450,6 +445,12 @@ const store = createStore({
           .catch((error) => {
             console.log(" Handle error updating user profile")
           });
+
+        //   create fireStore database
+       
+            var orderId = [] 
+            setDoc(doc(db, 'users', name ), {email : email, Order:orderId}, { merge:true})
+
 
     },
     async logOut({commit}){

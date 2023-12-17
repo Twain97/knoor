@@ -151,17 +151,9 @@ export default{
     },
     
   },
-  created () {
-    this.createDoc()
-  },
-  methods: {
-    async createDoc(){
-          const auth = getAuth()
-          const displayName = String(auth.currentUser.displayName)
-          const email = String(auth.currentUser.email) 
 
-          await setDoc(doc(db, 'users', displayName ), {email : email}, { merge:true})
-     },
+  methods: {
+    
     toggleShowProductPage(){
       this.$store.state.showProductPage = !this.$store.state.showProductPage
     },

@@ -134,7 +134,7 @@
                 
               </div>
               
-              <input id="password" type="password"  placeholder="Confirm password" 
+              <input id="password2" type="password"  placeholder="Confirm password" 
               class="bg-inherit text-xs md:text-sm md:py-2 w-11/12 md:w-full lg:w-3/4 lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
 
                 <Button id="Button" type="submit" label="Signup" icon="pi pi-user-plus" :loading="loading"

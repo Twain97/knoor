@@ -80,27 +80,8 @@
         </h3>
         </div>
 
-        
-        
-      
       </div>
       </div>
-      
-      <!-- small total price
-      <ul>
-        <li v-for="(items, index) in smallInCart" :key="index">
-        {{ items }}</li>
-      </ul>
-
-      big total price
-      <ul>
-        <li v-for="(items, index) in bigInCart" :key="index">
-        {{ items }}</li>
-      </ul> -->
-
-      
-
-     
     </div>
 
     
@@ -115,11 +96,9 @@
 <script>
 import {mapState} from 'vuex'
 import router from '../router/index.js'
-import { onAuthStateChanged } from 'firebase/auth'
 import { getAuth } from 'firebase/auth'
 import {db} from '@/firebase/firebase.js'
-import{ doc, setDoc, serverTimestamp, addDoc, collection} from 'firebase/firestore'
-import { onUnmounted } from 'vue'
+import{setDoc, doc, serverTimestamp, addDoc, collection, updateDoc, arrayUnion} from 'firebase/firestore'
 export default {
     computed: {
         ...mapState({
@@ -185,18 +164,10 @@ export default {
                     if(response.status === "SUCCESS"){
                       paid = true
                       if(paid){
-                        var date = new Date()
-                          var currDate = date.toDateString()
-                          var currTime = date.toLocaleTimeString('en-US', {hour:'numeric', minute:'numeric', hour12:true})
-                          var fullDate = `${currDate} ${currTime}`
-
                         // send the order to the database
-                         
-
                         for (const item of cart){
                           titles.push(` food Name = ${item.title},  Big size = ${item.totalBigInOrder}, Small size = ${item.totalSmallInOrder}`)
                         }
-                        // console.log(titles)
                         const auth = getAuth()
                           const displayName = String(auth.currentUser.displayName)
                           
@@ -211,15 +182,19 @@ export default {
                           }
 
                         const docRef = addDoc(colRef, dataObj ).then((docRef)=>{
+                          // get the order id
                           console.log('Document id = ', docRef.id)
-                          console.log("status = " +docRef.status)
+                          
+                          // store the id
+                          updateDoc(doc(db, "users", displayName),{Order:arrayUnion(docRef.id)})
+                          console.log('Id safed!')
+
                         }).catch((error)=>{
                           console.log(error)
                         })
 
                         
-
-                        // setDoc(doc(db, 'users', 'Orders'), {Order: titles})
+                        
 
 
                         // direct to ConfirmPayment page
@@ -227,14 +202,8 @@ export default {
 
 
                         titles= []
-                        console.log("titles = "+ titles.length)
-                        console.log(cart)
-
-                          
                           setTimeout(()=>{
                           cart=[]
-                            console.log("cart=" +cart.length)
-                           
                           },3000)
                         
                       }
@@ -253,7 +222,7 @@ export default {
 
 
             });
-            console.log("store="+this.$store.state.cart.length)
+
       },
 
 

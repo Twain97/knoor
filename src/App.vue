@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div id="whatsapp" class="fixed bottom-20 lg:bottom-10 -left-3 md:left-2 z-50 w-fit">
+    <div id="whatsapp" class="fixed bottom-20 lg:bottom-10 -left-1 md:left-2 z-50 w-fit">
       <a href="#">
-        <img :src="whatsapp" alt="whatsappIcon" class="w-16 lg:w-20"/>
+        <img :src="whatsapp" alt="whatsappIcon" class="w-10 lg:w-20"/>
       </a>
     </div>
     <div class="">
