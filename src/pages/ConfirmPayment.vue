@@ -39,7 +39,9 @@
 import router from '../router/index.js'
 export default {
   created () {
-    console.log("Cart in localStorage storage and state cleaned")
+    
+    // console.log("Cart in localStorage storage and state cleaned")
+    
 
     localStorage.removeItem("cart")
     localStorage.removeItem("cartTotalSmall")
@@ -57,11 +59,18 @@ export default {
 
     setTimeout(()=>{
       router.push('/Home')
+     
     }, 10000)
 
 
     this.$store.state.cart=[]
+    this.$store.state.totalSmallPrice= 0
+    this.$store.state.totalBigPrice=0
+    this.$store.state.overAllTotal=0
   },
+  // unmounted(){
+  //   window.location.reload()
+  // },
   data(){
     return{
       timer:10

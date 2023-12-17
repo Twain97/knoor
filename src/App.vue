@@ -176,6 +176,7 @@ export default {
     Footer,
   },
   mounted(){
+    
     console.log(localStorage)
     this.$store.dispatch("createCart")
     

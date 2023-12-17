@@ -115,9 +115,11 @@
 <script>
 import {mapState} from 'vuex'
 import router from '../router/index.js'
+import { onAuthStateChanged } from 'firebase/auth'
 import { getAuth } from 'firebase/auth'
 import {db} from '@/firebase/firebase.js'
-import{ doc, setDoc} from 'firebase/firestore'
+import{ doc, setDoc, serverTimestamp, addDoc, collection} from 'firebase/firestore'
+import { onUnmounted } from 'vue'
 export default {
     computed: {
         ...mapState({
@@ -141,8 +143,9 @@ export default {
         // this code directs to monnify payment api
             const customerName = auth.currentUser.displayName
             const customerEmail = auth.currentUser.email
-            const cart = this.cart
-            const amount = this.overAllTotal
+            var cart = this.$store.state.cart
+            var amount = this.overAllTotal
+            let titles = []
             var paid = false
             MonnifySDK.initialize({
                 amount: amount,
@@ -182,40 +185,76 @@ export default {
                     if(response.status === "SUCCESS"){
                       paid = true
                       if(paid){
+                        var date = new Date()
+                          var currDate = date.toDateString()
+                          var currTime = date.toLocaleTimeString('en-US', {hour:'numeric', minute:'numeric', hour12:true})
+                          var fullDate = `${currDate} ${currTime}`
+
                         // send the order to the database
-                         const titles = []
+                         
 
                         for (const item of cart){
-                          titles.push(`food Name = ${item.title},  Big size = ${item.totalBigInOrder}, Small size = ${item.totalSmallInOrder}`)
+                          titles.push(` food Name = ${item.title},  Big size = ${item.totalBigInOrder}, Small size = ${item.totalSmallInOrder}`)
                         }
-                        console.log(titles)
+                        // console.log(titles)
                         const auth = getAuth()
                           const displayName = String(auth.currentUser.displayName)
+                          
+                          const colRef = collection(db, "Orders")
 
-                        setDoc(doc(db, 'users', displayName ), {Order: titles},{ merge:true})
+                          const dataObj= {
+                            name:displayName, 
+                            orderDate:serverTimestamp(),
+                            status:"Pending",
+                            product:titles,
+                            totalPrice:amount
+                          }
+
+                        const docRef = addDoc(colRef, dataObj ).then((docRef)=>{
+                          console.log('Document id = ', docRef.id)
+                          console.log("status = " +docRef.status)
+                        }).catch((error)=>{
+                          console.log(error)
+                        })
+
+                        
+
+                        // setDoc(doc(db, 'users', 'Orders'), {Order: titles})
 
 
                         // direct to ConfirmPayment page
                         router.push('/ConfirmPayment')
+
+
+                        titles= []
+                        console.log("titles = "+ titles.length)
+                        console.log(cart)
+
+                          
+                          setTimeout(()=>{
+                          cart=[]
+                            console.log("cart=" +cart.length)
+                           
+                          },3000)
+                        
                       }
                      
                     }else{
                       // direct to error page
                       router.push('/ErrorPayment')
-
                     }
                     
                 },
                 onClose: function(data) {
                     //Implement what should happen when the modal is closed here
                     console.log(data);
+                    
                 }
+
+
             });
-        
+            console.log("store="+this.$store.state.cart.length)
       },
-
-
-
 
 
 

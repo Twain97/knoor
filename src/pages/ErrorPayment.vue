@@ -48,6 +48,9 @@ export default {
       // router.push('/Home')
     }, 10000)
   },
+  unmounted(){
+    window.location.reload()
+  },
   data(){
     return{
       timer:10
