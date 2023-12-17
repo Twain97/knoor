@@ -68,9 +68,9 @@ export default {
     this.$store.state.totalBigPrice=0
     this.$store.state.overAllTotal=0
   },
-  // unmounted(){
-  //   window.location.reload()
-  // },
+  unmounted(){
+    window.location.reload()
+  },
   data(){
     return{
       timer:10
