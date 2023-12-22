@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-slate-100 flex flex-col py-5">
+  <div v-if="username != null" class="w-full bg-slate-100 flex flex-col py-5">
     <div class="">
       <Toast class="hidden md:block w-2/4"
         :pt="{
@@ -29,10 +29,10 @@
 
       <div class=" flex flex-col lg:w-2/3 border-2 rounded-lg shadow-lg">
         <h1 class="text-lg font-bold text-slate-800 mx-auto mt-3">Available</h1>
-        <ul class="flex flex-row flex-wrap justify-between p-1 ">
+        <ul class="flex flex-row flex-wrap justify-items-start p-1 ">
           <li v-for="item in paginatedData" :key="item.index" 
-          class="m-auto w-wd45  flex flex-col p-2 justify-center  rounded-md shadow-md space-y-3 bg-white my-3 
-          md:w-44  lg:w-52 xl:w-60">
+          class="m-auto w-wd45  flex flex-col p-2 justify-items-start  rounded-md shadow-md space-y-3 bg-white my-3 
+          md:w-44  lg:w-48 xl:w-60">
           <div class="flex flex-col ">
             <div id="prodHead" class="mb-2 flex justify-between px-1">
               <div class="w-fit font-semibold text-xs bg-orange-600 rounded-lg p-1 text-slate-800 md:font-bold">
@@ -86,10 +86,15 @@
     </div>
     
   </div>
- 
+
+
+  
+  <LoadVue v-else />
+    
 </template>
 
 <script>
+import LoadVue from "../views/Load.vue"
 import showPagination from "../views/showPagination.vue";
 import Advert from "../views/Advert.vue"
 import { useToast } from "primevue/usetoast";
@@ -99,38 +104,30 @@ import Favourite from '../pages/Favourite.vue'
 import cart from '../pages/Cart.vue'
 import CarouselPage from '../views/Carousel.vue'
 import handlePagination from "../paginnation/handlePagination";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth} from "firebase/auth";
 import {sendEmailVerification} from "firebase/auth"
 import {db} from '@/firebase/firebase.js'
-import{ doc, setDoc} from 'firebase/firestore'
+import{ doc, getDoc, setDoc} from 'firebase/firestore'
 
 export default{
-  beforeMount() {
-    const auth = getAuth();
-        onAuthStateChanged(auth, (user)=>{
-          const displayName =  user.displayName.split(' ').slice(-1)[0]
+  created(){
+    this.fetchDoc()
+  },
+  mounted() {
+    setTimeout(()=>{
+        const getUser = getAuth().currentUser.displayName
+       
+          const displayName =  getUser.split(' ').slice(-1)[0]
           this.username = String(displayName)
-          if(auth.currentUser.emailVerified ==false){
-              this.$toast.add({ severity: 'success', summary: 'Verify Email', detail: 'Please check your Email for verification', life: 6000 });
-
-              
-              sendEmailVerification(auth.currentUser)
-                .then(() => {
-                  // router.push('/Home')
-                });
-  
-        }
-          // console.log(username)
-        })
-        
-        
-            
-        
+    
+      }, 3000)
+    
   },
   components: {
     cart,
     Favourite,
     CarouselPage,
+    LoadVue,
     Advert,
     showPagination
   },
@@ -153,7 +150,41 @@ export default{
   },
 
   methods: {
-    
+    async fetchDoc(){
+    const auth = getAuth()
+    const userName = auth.currentUser.displayName 
+    const userEmail = auth.currentUser.email
+
+    // get the firestore document
+    const docSnap = await getDoc(doc(db, 'users', userName))
+
+    // check if it exists
+    if(docSnap.exists()){
+      console.log("Document Exists")
+    }
+    // if it doesnt exist create a new firestore Document
+    else{ 
+      console.log("No Such document")
+      var orderId = []
+      await setDoc(doc(db, 'users', userName ), {email : userEmail, Order:orderId}, { merge:true})
+
+    }
+
+    // get user firstName on log in
+       
+
+
+          if(auth.currentUser.emailVerified ==false){
+              this.$toast.add({ severity: 'success', summary: 'Verify Email', detail: 'Please check your Email for verification', life: 6000 });
+
+              
+              sendEmailVerification(auth.currentUser)
+                .then(() => {
+                  // router.push('/Home')
+                });
+  
+        }
+  },
     toggleShowProductPage(){
       this.$store.state.showProductPage = !this.$store.state.showProductPage
     },
@@ -173,6 +204,8 @@ export default{
     const store = useStore()
     const { data, paginatedData, perPage, currentPage, nextPage, backPage, goToPage } = handlePagination(store);
 
+
+    
 
     function addWishList(item){
 
@@ -197,7 +230,7 @@ export default{
   },
   data () {
     return {
-      username:'',
+      username:null,
       previewProduct:{},
       isAdded : false,
       ShowProd:true,

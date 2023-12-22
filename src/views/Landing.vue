@@ -186,6 +186,8 @@ import { useToast } from "primevue/usetoast";
 import { useStore } from 'vuex';
 import { ref } from 'vue';
 import {getAuth, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
+import { db } from '../firebase/firebase'
+import { setDoc, doc, getDoc, collection } from 'firebase/firestore'
 import router from '../router';
 export default {
   components: {
@@ -301,19 +303,23 @@ export default {
     }
     function googleSignIn() {
       const auth = getAuth()
+
       const provider = new GoogleAuthProvider()
+
+    
       signInWithPopup(auth, provider)
     .then((result) => {
-
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
 
     const user = result.user;
+    
+    
 
      router.push('/Home')
      return {
       token,
-      user
+      user, 
      }
     }).catch((error) => {
 
@@ -329,6 +335,7 @@ export default {
       credential
     }
     })
+    
     }
 
     return{

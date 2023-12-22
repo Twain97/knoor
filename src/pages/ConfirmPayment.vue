@@ -60,7 +60,7 @@ export default {
     setTimeout(()=>{
       router.push('/Home')
      
-    }, 10000)
+    }, 5000)
 
 
     this.$store.state.cart=[]
@@ -73,7 +73,7 @@ export default {
   },
   data(){
     return{
-      timer:10
+      timer:5
     }
   }
 }
