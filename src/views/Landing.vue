@@ -234,8 +234,6 @@ export default {
       
       function load(){
         loading.value = true;
-        setTimeout(() => {
-            loading.value = false;
             var password = document.getElementById("password")
             if(password.value != ""){
             store.dispatch('login', registerForm.value)
@@ -247,9 +245,7 @@ export default {
               vib( )
               toast.add({ severity: 'error', summary: 'Error!', detail: 'Enter password and Email', life: 3000 })
             }
-          },1200);
-      
-      
+          
     }
     
     load()
@@ -260,8 +256,6 @@ export default {
 
       function load(){
         loading.value = true;
-        setTimeout(() => {
-            loading.value = false;
             var password = document.getElementById("password")
             var password2 = document.getElementById("password2")
             
@@ -285,7 +279,6 @@ export default {
               toast.add({ severity: 'error', summary: 'Error!', detail: 'Please enter password', life: 3000 });
             }
             
-        },1200);
       };
       
 

@@ -62,7 +62,7 @@
               <p class="mx-auto text-base font-bold">Pages</p>
             </div>
             <div class="text-xs px-2 font-semibold text-slate-600 flex-grow w-full flex flex-col">
-              <router-link to="/userProfile" @click="ShowNav()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
+              <router-link to="/User" @click="ShowNav()" class=" flex-grow flex justify-between mpr-4 hover:bg-slate-100  border-b-2  border-slate-800">
                 <p class="my-auto pl-2">My Profile</p>
                 <font-awesome-icon icon="fa-solid fa-user"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>

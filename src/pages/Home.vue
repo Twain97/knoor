@@ -105,22 +105,31 @@ import cart from '../pages/Cart.vue'
 import CarouselPage from '../views/Carousel.vue'
 import handlePagination from "../paginnation/handlePagination";
 import { getAuth} from "firebase/auth";
+import {auth} from '../firebase/firebase.js'
 import {sendEmailVerification} from "firebase/auth"
 import {db} from '@/firebase/firebase.js'
 import{ doc, getDoc, setDoc} from 'firebase/firestore'
 
 export default{
-  created(){
-    this.fetchDoc()
-  },
+
   mounted() {
-    setTimeout(()=>{
-        const getUser = getAuth().currentUser.displayName
-       
-          const displayName =  getUser.split(' ').slice(-1)[0]
+    auth.onAuthStateChanged((user)=>{
+      if(user){
+        const getUser = user.displayName
+        const displayName =  getUser.split(' ').slice(-1)[0]
           this.username = String(displayName)
-    
-      }, 3000)
+
+
+          // fetch document of the user
+          this.fetchDoc()
+
+    }
+    })
+    setTimeout(()=>{
+      if(this.username == null){
+        this.$toast.add({ severity: 'warn', summary: 'Error!', detail: 'Network Timeout! please reload ', life: 3000 })
+      }
+    }, 10000)
     
   },
   components: {
@@ -150,40 +159,48 @@ export default{
   },
 
   methods: {
-    async fetchDoc(){
-    const auth = getAuth()
-    const userName = auth.currentUser.displayName 
-    const userEmail = auth.currentUser.email
-
-    // get the firestore document
-    const docSnap = await getDoc(doc(db, 'users', userName))
-
-    // check if it exists
-    if(docSnap.exists()){
-      console.log("Document Exists")
-    }
-    // if it doesnt exist create a new firestore Document
-    else{ 
-      console.log("No Such document")
-      var orderId = []
-      await setDoc(doc(db, 'users', userName ), {email : userEmail, Order:orderId}, { merge:true})
-
-    }
-
-    // get user firstName on log in
+    // fetchUsername(){
+    //     const getUser = getAuth().currentUser.displayName
        
+    //       const displayName =  getUser.split(' ').slice(-1)[0]
+    //       this.username = String(displayName)
+    
+    //   },
+    async fetchDoc(){
+      const auth = getAuth()
+      const userName = auth.currentUser.displayName 
+      const userEmail = auth.currentUser.email
+
+      // get the firestore document
+      const docSnap = await getDoc(doc(db, 'users', userName))
+
+      // check if it exists
+      if(docSnap.exists()){
+        console.log("Document Exists")
+      }
+      // if it doesnt exist create a new firestore Document
+      else{ 
+        console.log("No Such document")
+        var orderId = []
+        await setDoc(doc(db, 'users', userName ), {email : userEmail, Order:orderId}, { merge:true})
+
+      }
+
+      // get user firstName on log in
+        
 
 
-          if(auth.currentUser.emailVerified ==false){
-              this.$toast.add({ severity: 'success', summary: 'Verify Email', detail: 'Please check your Email for verification', life: 6000 });
+            if(auth.currentUser.emailVerified ==false){
+                this.$toast.add({ severity: 'success', summary: 'Verify Email', detail: 'Please check your Email for verification', life: 6000 });
 
-              
-              sendEmailVerification(auth.currentUser)
-                .then(() => {
-                  // router.push('/Home')
-                });
-  
-        }
+                
+                sendEmailVerification(auth.currentUser)
+                  .then(() => {
+                    // router.push('/Home')
+                  });
+    
+          }
+
   },
     toggleShowProductPage(){
       this.$store.state.showProductPage = !this.$store.state.showProductPage

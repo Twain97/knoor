@@ -3,7 +3,7 @@ import Faq from '../pages/Faq.vue'
 import About from '../pages/About.vue'
 import Deals from '../pages/Deals.vue'
 import Load from '../views/Load.vue'
-import userProfile from '../pages/UserProfile.vue'
+import User from '../pages/User.vue'
 import TrackOrder from '../pages/TrackOrder.vue'
 import searchError from '../pages/searchError.vue'
 import ResetPassword from '../pages/ResetPassword.vue'
@@ -78,10 +78,10 @@ const router = createRouter({
       component: Deals
     },
     {
-      path: '/userProfile',
-      name: 'userProfile',
+      path: '/User',
+      name: 'User',
       meta:{ requiresAuth : true },
-      component: userProfile
+      component: User
     },
     {
       path: '/product',
@@ -166,7 +166,7 @@ auth.onAuthStateChanged((user)=>{
     if(to.path ==  '/cart' && !auth.currentUser){
       return router.push('/')
     }
-    if(to.path == '/userProfile' && !auth.currentUser){
+    if(to.path == '/User' && !auth.currentUser){
       return router.push('/')
     }
     if(to.path == '/wishList' && !auth.currentUser){

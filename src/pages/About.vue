@@ -1,7 +1,7 @@
 <template>
     <div class="w-full bg-slate-100 flex">
         <div class="w-full mx-1 pb-4 flex flex-col my-4 bg-white f text-xs md:mx-auto md:w-3/5 lg:w-2/4 md:text-base">
-            <div id="picBg" class="h-36 mb-10 flex border-2 relative border-blue-500 md:h-44">
+            <div id="picBg" class="h-36 mb-10 flex relative md:h-44">
                 <div id="picHolder" class="rounded-full overflow-hidden h-28 mt-16  w-28 md:mt-20 md:h-32 md:w-32 lg:w-32 lg:h-32 border-8 border-slate-50 shadow-gray-100 shadow-xl mx-auto">
                     <img :src="lady" alt=""  class="w-full h-full mt-1">
 

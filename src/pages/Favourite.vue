@@ -35,7 +35,7 @@
     
   </div>
   <div v-else class="w-full h-96 flex text-slate-800">
-      <div class="m-auto text-lg font-bold">
+      <div class="m-auto text-lg font-bold text-center">
         <h2>{{ itemExist }}</h2>
       </div>
     </div>
