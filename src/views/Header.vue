@@ -6,8 +6,9 @@
       <div class="lg:hidden w-11/12 m-auto ">
         <div class=" flex flex-col overflow-hidden align-middle justify-between ">
           <div class="justify-between mx-auto flex flex-row w-full">
-          
-            <img :src="logo" alt="Logo" class="mt-0 w-24 h-12 md:w-36 md:h-20 drop-shadow-xl">
+            <router-link to="/Home">
+              <img :src="logo" alt="Logo" class="mt-0 w-24 h-12 md:w-36 md:h-20 drop-shadow-xl">
+            </router-link>
             <div v-if="this.$store.state.user" class="my-auto">
               <div v-if="showSearchToggle" @click="searchToggle()" class="my-auto transition-all cursor-pointer rounded-full bg-gray-100 hover:bg-slate-800 hover:text-slate-100 flex">
                 <font-awesome-icon icon="fa-solid fa-search" size="xs"  class="rounded-full m-auto p-2 " />
@@ -44,11 +45,9 @@
       <div class="hidden lg:flex lg:flex-col lg:w-full ">
         <div class="w-11/12  m-auto flex flex-row justify-between space-x-2">
           <div class="lg:flex  lg:-mt-1 lg:space-x-8">
-            <img :src="logo" alt="Logo" class=" mt-1 lg:w-48 lg:h-24 ">
-            <!-- <div class="flex flex-row lg:justify-evenly  ">
-              <font-awesome-icon icon="fa-solid fa-user" size="xl" style="color: #333366;" class="my-auto" />
-              <p class="my-auto text-slate-900 pl-1 text-md font-bold">User</p>
-            </div> -->
+            <router-link to="/Home">
+              <img :src="logo" alt="Logo" class=" mt-1 lg:w-48 lg:h-24 ">
+            </router-link>
           </div>
           <div v-if="this.$store.state.user" class="lg:my-auto w-80 lg:w-96 px-2 rounded-md bg-gray-100 lg:outline-none hover:border-4 hover:border-slate-800">
             <form class="flex flex-row h-12 text-sm font-bold text-slate-800 " @submit.prevent="search()">

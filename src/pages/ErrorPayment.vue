@@ -36,16 +36,12 @@ import router from '../router/index.js'
 export default {
  
   mounted () {
-    // const date =  new Date()
-
-    // const time = date.toLocaleTimeString()
-
     setInterval(()=>{
       this.timer = this.timer - 1
-    }, 1000)
+    }, 1100)
 
     setTimeout(()=>{
-      // router.push('/Home')
+      router.push('/Home')
     }, 10000)
   },
   unmounted(){
@@ -60,15 +56,6 @@ export default {
 </script>
 
 <style scoped>
-
-/* // Colors
-#7ac142: #7ac142;
-#fff: #fff;
-
-// Misc
-cubic-bezier(0.650, 0.000, 0.450, 1.000): cubic-bezier(0.650, 0.000, 0.450, 1.000); */
-
-
 .checkmark {
   width: 56px;
   height: 56px;

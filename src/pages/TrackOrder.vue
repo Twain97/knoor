@@ -111,17 +111,18 @@
               const docSnap = await getDoc(doc(db, "users", user))
             
               if (docSnap.exists) {
-                  this.Orders = docSnap.data().Order
-                this.OrderId = docSnap.data().Order[0]  //get the ID of the last order
+                  const initOrder = docSnap.data().Order
+                  this.Orders = initOrder.reverse()
+                this.OrderId = this.Orders[0]  //get the ID of the last order
 
                 // fetch the details of the last order by using its id
-                const OrderSnap = await getDoc(doc(db, "Orders", docSnap.data().Order[0]))
+                const OrderSnap = await getDoc(doc(db, "Orders", this.OrderId))
                 if (OrderSnap.exists){
                     this.totalItemsOrders = OrderSnap.data().product.length
                     this.OrderStatus = OrderSnap.data().status
                     console.log(this.OrderStatus)
                     this.OrderDate = `
-                        ${OrderSnap.data().orderDate.toDate().getDate()+1}/
+                        ${OrderSnap.data().orderDate.toDate().getDate()}/
                         ${OrderSnap.data().orderDate.toDate().getMonth()+1}/
                         ${OrderSnap.data().orderDate.toDate().getFullYear()}`
 
@@ -156,29 +157,35 @@
                     this.totalItemsOrders = orderSnap.data().product.length
                     this.OrderStatus = orderSnap.data().status
                     this.OrderDate = `
-                        ${orderSnap.data().orderDate.toDate().getDate()+1}/
+                        ${orderSnap.data().orderDate.toDate().getDate()}/
                         ${orderSnap.data().orderDate.toDate().getMonth()+1}/
                         ${orderSnap.data().orderDate.toDate().getFullYear()}`
 
                       console.log(orderSnap.data().status)
-                        if (orderSnap.data().status == "Pending") {
+                      
                             if(this.OrderStatus == "Pending"){
                                 this.active = 1
+                                this.searchIcon = !this.searchIcon
                             }
                             else if(this.OrderStatus == "Sent"){
                                 this.active = 2
+                                this.searchIcon = !this.searchIcon
                             }
                             else if(this.OrderStatus == "Delivered"){
                                 this.active = 3
+                                this.searchIcon = !this.searchIcon
                             }else{
                                 this.active = 0
-
+                                this.searchIcon = !this.searchIcon
                             }
-                        }
-                      this.searchIcon = !this.searchIcon
+                        
+                      
                   }
                   else{
+                    this.searchIcon = !this.searchIcon
                       console.log("Snap! Unable to fetch order id")
+                      this.$toast.add({ severity: 'error', summary: 'Erroe', detail: 'Snap! Unable to fetch Order ID', life: 3000 });
+
                   }
               }
               else{

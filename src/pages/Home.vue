@@ -43,11 +43,13 @@
                 <font-awesome-icon icon="fa-solid fa-heart" class=" text-slate-700 drop-shadow-sm hover:text-xl transition-all" />
               </div>
             </div>
-            <div id="pic" @click="(toggleShowProductPage(), insertProduct(item))">
+            <div id="pic" class="h-28 md:h-fit xl:h-fit xl:w-fit " @click="(toggleShowProductPage(), insertProduct(item))">
               <img :src="item.pic" alt="" class="h-full w-full md:h-36 xl:w-80 xl:h-40">
             </div>
           </div>
           <hr class="w-11/12 mx-auto border-2">
+          <h1 class="font-semibold text-sm md:font-bold md:text-base m-auto text-center">{{ item.title }}</h1>
+
           <div id="rating" class="mx-auto flex">
               <Rating v-model="item.rating" :cancel="false" :pt="{
                 onIcon: { class: 'h-3 text-orange-600'},
@@ -58,7 +60,6 @@
               <p class="m-auto pl-0 text-sm">({{item.rating }})</p>
             
           </div>
-          <h1 class="font-bold text-xs md:text-base m-auto">{{ item.title }}</h1>
           <h6 class=" font-bold text-xs md:text-sm text-green-700 m-auto">
             
             <span class="line-through text-red-500">#{{ item.smallOldPrice }}</span> 

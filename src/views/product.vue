@@ -229,10 +229,18 @@ export default{
           }
         }else{
           this.$toast.add({ severity: 'error', summary: 'Empty', detail: 'Enter the Quantity!', life: 3000 });
+          function vib( ){
+                navigator.vibrate([100, 50,]);
+              };
+              vib( )
         }
       }
       else{
         this.$toast.add({ severity: 'error', summary: 'Empty', detail: 'Enter the Quantity!', life: 3000 });
+        function vib( ){
+                navigator.vibrate([100, 50,]);
+              };
+              vib( )
       }
 
       // console.log(this.$store.state.totalSmallPrice)
@@ -240,7 +248,10 @@ export default{
     addToFav(){
       if(this.$store.state.wishList.includes(this.product)){
         this.$toast.add({ severity: 'warn', summary: 'Error', detail:'Already in wishlist!', life: 3000 });
-
+        function vib( ){
+                navigator.vibrate([100, 50,]);
+        };
+        vib( )
       }
       else{
         var item = this.$store.state.product

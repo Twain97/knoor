@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- large view  -->
     <div class="hidden md:flex ">
       <carousel class=" rounded-lg mx-auto w-full md:h-5/6 overflow-hidden " :items-to-show="2.5" :autoplay="2500" :wrap-around="true" :show-arrows="false">
         <slide class="h-fit" v-for="slide in dishes" :key="slide">
@@ -8,9 +9,9 @@
         </slide>
       </carousel>
     </div>
-    
+    <!-- small view -->
     <div class="md:hidden">
-      <carousel class="h-fit rounded-lg mx-auto  w-full md:h-5/6 overflow-hidden transition-all" :items-to-show="1.5" :autoplay="3000" :wrap-around="true" :show-arrows="false">
+      <carousel class="h-fit rounded-lg mx-auto  w-full md:h-5/6 overflow-hidden transition-all" :items-to-show="1.8" :autoplay="3000" :wrap-around="true" :show-arrows="false">
         <slide class="h-20 -mt-10" v-for="slide in dishes" :key="slide">
           <img class="w-32 h-16 ml-5 rounded-lg shadow-md"  
           :src="slide" alt="">

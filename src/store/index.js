@@ -45,7 +45,7 @@ const store = createStore({
                 rating:4,
             },
             {   
-                pic:dish3, title:"SPECIAL NOODLE/SPAG WITH VEG", inCart:0, 
+                pic:dish3, title:"SPECIAL SPAG WITH VEG", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
                 foodType:"rice",
@@ -53,6 +53,16 @@ const store = createStore({
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
                 rating:1,
+            },
+            {   
+                pic:dish4, title:"SPECIAL NOODLES WITH VEG", inCart:0, 
+                smallOldPrice:"4000",smallNewPrice:"3000",
+                bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"soup",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:3,
             },
             {   
                 pic:dish4, title:"CHICKEN", inCart:0, 
