@@ -58,7 +58,6 @@
                 root:{ class:'ml-4 w-full'}
                 }" />
               <p class="m-auto pl-0 text-sm">({{item.rating }})</p>
-            
           </div>
           <h6 class=" font-bold text-xs md:text-sm text-green-700 m-auto">
             
