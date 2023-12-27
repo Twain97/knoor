@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="absolute w-full h-full bg-slate-800 opacity-40">
+    <div class="absolute w-full h-100vh bg-slate-800 opacity-40">
       
     </div>
     <div class="">
@@ -243,6 +243,7 @@ export default {
                 navigator.vibrate([100, 50,]);
               };
               vib( )
+              loading.value = false;
               toast.add({ severity: 'error', summary: 'Error!', detail: 'Enter password and Email', life: 3000 })
             }
           
@@ -276,6 +277,7 @@ export default {
                 navigator.vibrate([100, 50,]);
               };
               vib( )
+              loading.value = false;
               toast.add({ severity: 'error', summary: 'Error!', detail: 'Please enter password', life: 3000 });
             }
             
