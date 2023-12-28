@@ -1,19 +1,19 @@
 <template>
     <div class="flex flex-col pb-4 px-2 bg-slate-100">
 
-      <div v-if="Orders != null" class=" m-auto lg:w-9/12 xl:w-2/4 ">
+      <div v-if="Orders != null" class="w-full px-2  m-auto md:w-2/3 lg:w-9/12 xl:w-2/4 ">
           <div class="flex flex-col bg-white text-center py-1 mb-3 md:py-4 md:mb-10 mx-4 rounded-lg shadow-md mt-2">
               <h2 class="text-sm md:text-lg font-bold">Track Order</h2>
 
           </div>
-          <div class="flex flex-col  md:flex-row-reverse justify-between pr-2 mt-5 md:w-5/6 md:m-auto">
+          <div class="flex flex-col  md:flex-row-reverse justify-between pr-2 mt-5 md:w-full md:m-auto">
               <p class=" my-auto text-right text-xs md:text-base pb-1 pr-2">Copy/paste ID here</p>
   
               <div class="p-float-label p-input-icon-right mx-auto md:mx-0 w-11/12 h-fit md:w-3/5 md:text-base ">
-                  <i v-if="searchIcon" class="pi pi-search -mt-2 -mr-2  md:mr-2 cursor-pointer" @click="fetchOrderId()"/>
-                  <i v-else class="pi pi-spin pi-spinner -mt-2 -mr-2 md:mr-2"/>
+                  <i v-if="searchIcon" class="pi pi-search -mt-2 -mr-1  md:mr-2 cursor-pointer" @click="fetchOrderId()"/>
+                  <i v-else class="pi pi-spin pi-spinner -mt-2 -mr-1 md:mr-2"/>
   
-                  <InputText id="username" v-model.lazy.trim="value" class="h-8 w-full text-xs indent-2 shadow-md md:text-base md:h-14 " />
+                  <InputText id="username" v-model.lazy.trim="value" class="h-8 w-full text-xs indent-2 shadow-md md:text-base md:h-12 " />
                   <label for="username" class="-mt-2 text-xs md:text-base h-6">Order ID</label>
               </div>
           </div>
