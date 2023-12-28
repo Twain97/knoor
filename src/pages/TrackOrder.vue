@@ -2,6 +2,7 @@
     <div class="flex flex-col pb-4 px-2 bg-slate-100">
 
       <div v-if="Orders != null" class="w-full px-2  m-auto md:w-2/3 lg:w-9/12 xl:w-2/4 ">
+        <div v-if="Orders.length > 0">
           <div class="flex flex-col bg-white text-center py-1 mb-3 md:py-4 md:mb-10 mx-4 rounded-lg shadow-md mt-2">
               <h2 class="text-sm md:text-lg font-bold">Track Order</h2>
 
@@ -36,9 +37,8 @@
                 <el-step title="Delivered"  />
             </el-steps>
             </div>
-            
-
-          </div>
+        </div>
+          
           <div class="flex flex-col h-fit w-full rounded-xl  bg-white px-2 py-2  -mt-20 shadow-md">
             <h2 class="m-auto text-base text-center font-semibold ">All Orders</h2>  
             <div class="mx-auto flex h-72 overflow-y-scroll w-full">
@@ -50,7 +50,15 @@
                   </li>
               </ul>
           </div>
+
+          
           </div>
+        </div>
+        <div v-else class="w-full h-96 flex text-slate-800">
+          <div class="m-auto text-lg font-bold">
+            <h2>{{ itemExist }}</h2>
+          </div>
+        </div>    
           
       </div>
       
@@ -74,6 +82,13 @@
   import { getAuth } from 'firebase/auth';
   
   export default {
+    computed: {
+        itemExist(){
+          if(this.Orders.length==0){
+            return "Oops! Order is currently Empty!"
+          }
+        }
+    },
       components: {
           LoadVue,
           ElButton, 
