@@ -48,8 +48,8 @@
               <h4 class="text-slate-800 font-bold text-xs text-center ">Enter your email and password to login.</h4>
               
               <form name="emailAndPassword" @submit.prevent="login()"
-              class="flex flex-col space-y-3 pt-3 border-2 border-blue-600">
-                <div class="flex flex-col space-y-3 lg:space-y-5 text-xs md:text-sm border-2 border-red-600" >
+              class="flex flex-col space-y-3 pt-3">
+                <div class="flex flex-col space-y-3 lg:space-y-5 text-xs md:text-sm" >
                   <input name="Email" type="email" v-model.trim.lazy="registerForm.email" placeholder="Email"
                   class="bg-inherit m-auto py-2 w-11/12 md:w-full lg:w-3/4 lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
                   <div class="bg-inherit m-auto  w-11/12 md:m-auto md:w-full lg:w-3/4 lg:m-auto border-b-2 flex border-slate-400">

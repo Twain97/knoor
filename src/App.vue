@@ -96,7 +96,7 @@
                 <font-awesome-icon icon="fa-solid fa-right-from-bracket"  size="lg"  class="my-auto pr-2 rounded-full" />
               </router-link>
             </div>
-            <div class="pt-3 mx-auto pl-4 pr-4 w-11/12 text-center text-xs font-thin space-y-1 mb-10">
+            <div class="pt-3 mx-auto pl-4 pr-4 w-11/12 text-center text-xs font-semibold space-y-1 mb-10">
               <h3>Designed and developed by <a href="#" class="text-blue-800"> Akinpelumi Taiwo</a></h3>
             </div>
           
