@@ -48,7 +48,7 @@
             </div>
           </div>
           <hr class="w-11/12 mx-auto border-2">
-          <h1 class="font-semibold text-sm md:font-bold md:text-base m-auto text-center">{{ item.title }}</h1>
+          <h1 class="font-semibold flex-grow  text-sm md:font-bold md:text-base m-auto text-center">{{ item.title }}</h1>
 
           <div id="rating" class="mx-auto flex">
               <Rating v-model="item.rating" :cancel="false" :pt="{
@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import LoadVue from "../views/Load.vue"
+import LoadVue from "../views/Load2.vue"
 import showPagination from "../views/showPagination.vue";
 import Advert from "../views/Advert.vue"
 import { useToast } from "primevue/usetoast";

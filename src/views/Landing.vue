@@ -96,7 +96,7 @@
                     <!-- End of log in -->
 
                     <!-- Siging up -->
-        <div v-else class="flex z-50 md:py-0 md:-mt-1 w-full h-full ">
+        <div v-else class="flex z-50 mt-4 md:py-0 md:-mt-1 w-full h-full ">
           <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
 

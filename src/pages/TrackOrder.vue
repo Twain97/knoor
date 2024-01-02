@@ -21,7 +21,7 @@
 
           <div class="mt-3">
             <h2 class="text-sm text-center md:text-lg font-bold">{{ orderTitle }}</h2>
-            <div class="flex flex-col pt-6 pb-24 bg-orange-300  rounded-lg text-slate-800 md:px-10">
+            <div class="flex flex-col pt-6 pb-28 px-4 bg-orange-300  rounded-lg text-slate-800 md:px-10">
                 <div class="text-sm md:text-base font-semibold m-auto">Order ID:</div>
     
                 <h2 class="text-lg font-bold text-center">{{ OrderId }}</h2>
@@ -31,11 +31,15 @@
                         <span class="text-xs font-semibold text-center md:text-base">Status:<br class="md:hidden"> {{ OrderStatus }}</span>
 
                     </p>
-                <el-steps align-center class="text-slate-100" :active="active" finish-status="success">
-                <el-step  title="Pending" />
-                <el-step title="sent" />
-                <el-step title="Delivered"  />
-            </el-steps>
+
+                <div class=" flex p-2 m-auto bg-white rounded-lg shadow-md w-full">
+                  <el-steps align-center class="text-slate-100 m-auto w-full" :active="active" finish-status="success">
+                      <el-step  title="Pending" />
+                      <el-step title="sent" />
+                      <el-step title="Delivered"  />
+                  </el-steps>
+                </div>
+                
             </div>
         </div>
           
@@ -65,7 +69,7 @@
       
   
   
-      <LoadVue v-else />
+      <Load v-else />
       
       
     </div>
@@ -75,7 +79,7 @@
     import { ElButton } from 'element-plus'
     // import { Edit, Picture, UploadFilled } from '@element-plus/icons-vue'
   import router from "../router/index.js"
-   import LoadVue from '../views/Load.vue'
+   import Load from '../views/LoadTrack.vue'
    import {auth} from '../firebase/firebase.js'
   import { db } from '../firebase/firebase';
   import { getDoc, doc } from 'firebase/firestore';
@@ -90,7 +94,7 @@
         }
     },
       components: {
-          LoadVue,
+          Load,
           ElButton, 
       },
       mounted() {

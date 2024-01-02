@@ -12,7 +12,6 @@
           <div class="absolute right-1 -top-2" @click="remove(items, index)">
             <font-awesome-icon icon="fa-regular fa-trash-can"  style="color: #333366;" class="md:hidden m-auto rounded-full cursor-pointer" />
             <font-awesome-icon icon="fa-regular fa-trash-can"  size="lg" style="color: #333366;" class="hidden md:block m-auto rounded-full cursor-pointer" />
-
           </div>
 
           <div class=" flex flex-row justify-between py-1 w-full h-fit" @click="(toggleShowProductPage(), insertProduct(items))">

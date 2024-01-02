@@ -8,12 +8,25 @@ import { db } from "../firebase/firebase";
 import { setDoc, doc } from "firebase/firestore";
 import router from "../router/index"
 
+import Dish1 from "../images/dishes/Dish1.jpg"
+import Dish2 from "../images/dishes/Dish2.jpg"
 
-import dish1 from "../images/dishes/dish1.jpg"
-import dish2 from "../images/dishes/dish2.jpg"
-import dish3 from "../images/dishes/dish3.jpg"
-import dish4 from "../images/dishes/dish4.jpg"
-import dish5 from "../images/dishes/dish5.jpg"
+import Basmati from "../images/dishes/Basmatti jollof.jpg"
+import Egusi from "../images/dishes/Egusi.jpg"
+import Fish from "../images/dishes/Fish.jpg"
+import FriedRice from "../images/dishes/Fried Rice.jpg"
+import Moinmoin from "../images/dishes/Moinmoin.jpg"
+import Noodles from "../images/dishes/Noodles.jpg"
+import NormalJollof from "../images/dishes/Normal jollof.jpg"
+import NormalStew from "../images/dishes/Normal Stew.jpg"
+import NormalWhiteRice from "../images/dishes/Normal White rice.jpg"
+import OfadaRice from "../images/dishes/Ofada rice.jpg"
+import OfadaStew from "../images/dishes/Ofada stew.jpg"
+import Ogbono from "../images/dishes/Ogbono2.jpg"
+import Porridge from "../images/dishes/Porridge.webp"
+import Salad from "../images/dishes/Salad.jpg"
+import Spag from "../images/dishes/Spag.jpg"
+import Vegetable from "../images/dishes/Vegetable.jpg"
 
 
 
@@ -25,17 +38,17 @@ const store = createStore({
         complaint:'',
         items:[
             {
-                pic:dish1, title:"BASMATI JOLLOF RICE", inCart:0,
-                smallOldPrice:"4000",smallNewPrice:"3000",
+                pic:Basmati, title:"BASMATI JOLLOF RICE", inCart:0,
+                smallOldPrice:"4000",smallNewPrice:"3500",
                 foodType:"rice",
-                bigOldPrice:"8000", bigNewPrice:"6000",
+                bigOldPrice:"8000", bigNewPrice:"7000",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
                 rating:2,
             },
             {
-                pic:dish2, title:"NORMAL JOLLOF RICE", inCart:0, 
+                pic:NormalJollof, title:"NORMAL JOLLOF RICE", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 foodType:"rice",
                 bigOldPrice:"8000", bigNewPrice:"6000",
@@ -44,78 +57,71 @@ const store = createStore({
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
                 rating:4,
             },
-            {   
-                pic:dish3, title:"SPECIAL SPAG WITH VEG", inCart:0, 
+            {
+                pic:NormalWhiteRice, title:"NORMAL WHITE RICE", inCart:0, 
+                smallOldPrice:"3000",smallNewPrice:"2000",
+                foodType:"rice",
+                bigOldPrice:"6000", bigNewPrice:"4000",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:4,
+            },
+             {   
+                pic:Spag, title:"SPECIAL SPAG WITH VEG", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
-                foodType:"rice",
+                foodType:"spag",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
                 rating:1,
             },
             {   
-                pic:dish4, title:"SPECIAL NOODLES WITH VEG", inCart:0, 
-                smallOldPrice:"4000",smallNewPrice:"3000",
-                bigOldPrice:"8000", bigNewPrice:"6000",
-                foodType:"soup",
+                pic:Noodles, title:"SPECIAL NOODLES WITH VEG", inCart:0, 
+                smallOldPrice:"3500",smallNewPrice:"3200",
+                bigOldPrice:"7000", bigNewPrice:"6400",
+                foodType:"noodles",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
                 rating:3,
-            },
-            {   
-                pic:dish4, title:"CHICKEN", inCart:0, 
-                smallOldPrice:"4000",smallNewPrice:"3000",
-                bigOldPrice:"8000", bigNewPrice:"6000",
-                foodType:"soup",
-                totalSmallInOrder:0,
-                totalBigInOrder:0,
-                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
-                rating:3,
-            },
-            {   
-                pic:dish5, title:"BEEF", inCart:0, 
-                smallOldPrice:"4000",smallNewPrice:"3000",
-                bigOldPrice:"8000", bigNewPrice:"6000",
-                foodType:"soup",
-                totalSmallInOrder:0,
-                totalBigInOrder:0,
-                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
-                rating:5,
-            },
-            {
-                pic:dish1, title:"MOIN MOIN: PLAIN 200", inCart:0,
-                smallOldPrice:"4000",smallNewPrice:"3000",
-                bigOldPrice:"8000", bigNewPrice:"6000",
-                foodType:"beans",
-                totalSmallInOrder:0,
-                totalBigInOrder:0,
-                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
-                rating:2,
             },
             { 
-                pic:dish2, title:"MOIN MOIN: FISH & EGG 300", inCart:0, 
-                smallOldPrice:"4000",smallNewPrice:"3000",
-                bigOldPrice:"8000", bigNewPrice:"6000",
+                pic:Moinmoin, title:"MOIN MOIN: FISH & EGG 300", inCart:0, 
+                smallOldPrice:"2500",smallNewPrice:"2200",
+                bigOldPrice:"5000", bigNewPrice:"4400",
                 foodType:"beans",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
                 rating:4,
             },
-            {   
-                pic:dish3, title:"SALAD", inCart:0, 
-                smallOldPrice:"4000",smallNewPrice:"3000",
-                bigOldPrice:"8000", bigNewPrice:"6000",
-                foodType:"soup",
+            {
+                pic:Moinmoin, title:"MOIN MOIN: PLAIN 200", inCart:0,
+                smallOldPrice:"2000",smallNewPrice:"1500",
+                bigOldPrice:"4000", bigNewPrice:"3000",
+                foodType:"beans",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
-                rating:1,
+                rating:2,
             },
             {   
-                pic:dish4, title:"OGBONO", inCart:0, 
+                pic:FriedRice, title:"Fried Rice", inCart:0, 
+                smallOldPrice:"4500",smallNewPrice:"4000",
+                bigOldPrice:"9000", bigNewPrice:"8000",
+                foodType:"rice",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:5,
+            },
+           
+            
+            
+            {   
+                pic:Dish1, title:"CHICKEN", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
                 foodType:"soup",
@@ -125,7 +131,7 @@ const store = createStore({
                 rating:3,
             },
             {   
-                pic:dish5, title:"EFO EGUSI", inCart:0, 
+                pic:Dish2, title:"BEEF", inCart:0, 
                 smallOldPrice:"4000",smallNewPrice:"3000",
                 bigOldPrice:"8000", bigNewPrice:"6000",
                 foodType:"soup",
@@ -134,50 +140,114 @@ const store = createStore({
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
                 rating:5,
             },
-            {
-                pic:dish1, title:"EDIKAIKONG", inCart:0,
-                smallOldPrice:"4000",smallNewPrice:"3000",
-                bigOldPrice:"8000", bigNewPrice:"6000",
+            {   
+                pic:NormalStew, title:"NORMAL STEW", inCart:0, 
+                smallOldPrice:"2700",smallNewPrice:"2500",
+                bigOldPrice:"5400", bigNewPrice:"5000",
                 foodType:"soup",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
-                rating:2,
+                rating:5,
             },
-            {
-                pic:dish2, title:"EWEDU", inCart:0, 
-                smallOldPrice:"4000",smallNewPrice:"3000",
-                bigOldPrice:"8000", bigNewPrice:"6000",
+            {   
+                pic:Vegetable, title:"VEGETABLE SOUP", inCart:0, 
+                smallOldPrice:"2700",smallNewPrice:"2500",
+                bigOldPrice:"5400", bigNewPrice:"5000",
                 foodType:"soup",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:5,
+            },
+            {   
+                pic:Fish, title:"FISH", inCart:0, 
+                smallOldPrice:"2500",smallNewPrice:"2000",
+                bigOldPrice:"5000", bigNewPrice:"4000",
+                foodType:"soup",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:5,
+            },
+           
+           
+            { 
+                pic:Porridge, title:"PORRIDGE", inCart:0, 
+                smallOldPrice:"4000",smallNewPrice:"3000",
+                bigOldPrice:"6000", bigNewPrice:"5500",
+                foodType:"porridge",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
                 rating:4,
             },
             {   
-                pic:dish3, title:"OFADA STEW", inCart:0, 
-                smallOldPrice:"4000",smallNewPrice:"3000",
-                bigOldPrice:"8000", bigNewPrice:"6000",
-                foodType:"soup",
+                pic:Salad, title:"SALAD", inCart:0, 
+                smallOldPrice:"3000",smallNewPrice:"2500",
+                bigOldPrice:"6000", bigNewPrice:"5000",
+                foodType:"salad",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
                 rating:1,
             },
             {   
-                pic:dish4, title:"ASARO", inCart:0, 
-                smallOldPrice:"4000",smallNewPrice:"3000",
-                bigOldPrice:"8000", bigNewPrice:"6000",
-                foodType:"yam",
+                pic:Ogbono, title:"OGBONO", inCart:0, 
+                smallOldPrice:"4000",smallNewPrice:"3500",
+                bigOldPrice:"8000", bigNewPrice:"7000",
+                foodType:"soup",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,
                 details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
-                rating:3,
+                rating:5,
             },
             {   
-                pic:dish5, title:"EFO RIRO", inCart:0, 
-                smallOldPrice:"4000",smallNewPrice:"3000",
+                pic:Egusi, title:"EGUSI", inCart:0, 
+                smallOldPrice:"3000",smallNewPrice:"2500",
                 bigOldPrice:"8000", bigNewPrice:"6000",
+                foodType:"soup",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:5,
+            },
+            {
+                pic:Vegetable, title:"EDIKAIKONG", inCart:0,
+                smallOldPrice:"4000",smallNewPrice:"3200",
+                bigOldPrice:"8000", bigNewPrice:"6400",
+                foodType:"soup",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:2,
+            },
+           
+            {   
+                pic:OfadaRice, title:"OFADA RICE", inCart:0, 
+                smallOldPrice:"2500",smallNewPrice:"2000",
+                bigOldPrice:"5000", bigNewPrice:"4000",
+                foodType:"rice",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:1,
+            },
+             {   
+                pic:OfadaStew, title:"OFADA STEW", inCart:0, 
+                smallOldPrice:"2200",smallNewPrice:"2000",
+                bigOldPrice:"4400", bigNewPrice:"4000",
+                foodType:"soup",
+                totalSmallInOrder:0,
+                totalBigInOrder:0,
+                details:"Lorem ipsum dolor sit amet consectetur adipisicing elit facere harum natus amet soluta fuga consectetur alias veritatis quisquam ab eligendi itaque eos maiores",
+                rating:1,
+            },
+           
+            {   
+                pic:Vegetable, title:"EFO RIRO", inCart:0, 
+                smallOldPrice:"25000",smallNewPrice:"1800",
+                bigOldPrice:"5000", bigNewPrice:"3600",
                 foodType:"soup",
                 totalSmallInOrder:0,
                 totalBigInOrder:0,

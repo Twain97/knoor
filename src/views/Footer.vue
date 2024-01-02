@@ -27,7 +27,7 @@
                 </div>
                 <div>
                     <h1 class="font-bold text-xs md:text-base text-slate-800">Free Home Delivery</h1>
-                     <p class="text-xs md:text-base">Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                     <p class="text-xs md:text-base">We're passionate about making your home delivery experience a joyride. If you have any questions or feedback, please don't hesitate to reach out. We're always happy to help!</p>
                 </div>
             </div>
             <div class=" w-60 flex space-x-2">
@@ -39,7 +39,7 @@
                 </div>
                 <div>
                     <h1 class="font-bold text-xs md:text-base text-slate-800">Instant Return Policy</h1>
-                     <p class="text-xs md:text-base">Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                     <p class="text-xs md:text-base">Most unopened and unspoiled food items can be returned or exchanged within 24hrs of delivery. Think of it as a safety net for that extra box of food you weren't quite sure about.</p>
                 </div>
             </div>
             <div class=" w-60 flex space-x-2">
@@ -52,7 +52,7 @@
                 </div>
                 <div >
                     <h1 class="font-bold text-xs md:text-base text-slate-800">Quick Support System</h1>
-                    <p class="text-xs md:text-base">Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                    <p class="text-xs md:text-base">Not sure of what to order? Check out our daily deals to get what special delicacy we have for you, you will definitely love it.</p>
                 </div>
             </div>
             <div class=" w-60 flex space-x-2">
@@ -64,7 +64,7 @@
                 </div>
                 <div>
                     <h1 class="font-bold text-xs md:text-base text-slate-800">Secure Payment Way</h1>
-                     <p class="text-xs md:text-base">Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                     <p class="text-xs md:text-base">Our payment gateway is the safest and secure. The system automaically generate a special payment ID with which you can track your payment.</p>
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
                     <img :src="logo" alt="Logo" class=" -mt-6 w-40 md:w-60 md:h-44 drop-shadow-xl shadow-black">
                 </div>
                 <div class="mt-4">
-                    <p class="-mt-8 text-xs md:text-sm text-center ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, quo dolorem! Deleniti culpa modi itaque earum perspiciatis, quas, suscipit atque facilis distinctio sequi pariatur facere aliquid aperiam impedit unde tenetur.</p>
+                    <p class="-mt-8 text-xs md:text-sm text-center ">Craving delicacy like no other that'll leave you wanting more? Look no further than Knoor Kitchen, the home world of flavour and culinary comfort like none you've ever encountered before. Get ready to taste delicacy like none other.</p>
                     
                 </div>
             </div>

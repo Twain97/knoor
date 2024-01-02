@@ -25,6 +25,21 @@ module.exports = {
         wd9:"90vw",
         98:"98vw",
         wdFull:"100vw"
+      },
+      height:{
+        ht05:"5vh",
+        ht1:"10vh",
+        ht2:"20vh",
+        ht3:"30vh",
+        ht4:"40vh",
+        ht45:"45vh",
+        ht5:"50vh",
+        ht6:"60vh",
+        ht7:"70vh",
+        ht8:"80vh",
+        ht9:"90vh",
+        ht:"98vh",
+        htFull:"100vh"
       }
     },
   },
