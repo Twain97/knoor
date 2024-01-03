@@ -77,7 +77,6 @@
   
   <script>
     import { ElButton } from 'element-plus'
-    // import { Edit, Picture, UploadFilled } from '@element-plus/icons-vue'
   import router from "../router/index.js"
    import Load from '../views/LoadTrack.vue'
    import {auth} from '../firebase/firebase.js'

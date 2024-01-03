@@ -14,7 +14,7 @@
     
     <div class="flex flex-row ml-4 my-5 space-y-1  ">
       <p v-if="$store.state.user" class="my-auto md:mx-auto text-slate-900  text-xs md:text-sm">
-      Hi <span class="font-semibold">{{ username }}</span>, what are we cooking today?</p>              
+      Hello <span class="font-semibold">{{ username }}</span>, what are we cooking today?</p>              
     </div>
       <!-- Carousel -->
       <CarouselPage/>
@@ -36,7 +36,7 @@
           <div class="flex flex-col ">
             <div id="prodHead" class="mb-2 flex justify-between px-1">
               <div class="w-fit font-semibold text-xs bg-orange-600 rounded-lg p-1 text-slate-800 md:font-bold">
-              <p>-80%</p>
+              <p>-{{item.discount}}</p>
               </div>
 
               <div class="flex items-center my-auto"  @click="addWishList(item)">

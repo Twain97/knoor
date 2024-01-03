@@ -11,7 +11,7 @@
         <div class="flex flex-col h-5/6 rounded-xl m-auto pt-2 pb-5 w-wd9 md:w-wd7 lg:w-wd45 xl:w-wd45 overflow-x-hidden overflow-y-auto overflow-hidden bg-slate-100 shadow-sm">
           
           <div class="mt-3 w-fit ml-2 mb-2 font-bold text-xs md:text-sm bg-orange-600 rounded-lg p-1 text-slate-800">
-                -80%
+                -{{previewProduct.discount }}
           </div>
           <!-- image section -->
           <div class="mx-auto px-2 mr-4 h-60 md:h-80 lg:h-ht6 w-full" >

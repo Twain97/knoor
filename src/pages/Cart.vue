@@ -6,7 +6,7 @@
       </div>
       <ul class=" bg-slate-200 py-2 px-1">
         <li v-for="(items, index) in cart" :key="index" 
-        class="my-1px-2 py-1 bg-white rounded-lg shadow-md relative">
+        class="my-1 px-2 py-1 bg-white rounded-lg shadow-md relative">
 
          <div class=" flex flex-row  h-fit">
           <div class="absolute right-1 -top-2" @click="remove(items, index)">
@@ -15,8 +15,8 @@
           </div>
 
           <div class=" flex flex-row justify-between py-1 w-full h-fit" @click="(toggleShowProductPage(), insertProduct(items))">
-            <div class="pl-3 m-auto md:my-auto md:w-80 md:h-44">
-              <img :src="items.pic" alt="item pic" class=" w-44 h-22 md:w-full md:h-full rounded-md">
+            <div class="pl-3 m-auto md:my-auto w-44 h-24 md:w-80 md:h-44">
+              <img :src="items.pic" alt="item pic" class=" w-full h-full md:w-full md:h-full rounded-md">
             </div>
 
             <div class="flex flex-col text-xs p-2 md:justify-center md:space-y-1 md:text-base w-4/5 -ml-1 ">
@@ -61,12 +61,22 @@
           <span class="m-auto p-1 rounded-md text-green-700 text-xs font-bold bg-slate-100">#{{ totalBigPrice }}</span>
            
         </div>
+       
       </div>
 
 
       <div class="flex flex-col ">
         <hr class="m-auto w-5/6 border-slate-400">
 
+        <!-- Delivery Address -->
+        <div class="p-float-label p-input-icon-right mx-auto md:mx-auto my-7 w-11/12 h-fit md:w-3/5 md:text-base ">
+            <InputText type="text" id="username" v-model.lazy.trim="address" 
+            class="h-12 w-full text-xs indent-2 md:text-base md:h-12 text-ellipsis text-justify" 
+            :pt="{
+                root: { class: 'border-slate-400 border-2 hover:border-0' }
+            }"/>
+            <label for="username" class="-mt-2 md:-mt-4 text-xs md:text-base h-1">Delivery Address</label>
+        </div>
 
         <div class="flex flex-row py-2" >
           <Button id="button"  label="Place order" size="small" @click="placeOrder()"
@@ -115,17 +125,27 @@ export default {
         }
     },
 
+    data(){
+      return{
+        address:""
+      }
+    },
+
     methods: {
       placeOrder(){
+        
             const auth = getAuth()
         // this code directs to monnify payment api
             const customerName = auth.currentUser.displayName
             const customerEmail = auth.currentUser.email
             var cart = this.$store.state.cart
+            var address = this.address
             var amount = this.overAllTotal
             let titles = []
             var paid = false
-            MonnifySDK.initialize({
+
+            if (this.address != "") {
+              MonnifySDK.initialize({
                 amount: amount,
                 currency: "NGN",
                 reference: "KNOOR_" + Math.floor((Math.random() * 1000000000)+1),
@@ -177,7 +197,8 @@ export default {
                             orderDate:serverTimestamp(),
                             status:"Pending",
                             product:titles,
-                            totalPrice:amount
+                            totalPrice:amount,
+                            address:address
                           }
 
                         const docRef = addDoc(colRef, dataObj ).then((docRef)=>{
@@ -221,6 +242,14 @@ export default {
 
 
             });
+            }
+            else{
+              this.$toast.add({ severity: 'error', summary: 'Empty input', detail:'Please input your Delivery Address', life: '3000' });
+              function vib( ){
+                navigator.vibrate([100, 50,]);
+              };
+              vib( )
+            }
 
       },
 

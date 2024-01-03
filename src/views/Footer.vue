@@ -52,7 +52,7 @@
                 </div>
                 <div >
                     <h1 class="font-bold text-xs md:text-base text-slate-800">Quick Support System</h1>
-                    <p class="text-xs md:text-base">Not sure of what to order? Check out our daily deals to get what special delicacy we have for you, you will definitely love it.</p>
+                    <p class="text-xs md:text-base">Not sure of what to order? Check out our daily deals to get dialy special delicacies we have for you, you will definitely want more.</p>
                 </div>
             </div>
             <div class=" w-60 flex space-x-2">
@@ -64,7 +64,7 @@
                 </div>
                 <div>
                     <h1 class="font-bold text-xs md:text-base text-slate-800">Secure Payment Way</h1>
-                     <p class="text-xs md:text-base">Our payment gateway is the safest and secure. The system automaically generate a special payment ID with which you can track your payment.</p>
+                     <p class="text-xs md:text-base">Our payment gateway is the safest and secured. The system automaically generate a special payment ID with which you can track your payment and Order.</p>
                 </div>
             </div>
         </div>

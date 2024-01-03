@@ -55,7 +55,7 @@
                   <div class="bg-inherit m-auto  w-11/12 md:m-auto md:w-full lg:w-3/4 lg:m-auto border-b-2 flex border-slate-400">
                     <input id="password" type="password" v-model.trim.lazy="registerForm.password" placeholder="Enter Password"
                       class="bg-inherit m-auto py-2 w-11/12 indent-1 font-semibold "/>
-                    <font-awesome-icon v-if="showEye" icon="fa-solid fa-eye" @click="(showPassword(), eyes())" class="-mr-0 p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
+                    <font-awesome-icon v-if="showEye" icon="fa-solid fa-eye" @click="(showPassword(), eyes())" class="-mr0 p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
                     <font-awesome-icon v-else icon="fa-solid fa-eye-slash" @click="(showPassword(), eyes())" class="-mr-0 p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
 
                   </div>
@@ -96,7 +96,7 @@
                     <!-- End of log in -->
 
                     <!-- Siging up -->
-        <div v-else class="flex z-50 mt-4 md:py-0 md:-mt-1 w-full h-full ">
+        <div v-else class="flex z-50 pt-4 md:py-0 md:-mt-1 w-full h-full ">
           <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
 
@@ -237,6 +237,10 @@ export default {
             var password = document.getElementById("password")
             if(password.value != ""){
             store.dispatch('login', registerForm.value)
+
+            setTimeout(()=>{
+              loading.value=false
+            }, 3500)
             }
             else{
               function vib( ){
@@ -263,6 +267,10 @@ export default {
             if(password.value != "" && password2.value != ""){
               if(password.value === password2.value){
               store.dispatch('register', registerForm.value)
+
+              setTimeout(()=>{
+              loading.value=false
+            }, 3500)
               }
               else{
                 function vib( ){
@@ -270,6 +278,7 @@ export default {
                 };
                 vib( )
                 toast.add({ severity: 'error', summary: 'Error!', detail: 'Passwords not matched', life: 3000 });
+                loading.value=false
               }
             }
             else{

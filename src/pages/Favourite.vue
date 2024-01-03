@@ -14,8 +14,8 @@
           </div>
 
           <div class=" flex flex-row justify-between w-full h-fit" @click="(toggleShowProductPage(), insertProduct(items))">
-            <div class=" m-auto md:my-auto md:w-60 md:h-24">
-              <img :src="items.pic" alt="item pic" class="w-44 h-22 md:w-full md:h-full rounded-md">
+            <div class="pl-3 m-auto md:my-auto w-44 h-24 md:w-80 md:h-44">
+              <img :src="items.pic" alt="item pic" class=" w-full h-full md:w-full md:h-full rounded-md">
             </div>
 
             <div class="flex flex-col text-xs p-2 md:justify-center md:space-y-3 md:text-base w-4/5 -ml-1 ">

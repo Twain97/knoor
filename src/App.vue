@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div id="whatsapp" class="fixed bottom-20 lg:bottom-10 -left-1 md:left-2 z-50 w-fit">
-      <a href="#">
-        <img :src="whatsapp" alt="whatsappIcon" class="w-10 lg:w-20"/>
+    <div id="whatsapp" class="fixed bottom-20 lg:bottom-10 -right-1 md:left-2 z-50 w-fit">
+      <a href="https://wa.me/+2348125212907">
+        <img :src="whatsapp" alt="whatsappIcon" class="w-16 lg:w-20"/>
       </a>
     </div>
     <div class="">
@@ -97,7 +97,7 @@
               </router-link>
             </div>
             <div class="pt-3 mx-auto pl-4 pr-4 w-11/12 text-center text-xs font-semibold space-y-1 mb-10">
-              <h3>Designed and developed by <a href="#" class="text-blue-800"> Akinpelumi Taiwo</a></h3>
+              <h3>Designed and developed by <a href="https://wa.me/+2348125212907" class="text-blue-800"> Akinpelumi Taiwo</a></h3>
             </div>
           
         </div>
