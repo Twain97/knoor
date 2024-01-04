@@ -127,7 +127,11 @@ export default{
     })
     setTimeout(()=>{
       if(this.username == null){
-        this.$toast.add({ severity: 'warn', summary: 'Error!', detail: 'Network Timeout! please reload ', life: 3000 })
+        alert("Error! Network Timeout please reload the page.")
+        function vib( ){
+                navigator.vibrate([100, 50,]);
+        };
+        vib( )
       }
     }, 10000)
     
@@ -228,6 +232,10 @@ export default{
 
     if(store.state.wishList.includes(item)){
       toast.add({ severity: 'warn', summary: 'Error!', detail: 'Already added to wishlist', life: 3000 })
+      function vib( ){
+                navigator.vibrate([100, 50,]);
+        };
+        vib( )
     }
     else{
       store.dispatch('addFav', item)

@@ -55,8 +55,8 @@
                   <div class="bg-inherit m-auto  w-11/12 md:m-auto md:w-full lg:w-3/4 lg:m-auto border-b-2 flex border-slate-400">
                     <input id="password" type="password" v-model.trim.lazy="registerForm.password" placeholder="Enter Password"
                       class="bg-inherit m-auto py-2 w-11/12 indent-1 font-semibold "/>
-                    <font-awesome-icon v-if="showEye" icon="fa-solid fa-eye" @click="(showPassword(), eyes())" class="-mr0 p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
-                    <font-awesome-icon v-else icon="fa-solid fa-eye-slash" @click="(showPassword(), eyes())" class="-mr-0 p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
+                    <font-awesome-icon v-if="showEye" icon="fa-solid fa-eye" @click="(showPassword(), eyes())" class=" p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
+                    <font-awesome-icon v-else icon="fa-solid fa-eye-slash" @click="(showPassword(), eyes())" class=" p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
 
                   </div>
                 </div>
@@ -97,7 +97,7 @@
 
                     <!-- Siging up -->
         <div v-else class="flex z-50 pt-4 md:py-0 md:-mt-1 w-full h-full ">
-          <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
+          <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  mx-auto mt-4 md:m-0 ">
             <img :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
 
             <carousel class="md:hidden h-fit rounded-lg mx-auto  w-full md:h-5/6 overflow-hidden transition-all" :items-to-show="1" :autoplay="3000" :wrap-around="true" :show-arrows="false">
@@ -298,11 +298,13 @@ export default {
 
     function showPassword(){
       var toggle = document.getElementById("password")
-      if(toggle.type === "password" ){
+      var toggle2 = document.getElementById("password2")
+      if(toggle.type == "password" && toggle2.type == "password" ){
         toggle.type = "text"
-        
+        toggle2.type = "text"
       }else{
         toggle.type = "password"
+        toggle2.type = "password"
       }
     }
     function googleSignIn() {

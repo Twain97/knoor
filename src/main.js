@@ -8,6 +8,7 @@ import { faTwitter, faWhatsapp, faFacebook } from '@fortawesome/free-brands-svg-
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import PrimeVue from 'primevue/config';
+
 import "primevue/resources/themes/lara-light-indigo/theme.css";
 import Button from "primevue/button"
 import Avatar from 'primevue/avatar';
