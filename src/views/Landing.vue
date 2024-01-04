@@ -1,5 +1,5 @@
 <template>
-  <div class="main flex pt-4">
+  <div class="main pt-2">
     <div class="absolute w-full h-100vh bg-slate-800 opacity-40">
       
     </div>
@@ -15,8 +15,8 @@
         />
     </div>
     
-    <div class="w-fit h-fit m-auto flex p-4 ">
-      <div class="h-fit m-auto px-2 flex flex-col-reverse rounded-lg md:flex-row w-4/5  bg-slate-50 ">
+    <div class="w-full h-full absolute flex">
+      <div class="h-fit m-auto px-2 flex flex-col-reverse rounded-lg md:flex-row w-4/5  bg-slate-50">
        
         <div class=" w-2/4 flex ">
           <carousel class="hidden shadow-lg md:rounded-lg m-auto md:block md:h-2/5 lg:h-3/5 md:overflow-hidden md:w-full" :items-to-show="0.7" :autoplay="2500" :wrap-around="true" :show-arrows="false" >
@@ -96,8 +96,8 @@
                     <!-- End of log in -->
 
                     <!-- Siging up -->
-        <div v-else class="flex z-50 pt-4 md:py-0 md:-mt-1 w-full h-full  border-2  ">
-          <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0">
+        <div v-else class="flex z-50 pt-4 md:py-0 md:-mt-1 w-full h-full ">
+          <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
 
             <carousel class="md:hidden h-fit rounded-lg mx-auto  w-full md:h-5/6 overflow-hidden transition-all" :items-to-show="1" :autoplay="3000" :wrap-around="true" :show-arrows="false">
@@ -364,7 +364,7 @@ export default {
     background-size:cover;
     background-position:center;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 110vh;
 }
 #gmailButton{
 background-color: #e1e1e4;
