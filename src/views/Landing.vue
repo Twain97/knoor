@@ -53,10 +53,10 @@
                   <input name="Email" type="email" v-model.trim.lazy="registerForm.email" placeholder="Email"
                   class="bg-inherit m-auto py-2 w-11/12 md:w-full lg:w-3/4 lg:mx-auto indent-1 font-semibold border-b-2 border-slate-400"/>
                   <div class="bg-inherit m-auto  w-11/12 md:m-auto md:w-full lg:w-3/4 lg:m-auto border-b-2 flex border-slate-400">
-                    <input id="password" type="password" v-model.trim.lazy="registerForm.password" placeholder="Enter Password"
+                    <input id="loginPassword" type="password" v-model.trim.lazy="registerForm.password" placeholder="Enter Password"
                       class="bg-inherit m-auto py-2 w-11/12 indent-1 font-semibold "/>
-                    <font-awesome-icon v-if="showEye" icon="fa-solid fa-eye" @click="(showPassword(), eyes())" class=" p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
-                    <font-awesome-icon v-else icon="fa-solid fa-eye-slash" @click="(showPassword(), eyes())" class=" p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
+                    <font-awesome-icon v-if="showEye" icon="fa-solid fa-eye" @click="(loginShowPassword(), eyes())" class=" p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
+                    <font-awesome-icon v-else icon="fa-solid fa-eye-slash" @click="(loginShowPassword(), eyes())" class=" p-1 md:m-auto md:p-2 text-gray-600 border-2 rounded-md mr-2 border-slate-400" />
 
                   </div>
                 </div>
@@ -235,7 +235,7 @@ export default {
       function load(){
         loading.value = true;
             var password = document.getElementById("password")
-            if(password.value != ""){
+            if(password != ""){
             store.dispatch('login', registerForm.value)
 
             setTimeout(()=>{
@@ -299,12 +299,22 @@ export default {
     function showPassword(){
       var toggle = document.getElementById("password")
       var toggle2 = document.getElementById("password2")
-      if(toggle.type == "password" && toggle2.type == "password" ){
+      if(toggle.type === "password" && toggle2.type === "password" ){
         toggle.type = "text"
         toggle2.type = "text"
       }else{
         toggle.type = "password"
         toggle2.type = "password"
+      }
+    }
+
+    function loginShowPassword(){
+      var toggle = document.getElementById("loginPassword")
+     
+      if(toggle.type === "password" ){
+        toggle.type = "text"
+      }else{
+        toggle.type = "password"
       }
     }
     function googleSignIn() {
@@ -351,7 +361,7 @@ export default {
       register,
       login,
       googleSignIn,
-      
+      loginShowPassword,
       showPassword,
     }
   }

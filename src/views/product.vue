@@ -267,7 +267,7 @@ export default{
         if (this.$store.state.cart.includes(this.product)) {
           this.product.totalSmallInOrder--
 
-          console.log(this.$store.state.smallReductionCounter)
+          // console.log(this.$store.state.smallReductionCounter)
           // create a counter in vuex state to reduce the totalSmallPrice 
           // by 1 multiplied by the price with each click
           const changeInSmallPrice = this.$store.state.smallReductionCounter * this.$store.state.product.smallNewPrice
@@ -321,7 +321,7 @@ export default{
         if (this.$store.state.cart.includes(this.product)) {
           this.product.totalBigInOrder--
 
-          console.log(this.$store.state.bigReductionCounter)
+          // console.log(this.$store.state.bigReductionCounter)
           // create a counter in vuex state to reduce the totalBigPrice 
           // by 1 multiplied by the price with each click
           const changeInBigPrice = this.$store.state.bigReductionCounter * this.$store.state.product.bigNewPrice

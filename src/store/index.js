@@ -288,6 +288,10 @@ const store = createStore({
         totalSmallPrice:0,
         totalBigPrice:0,
         overAllTotal:0,
+        smallIncrementCounter:1,
+        smallReductionCounter:1,
+        bigReductionCounter:1,
+        bigIncrementCounter:1,
         showProductPage:false, //  0n/off of product page toggle
     },
     mutations: {
