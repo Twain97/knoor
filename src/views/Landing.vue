@@ -97,7 +97,7 @@
 
                     <!-- Siging up -->
         <div v-else class="flex z-50 pt-4 md:py-0 md:-mt-1 w-full h-full ">
-          <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  mx-auto mt-4 md:m-0 ">
+          <div class="w-full h-full py-2 flex flex-col px-2 md:h-full  m-auto md:m-0 ">
             <img :src="logo" alt="logo" class="w-16  -mt-2 md:w-28 md:m-auto  mx-auto">
 
             <carousel class="md:hidden h-fit rounded-lg mx-auto  w-full md:h-5/6 overflow-hidden transition-all" :items-to-show="1" :autoplay="3000" :wrap-around="true" :show-arrows="false">
@@ -364,7 +364,7 @@ export default {
     background-size:cover;
     background-position:center;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 110vh;
 }
 #gmailButton{
 background-color: #e1e1e4;
